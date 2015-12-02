@@ -14,6 +14,8 @@
 
 @implementation CardGameViewController
 
+// TODO: use programmatic views instead of storyboard
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
