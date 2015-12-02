@@ -10,7 +10,6 @@
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
-		DD9ACCC11C0E83420013B67D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACCBF1C0E83420013B67D /* Main.storyboard */; };
 		DD9ACCC31C0E83420013B67D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACCC21C0E83420013B67D /* Assets.xcassets */; };
 		DD9ACCC61C0E83420013B67D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */; };
 		DD9ACCD11C0E83420013B67D /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCD01C0E83420013B67D /* MatchismoTests.m */; };
@@ -41,7 +40,6 @@
 		DD9ACCBA1C0E83420013B67D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardGameViewController.h; sourceTree = "<group>"; };
 		DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardGameViewController.m; sourceTree = "<group>"; };
-		DD9ACCC01C0E83420013B67D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD9ACCC21C0E83420013B67D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD9ACCC51C0E83420013B67D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD9ACCC71C0E83420013B67D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				DD9ACCBA1C0E83420013B67D /* AppDelegate.m */,
 				DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */,
 				DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */,
-				DD9ACCBF1C0E83420013B67D /* Main.storyboard */,
 				DD9ACCC21C0E83420013B67D /* Assets.xcassets */,
 				DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */,
 				DD9ACCC71C0E83420013B67D /* Info.plist */,
@@ -245,7 +242,6 @@
 			files = (
 				DD9ACCC61C0E83420013B67D /* LaunchScreen.storyboard in Resources */,
 				DD9ACCC31C0E83420013B67D /* Assets.xcassets in Resources */,
-				DD9ACCC11C0E83420013B67D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +304,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DD9ACCBF1C0E83420013B67D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD9ACCC01C0E83420013B67D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -496,6 +484,7 @@
 				DD9ACCE21C0E83420013B67D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD9ACCE31C0E83420013B67D /* Build configuration list for PBXNativeTarget "MatchismoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +493,7 @@
 				DD9ACCE51C0E83420013B67D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD9ACCE61C0E83420013B67D /* Build configuration list for PBXNativeTarget "MatchismoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +502,7 @@
 				DD9ACCE81C0E83420013B67D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
