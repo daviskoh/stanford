@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "CardGameViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    CGRect bounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:bounds];
+    self.window.rootViewController = [[CardGameViewController alloc] init];
+
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
