@@ -7,6 +7,7 @@
 //
 
 #import "CardGameViewController.h"
+#import "CardTableView.h"
 
 @interface CardGameViewController ()
 
@@ -14,10 +15,13 @@
 
 @implementation CardGameViewController
 
+- (void)loadView {
+    self.view = [[CardTableView alloc] init];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.view.backgroundColor = [UIColor greenColor];
 }
 
 - (void)didReceiveMemoryWarning {
