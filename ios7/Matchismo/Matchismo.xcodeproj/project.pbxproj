@@ -17,6 +17,7 @@
 		DDA2DB711C0F765000A593AB /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB701C0F765000A593AB /* CardView.m */; };
 		DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB731C0F7A6600A593AB /* CardTableView.m */; };
 		DDC92DD81C0FEC8700B51A13 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC92DD71C0FEC8700B51A13 /* Card.m */; };
+		DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC92DDA1C0FF5DD00B51A13 /* Deck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		DDA2DB731C0F7A6600A593AB /* CardTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableView.m; sourceTree = "<group>"; };
 		DDC92DD61C0FEC8700B51A13 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		DDC92DD71C0FEC8700B51A13 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		DDC92DD91C0FF5DD00B51A13 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		DDC92DDA1C0FF5DD00B51A13 /* Deck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deck.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				DD9ACCC21C0E83420013B67D /* Assets.xcassets */,
 				DDC92DD61C0FEC8700B51A13 /* Card.h */,
 				DDC92DD71C0FEC8700B51A13 /* Card.m */,
+				DDC92DD91C0FF5DD00B51A13 /* Deck.h */,
+				DDC92DDA1C0FF5DD00B51A13 /* Deck.m */,
 				DDA2DB6F1C0F765000A593AB /* CardView.h */,
 				DDA2DB701C0F765000A593AB /* CardView.m */,
 				DDA2DB721C0F7A6600A593AB /* CardTableView.h */,
@@ -282,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */,
+				DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */,
 				DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */,
 				DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */,
 				DDA2DB711C0F765000A593AB /* CardView.m in Sources */,
