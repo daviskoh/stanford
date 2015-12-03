@@ -41,6 +41,12 @@
     UIImage *image = [UIImage imageNamed:@"cardfront"];
     [sender setBackgroundImage:image
                       forState:UIControlStateNormal];
+
+    // TODO: remove hard-coded Card View text
+    [sender setTitle:@"A♠︎"
+          forState:UIControlStateNormal];
+    [sender setTitleColor:[UIColor blackColor]
+               forState:UIControlStateNormal];
 }
 
 @end
