@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "stanford.png",
+      "filename" : "cardfront.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "cardback@2x.png",
+      "filename" : "cardfront@2x.png",
       "scale" : "2x"
     },
     {
