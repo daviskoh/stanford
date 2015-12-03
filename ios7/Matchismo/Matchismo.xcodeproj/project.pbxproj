@@ -16,6 +16,7 @@
 		DD9ACCDC1C0E83420013B67D /* MatchismoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCDB1C0E83420013B67D /* MatchismoUITests.m */; };
 		DDA2DB711C0F765000A593AB /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB701C0F765000A593AB /* CardView.m */; };
 		DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB731C0F7A6600A593AB /* CardTableView.m */; };
+		DDC92DD81C0FEC8700B51A13 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC92DD71C0FEC8700B51A13 /* Card.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		DDA2DB701C0F765000A593AB /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
 		DDA2DB721C0F7A6600A593AB /* CardTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableView.h; sourceTree = "<group>"; };
 		DDA2DB731C0F7A6600A593AB /* CardTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableView.m; sourceTree = "<group>"; };
+		DDC92DD61C0FEC8700B51A13 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		DDC92DD71C0FEC8700B51A13 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */,
 				DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */,
 				DD9ACCC21C0E83420013B67D /* Assets.xcassets */,
+				DDC92DD61C0FEC8700B51A13 /* Card.h */,
+				DDC92DD71C0FEC8700B51A13 /* Card.m */,
 				DDA2DB6F1C0F765000A593AB /* CardView.h */,
 				DDA2DB701C0F765000A593AB /* CardView.m */,
 				DDA2DB721C0F7A6600A593AB /* CardTableView.h */,
@@ -281,6 +286,7 @@
 				DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */,
 				DDA2DB711C0F765000A593AB /* CardView.m in Sources */,
 				DD9ACCB81C0E83420013B67D /* main.m in Sources */,
+				DDC92DD81C0FEC8700B51A13 /* Card.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
