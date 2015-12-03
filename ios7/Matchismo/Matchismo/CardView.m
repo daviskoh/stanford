@@ -15,7 +15,8 @@
 
     if (self) {
         UIImage *btnImage = [UIImage imageNamed:@"cardback.png"];
-        [self setImage:btnImage forState:UIControlStateNormal];
+        [self setBackgroundImage:btnImage
+                        forState:UIControlStateNormal];
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     }
 

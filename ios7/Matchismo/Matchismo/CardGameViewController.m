@@ -11,9 +11,13 @@
 
 @interface CardGameViewController ()
 
+@property CardTableView *view;
+
 @end
 
 @implementation CardGameViewController
+
+@dynamic view;
 
 - (void)loadView {
     self.view = [[CardTableView alloc] init];
@@ -21,12 +25,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a
+
+    [self.view.cardButton addTarget:self
+                             action:@selector(onButtonClick:)
+                   forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onButtonClick:(UIButton *)sender {
+    UIImage *image = [UIImage imageNamed:@"cardfront"];
+    [sender setBackgroundImage:image
+                      forState:UIControlStateNormal];
 }
 
 @end
