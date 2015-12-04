@@ -8,16 +8,23 @@
 
 #import "CardGameViewController.h"
 #import "CardTableView.h"
+#import "PlayingCardDeck.h"
 
 @interface CardGameViewController ()
 
-@property CardTableView *view;
+// OPTIMIZE: not sure if below is legal
+// view Type override
+@property (strong, nonatomic) CardTableView *view;
+
+@property (strong, nonatomic) Deck *deck;
 
 @end
 
 @implementation CardGameViewController
 
 @dynamic view;
+
+#pragma mark - View
 
 - (void)loadView {
     self.view = [[CardTableView alloc] init];
@@ -32,10 +39,21 @@
                    forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark - Getters & Setters
+
+- (Deck *)deck {
+    if (!_deck) _deck = [[PlayingCardDeck alloc] init];
+    return _deck;
+}
+
+#pragma mark - Performance
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Event Handlers
 
 - (void)onButtonClick:(UIButton *)sender {
     NSString *imageName, *title;
@@ -46,7 +64,7 @@
     } else {
         imageName = @"cardfront.png";
         // TODO: remove hard-coded Card View text
-        title = @"A♠︎";
+        title = [self.deck drawRandomCard].contents;
     }
 
     [sender setBackgroundImage:[UIImage imageNamed:imageName]
