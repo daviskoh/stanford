@@ -18,6 +18,10 @@
         [self setBackgroundImage:btnImage
                         forState:UIControlStateNormal];
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+
+        [self setTitleColor:[UIColor blackColor]
+               forState:UIControlStateNormal];
+        self.titleLabel.font = [UIFont systemFontOfSize:50];
     }
 
     return self;

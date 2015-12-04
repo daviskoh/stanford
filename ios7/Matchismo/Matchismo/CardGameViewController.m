@@ -54,9 +54,6 @@
 
     [sender setTitle:title
           forState:UIControlStateNormal];
-    [sender setTitleColor:[UIColor blackColor]
-               forState:UIControlStateNormal];
-    sender.titleLabel.font = [UIFont systemFontOfSize:50];
 }
 
 @end
