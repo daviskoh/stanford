@@ -20,6 +20,8 @@
 
 @property (nonatomic) UILabel *countLabel;
 
+@property (nonatomic) int flipsCount;
+
 @end
 
 @implementation CardGameViewController
@@ -115,6 +117,9 @@
 
     [sender setTitle:title
           forState:UIControlStateNormal];
+
+    // OPTIMIZE: should entire text label be getting reassigned?
+    self.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", ++self.flipsCount];
 }
 
 @end
