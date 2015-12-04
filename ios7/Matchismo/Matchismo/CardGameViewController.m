@@ -38,15 +38,25 @@
 }
 
 - (void)onButtonClick:(UIButton *)sender {
-    UIImage *image = [UIImage imageNamed:@"cardfront"];
-    [sender setBackgroundImage:image
+    NSString *imageName, *title;
+
+    if ([sender.currentTitle length]) {
+        imageName = @"cardback.png";
+        title = @"";
+    } else {
+        imageName = @"cardfront.png";
+        // TODO: remove hard-coded Card View text
+        title = @"A♠︎";
+    }
+
+    [sender setBackgroundImage:[UIImage imageNamed:imageName]
                       forState:UIControlStateNormal];
 
-    // TODO: remove hard-coded Card View text
-    [sender setTitle:@"A♠︎"
+    [sender setTitle:title
           forState:UIControlStateNormal];
     [sender setTitleColor:[UIColor blackColor]
                forState:UIControlStateNormal];
+    sender.titleLabel.font = [UIFont systemFontOfSize:50];
 }
 
 @end
