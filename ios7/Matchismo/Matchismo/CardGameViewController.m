@@ -41,47 +41,6 @@
     [self.view.cardButton addTarget:self
                              action:@selector(onButtonClick:)
                    forControlEvents:UIControlEventTouchUpInside];
-
-    self.countLabel = [[UILabel alloc] init];
-    self.countLabel.text = @"Flips Count: 0";
-    [self.countLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.view addSubview:self.countLabel];
-
-    self.countLabel.textAlignment = NSTextAlignmentCenter;
-
-    NSLayoutConstraint *xConstraint = [NSLayoutConstraint constraintWithItem:self.countLabel
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                  multiplier:1
-                                                                    constant:0];
-
-    NSLayoutConstraint *yConstraint = [NSLayoutConstraint constraintWithItem:self.countLabel
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.75
-                                                                    constant:0];
-
-    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.countLabel
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                  multiplier:0.5
-                                                                    constant:0];
-
-    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.countLabel
-                                                                   attribute:NSLayoutAttributeHeight
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.view
-                                                                   attribute:NSLayoutAttributeHeight
-                                                                  multiplier:0.1
-                                                                    constant:0];
-
-    [self.view addConstraints:@[xConstraint, yConstraint, widthConstraint, heightConstraint]];
 }
 
 #pragma mark - Getters & Setters
@@ -119,7 +78,7 @@
           forState:UIControlStateNormal];
 
     // OPTIMIZE: should entire text label be getting reassigned?
-    self.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", ++self.flipsCount];
+    self.view.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", ++self.flipsCount];
 }
 
 @end

@@ -12,4 +12,6 @@
 
 @property (nonatomic) UIButton *cardButton;
 
+@property (nonatomic) UILabel *countLabel;
+
 @end
