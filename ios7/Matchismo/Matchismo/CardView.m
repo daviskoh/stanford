@@ -20,7 +20,7 @@
         [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         [self setTitleColor:[UIColor blackColor]
-               forState:UIControlStateNormal];
+                   forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:50];
     }
 
