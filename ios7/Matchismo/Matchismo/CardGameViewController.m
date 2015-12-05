@@ -14,11 +14,11 @@
 
 // OPTIMIZE: not sure if below is legal
 // view Type override
-@property (nonatomic) CardTableView *view;
+@property (strong, nonatomic) CardTableView *view;
 
-@property (nonatomic) Deck *deck;
+@property (strong, nonatomic) Deck *deck;
 
-@property (nonatomic) UILabel *countLabel;
+@property (strong, nonatomic) UILabel *countLabel;
 
 @property (nonatomic) int flipCount;
 

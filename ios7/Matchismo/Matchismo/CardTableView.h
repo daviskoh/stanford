@@ -10,8 +10,8 @@
 
 @interface CardTableView : UIView
 
-@property (nonatomic) UIButton *cardButton;
+@property (strong, nonatomic) UIButton *cardButton;
 
-@property (nonatomic) UILabel *countLabel;
+@property (strong, nonatomic) UILabel *countLabel;
 
 @end
