@@ -20,7 +20,7 @@
 
 @property (nonatomic) UILabel *countLabel;
 
-@property (nonatomic) int flipsCount;
+@property (nonatomic) int flipCount;
 
 @end
 
@@ -50,6 +50,11 @@
     return _deck;
 }
 
+- (void)setFlipCount:(int)flipCount {
+    _flipCount = flipCount;
+    self.view.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", flipCount];
+}
+
 #pragma mark - Performance
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +73,8 @@
 
         [sender setBackgroundImage:[UIImage imageNamed:imageName]
                               forState:UIControlStateNormal];
+
+        self.flipCount++;
     } else {
         imageName = @"cardfront.png";
 
@@ -80,13 +87,12 @@
 
             title = card.contents;
         }
+
+        self.flipCount++;
     }
 
     [sender setTitle:title
           forState:UIControlStateNormal];
-
-    // OPTIMIZE: should entire text label be getting reassigned?
-    self.view.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", ++self.flipsCount];
 }
 
 @end
