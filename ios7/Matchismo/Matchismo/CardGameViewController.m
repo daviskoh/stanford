@@ -60,19 +60,27 @@
 #pragma mark - Event Handlers
 
 - (void)onButtonClick:(UIButton *)sender {
-    NSString *imageName, *title;
+    NSString *imageName,
+        *title = @"";
 
     if ([sender.currentTitle length]) {
         imageName = @"cardback.png";
-        title = @"";
+
+        [sender setBackgroundImage:[UIImage imageNamed:imageName]
+                              forState:UIControlStateNormal];
     } else {
         imageName = @"cardfront.png";
-        // TODO: remove hard-coded Card View text
-        title = [self.deck drawRandomCard].contents;
-    }
 
-    [sender setBackgroundImage:[UIImage imageNamed:imageName]
-                      forState:UIControlStateNormal];
+        Card *card = [self.deck drawRandomCard];
+
+        // stop flipping when deck runs out
+        if (card) {
+            [sender setBackgroundImage:[UIImage imageNamed:imageName]
+                              forState:UIControlStateNormal];
+
+            title = card.contents;
+        }
+    }
 
     [sender setTitle:title
           forState:UIControlStateNormal];
