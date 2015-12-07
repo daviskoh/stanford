@@ -10,7 +10,7 @@
 
 // TODO: subclass UICollectionViewController
 // TODO: implement <UICollectionViewDataSource> protocol
-@interface CardGameViewController : UIViewController
+@interface CardGameViewController : UICollectionViewController <UICollectionViewDataSource>
 
 @end
 

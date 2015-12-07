@@ -28,19 +28,18 @@
 
 @dynamic view;
 
-#pragma mark - View
+- (instancetype)init {
+    UICollectionViewLayout *layout = [[UICollectionViewLayout alloc] init];
+    self = [super initWithCollectionViewLayout:layout];
 
-- (void)loadView {
-    self.view = [[CardTableView alloc] init];
+    return self;
 }
+
+#pragma mark - View
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a
-
-    [self.view.cardButton addTarget:self
-                             action:@selector(onButtonClick:)
-                   forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - Getters & Setters
@@ -53,13 +52,6 @@
 - (void)setFlipCount:(int)flipCount {
     _flipCount = flipCount;
     self.view.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", flipCount];
-}
-
-#pragma mark - Performance
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Event Handlers
@@ -93,6 +85,25 @@
 
     [sender setTitle:title
           forState:UIControlStateNormal];
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return [[UICollectionViewCell alloc] init];
+}
+
+#pragma mark - Performance
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
