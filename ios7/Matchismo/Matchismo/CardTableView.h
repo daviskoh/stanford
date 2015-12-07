@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CardTableView : UIView
+@interface CardTableView : UICollectionView
 
 @property (strong, nonatomic) UIButton *cardButton;
 
