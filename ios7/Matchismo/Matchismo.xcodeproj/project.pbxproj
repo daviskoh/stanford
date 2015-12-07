@@ -16,7 +16,6 @@
 		DD9ACCD11C0E83420013B67D /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCD01C0E83420013B67D /* MatchismoTests.m */; };
 		DD9ACCDC1C0E83420013B67D /* MatchismoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCDB1C0E83420013B67D /* MatchismoUITests.m */; };
 		DDA2DB711C0F765000A593AB /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB701C0F765000A593AB /* CardView.m */; };
-		DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB731C0F7A6600A593AB /* CardTableView.m */; };
 		DDC92DD81C0FEC8700B51A13 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC92DD71C0FEC8700B51A13 /* Card.m */; };
 		DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC92DDA1C0FF5DD00B51A13 /* Deck.m */; };
 		DDE1EB401C109A3E002DC075 /* PlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */; };
@@ -59,8 +58,6 @@
 		DD9ACCDD1C0E83420013B67D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDA2DB6F1C0F765000A593AB /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardView.h; sourceTree = "<group>"; };
 		DDA2DB701C0F765000A593AB /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardView.m; sourceTree = "<group>"; };
-		DDA2DB721C0F7A6600A593AB /* CardTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardTableView.h; sourceTree = "<group>"; };
-		DDA2DB731C0F7A6600A593AB /* CardTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardTableView.m; sourceTree = "<group>"; };
 		DDC92DD61C0FEC8700B51A13 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		DDC92DD71C0FEC8700B51A13 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		DDC92DD91C0FF5DD00B51A13 /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
@@ -128,8 +125,6 @@
 				DDC92DDA1C0FF5DD00B51A13 /* Deck.m */,
 				DDA2DB6F1C0F765000A593AB /* CardView.h */,
 				DDA2DB701C0F765000A593AB /* CardView.m */,
-				DDA2DB721C0F7A6600A593AB /* CardTableView.h */,
-				DDA2DB731C0F7A6600A593AB /* CardTableView.m */,
 				DDE1EB3E1C109A3E002DC075 /* PlayingCard.h */,
 				DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */,
 				DD17F5F61C10B666009B5706 /* PlayingCardDeck.h */,
@@ -300,7 +295,6 @@
 				DD17F5F81C10B666009B5706 /* PlayingCardDeck.m in Sources */,
 				DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */,
 				DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */,
-				DDA2DB741C0F7A6600A593AB /* CardTableView.m in Sources */,
 				DDA2DB711C0F765000A593AB /* CardView.m in Sources */,
 				DD9ACCB81C0E83420013B67D /* main.m in Sources */,
 				DDE1EB401C109A3E002DC075 /* PlayingCard.m in Sources */,

@@ -17,7 +17,7 @@
         UIImage *btnImage = [UIImage imageNamed:@"cardback.png"];
         [self setBackgroundImage:btnImage
                         forState:UIControlStateNormal];
-        [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+        //[self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
         [self setTitleColor:[UIColor blackColor]
                    forState:UIControlStateNormal];

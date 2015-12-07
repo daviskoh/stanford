@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-// TODO: subclass UICollectionViewController
-// TODO: implement <UICollectionViewDataSource> protocol
-@interface CardGameViewController : UICollectionViewController <UICollectionViewDataSource>
+@interface CardGameViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @end
 

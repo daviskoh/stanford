@@ -7,20 +7,14 @@
 //
 
 #import "CardGameViewController.h"
-#import "CardTableView.h"
 #import "PlayingCardDeck.h"
+#import "CardView.h"
 
 @interface CardGameViewController ()
-
-// OPTIMIZE: not sure if below is legal
-// view Type override
-@property (strong, nonatomic) CardTableView *view;
 
 @property (strong, nonatomic) Deck *deck;
 
 @property (strong, nonatomic) UILabel *countLabel;
-
-@property (nonatomic) int flipCount;
 
 @end
 
@@ -29,8 +23,7 @@
 @dynamic view;
 
 - (instancetype)init {
-    UICollectionViewLayout *layout = [[UICollectionViewLayout alloc] init];
-    self = [super initWithCollectionViewLayout:layout];
+    self = [super initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
 
     return self;
 }
@@ -39,7 +32,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a
+
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+
+    [self.collectionView setBackgroundColor:[UIColor greenColor]];
+
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section {
+    // 4 x 3
+    return 12;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                           forIndexPath:indexPath];
+
+    // TODO: use card views
+    //CardView *card = [[CardView alloc] init];
+    UIView *card = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    card.backgroundColor = [UIColor redColor];
+
+    [cell.contentView addSubview:card];
+
+    return cell;
 }
 
 #pragma mark - Getters & Setters
@@ -47,11 +69,6 @@
 - (Deck *)deck {
     if (!_deck) _deck = [[PlayingCardDeck alloc] init];
     return _deck;
-}
-
-- (void)setFlipCount:(int)flipCount {
-    _flipCount = flipCount;
-    self.view.countLabel.text = [NSString stringWithFormat:@"Flips Count: %d", flipCount];
 }
 
 #pragma mark - Event Handlers
@@ -65,8 +82,6 @@
 
         [sender setBackgroundImage:[UIImage imageNamed:imageName]
                               forState:UIControlStateNormal];
-
-        self.flipCount++;
     } else {
         imageName = @"cardfront.png";
 
@@ -79,24 +94,10 @@
 
             title = card.contents;
         }
-
-        self.flipCount++;
     }
 
     [sender setTitle:title
           forState:UIControlStateNormal];
-}
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UICollectionViewCell alloc] init];
 }
 
 #pragma mark - Performance
