@@ -41,7 +41,7 @@
     self.collectionView.delegate = self;
 }
 
-#pragma mark - UICollectionViewDataSource
+#pragma mark - UICollectionViewDataSource protocol
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
@@ -55,13 +55,36 @@
                                                                            forIndexPath:indexPath];
 
     // TODO: use card views
-    //CardView *card = [[CardView alloc] init];
-    UIView *card = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    card.backgroundColor = [UIColor redColor];
+    CardView *card = [[CardView alloc] init];
 
     [cell.contentView addSubview:card];
 
+    cell.backgroundColor = [UIColor blueColor];
+
     return cell;
+}
+
+#pragma mark - UICollectionViewFlowLayout protocol
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CGSize viewSize = self.view.bounds.size;
+
+    CGSize cellSize = CGSizeMake(viewSize.width * 0.2, viewSize.height * 0.2);
+
+    return cellSize;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout *)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section {
+    CGSize viewSize = self.view.bounds.size;
+    CGFloat width = viewSize.width * 0.05;
+    CGFloat height = viewSize.height * 0.05;
+
+    // top, left, bottom, right
+    return UIEdgeInsetsMake(height, width, height, width);
 }
 
 #pragma mark - Getters & Setters
