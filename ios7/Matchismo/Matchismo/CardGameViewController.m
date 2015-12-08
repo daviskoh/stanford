@@ -56,6 +56,10 @@
 
     CardView *card = [[CardView alloc] initWithFrame:cell.bounds];
 
+    [card addTarget:self
+             action:@selector(onButtonClick:)
+   forControlEvents:UIControlEventTouchUpInside];
+
     [cell.contentView addSubview:card];
 
     return cell;
