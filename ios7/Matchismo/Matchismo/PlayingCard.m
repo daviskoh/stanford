@@ -17,6 +17,24 @@
     return [rankStrings[self.rank] stringByAppendingString:self.suit];
 }
 
+- (int)match:(NSArray *)otherCards {
+    int score = 0;
+
+    if (otherCards.count == 1) {
+        // like grabbing obj at i = 0, except
+        // will NOT crash if out of bounds
+        PlayingCard *otherCard = [otherCards firstObject];
+
+        if (self.rank == otherCard.rank) {
+            score = 4;
+        } else if (self.suit == otherCard.suit) {
+            score = 1;
+        }
+    }
+
+    return score;
+}
+
 #pragma mark - Class Methods
 
 // NOTE: obviously cant ref properties in class methods
