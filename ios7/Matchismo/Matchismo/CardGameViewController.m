@@ -54,12 +54,9 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
                                                                            forIndexPath:indexPath];
 
-    // TODO: use card views
-    CardView *card = [[CardView alloc] init];
+    CardView *card = [[CardView alloc] initWithFrame:cell.bounds];
 
     [cell.contentView addSubview:card];
-
-    cell.backgroundColor = [UIColor blueColor];
 
     return cell;
 }
@@ -70,7 +67,6 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     CGSize viewSize = self.view.bounds.size;
-
     CGSize cellSize = CGSizeMake(viewSize.width * 0.2, viewSize.height * 0.2);
 
     return cellSize;
