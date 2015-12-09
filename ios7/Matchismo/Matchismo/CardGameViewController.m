@@ -40,8 +40,6 @@
 
 - (CardMatchingGame *)game {
     if (!_game) {
-        // TODO: check if below is safe
-        // will self.cardButtons.count be correct by this point?
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc] init]];
     }
