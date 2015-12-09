@@ -9,12 +9,13 @@
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardView.h"
+#import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
 
-@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) CardMatchingGame *game;
 
-@property (strong, nonatomic) UILabel *countLabel;
+@property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
 @end
 
@@ -26,6 +27,23 @@
     self = [super initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
 
     return self;
+}
+
+#pragma mark - Getters & Setters
+
+- (NSMutableArray *)cardButtons {
+    if (!_cardButtons) _cardButtons = [[NSMutableArray alloc] init];
+    return _cardButtons;
+}
+
+- (CardMatchingGame *)game {
+    if (!_game) {
+        // TODO: check if below is safe
+        // will self.cardButtons.count be correct by this point?
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                                 usingDeck:[[PlayingCardDeck alloc] init]];
+    }
+    return _game;
 }
 
 #pragma mark - View
@@ -61,6 +79,7 @@
    forControlEvents:UIControlEventTouchUpInside];
 
     [cell.contentView addSubview:card];
+    [self.cardButtons addObject:card];
 
     return cell;
 }
@@ -87,40 +106,38 @@
     return UIEdgeInsetsMake(height, width, height, width);
 }
 
-#pragma mark - Getters & Setters
-
-- (Deck *)deck {
-    if (!_deck) _deck = [[PlayingCardDeck alloc] init];
-    return _deck;
-}
-
 #pragma mark - Event Handlers
 
 - (void)onButtonClick:(UIButton *)sender {
-    NSString *imageName,
-        *title = @"";
+    int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
+    [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
+}
 
-    if ([sender.currentTitle length]) {
-        imageName = @"cardback.png";
+#pragma mark - Utility Methods
 
-        [sender setBackgroundImage:[UIImage imageNamed:imageName]
+- (void)updateUI {
+    for (UIButton *cardButton in self.cardButtons) {
+        int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardButton];
+        Card *card = [self.game cardAtIndex:cardButtonIndex];
+
+        [cardButton setTitle:[self titleForCard:card]
+                    forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self backgroundImageForCard:card]
                               forState:UIControlStateNormal];
-    } else {
-        imageName = @"cardfront.png";
 
-        Card *card = [self.deck drawRandomCard];
-
-        // stop flipping when deck runs out
-        if (card) {
-            [sender setBackgroundImage:[UIImage imageNamed:imageName]
-                              forState:UIControlStateNormal];
-
-            title = card.contents;
-        }
+        cardButton.enabled = !card.isMatched;
     }
+}
 
-    [sender setTitle:title
-          forState:UIControlStateNormal];
+- (NSString *)titleForCard:(Card *)card {
+    return card.isChosen ? card.contents : @"";
+}
+
+- (UIImage *)backgroundImageForCard:(Card *)card {
+    NSString *imageName = card.isChosen ? @"cardfront" : @"cardback";
+    NSLog(@"image: %@", imageName);
+    return [UIImage imageNamed:imageName];
 }
 
 #pragma mark - Performance

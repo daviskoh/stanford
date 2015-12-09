@@ -42,7 +42,7 @@
 #pragma mark - Getters & Setters
 
 - (NSMutableArray *)cards {
-    if (!_cards) return [[NSMutableArray alloc] init];
+    if (!_cards) _cards = [[NSMutableArray alloc] init];
     return _cards;
 }
 
