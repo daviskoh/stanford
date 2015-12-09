@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
+@property (strong, nonatomic) UILabel *scoreLabel;
+
 @end
 
 @implementation CardGameViewController
@@ -57,6 +59,22 @@
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
+
+    // add score label
+    CGFloat left = self.view.bounds.size.width * 0.05;
+    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, 100, 500)];
+    self.scoreLabel.text = @"Score: 0";
+    [self.scoreLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.scoreLabel];
+
+    NSLayoutConstraint *yConstraint = [NSLayoutConstraint constraintWithItem:self.scoreLabel
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.9
+                                                                    constant:0];
+    [self.view addConstraint:yConstraint];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
