@@ -134,6 +134,10 @@
 
 #pragma mark - Utility Methods
 
+- (void)updateScoreLabel {
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+}
+
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardButton];
@@ -146,6 +150,8 @@
 
         cardButton.enabled = !card.isMatched;
     }
+
+    [self updateScoreLabel];
 }
 
 - (NSString *)titleForCard:(Card *)card {
@@ -154,7 +160,6 @@
 
 - (UIImage *)backgroundImageForCard:(Card *)card {
     NSString *imageName = card.isChosen ? @"cardfront" : @"cardback";
-    NSLog(@"image: %@", imageName);
     return [UIImage imageNamed:imageName];
 }
 
