@@ -78,6 +78,9 @@
     [self.dealButton setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.dealButton setTitle:@"Deal" forState:UIControlStateNormal];
     [self.view addSubview:self.dealButton];
+    [self.dealButton addTarget:self
+                        action:@selector(onDealButtonTouch:)
+              forControlEvents:UIControlEventTouchUpInside];
 
     NSLayoutConstraint *dealButtonYConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
                                                                    attribute:NSLayoutAttributeCenterY
@@ -114,7 +117,7 @@
     CardView *card = [[CardView alloc] initWithFrame:cell.bounds];
 
     [card addTarget:self
-             action:@selector(onButtonClick:)
+             action:@selector(onCardChosen:)
    forControlEvents:UIControlEventTouchUpInside];
 
     [cell.contentView addSubview:card];
@@ -147,9 +150,17 @@
 
 #pragma mark - Event Handlers
 
-- (void)onButtonClick:(UIButton *)sender {
+// FIXME: prevent card from matching with itself
+// try tapping same card twice
+- (void)onCardChosen:(UIButton *)sender {
     int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
+    [self updateUI];
+}
+
+- (void)onDealButtonTouch:(UIButton *)sender {
+    self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+                                                  usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
 }
 
