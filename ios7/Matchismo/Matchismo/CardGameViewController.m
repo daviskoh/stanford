@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
 @property (strong, nonatomic) UILabel *scoreLabel;
+@property (strong, nonatomic) UIButton *dealButton;
 
 @end
 
@@ -59,8 +60,7 @@
     self.collectionView.delegate = self;
 
     // add score label
-    CGFloat left = self.view.bounds.size.width * 0.05;
-    self.scoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(left, 0, 100, 500)];
+    self.scoreLabel = [[UILabel alloc] init];
     self.scoreLabel.text = @"Score: 0";
     [self.scoreLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.scoreLabel];
@@ -73,6 +73,29 @@
                                                                   multiplier:1.9
                                                                     constant:0];
     [self.view addConstraint:yConstraint];
+
+    self.dealButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
+    [self.dealButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.dealButton setTitle:@"Deal" forState:UIControlStateNormal];
+    [self.view addSubview:self.dealButton];
+
+    NSLayoutConstraint *dealButtonYConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.9
+                                                                    constant:0];
+
+    NSLayoutConstraint *dealButtonXConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                  multiplier:1.8
+                                                                    constant:0];
+
+    [self.view addConstraints:@[dealButtonYConstraint, dealButtonXConstraint]];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
