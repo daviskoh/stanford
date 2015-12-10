@@ -185,12 +185,15 @@
     int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
+
+    self.modeSwitch.enabled = NO;
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
+    self.modeSwitch.enabled = YES;
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
