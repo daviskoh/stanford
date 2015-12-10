@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIButton *dealButton;
+@property (strong, nonatomic) UISwitch *modeSwitch;
 
 @end
 
@@ -99,6 +100,28 @@
                                                                     constant:0];
 
     [self.view addConstraints:@[dealButtonYConstraint, dealButtonXConstraint]];
+
+    self.modeSwitch = [[UISwitch alloc] init];
+    [self.modeSwitch setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.modeSwitch];
+
+    NSLayoutConstraint *modeSwitchYConstraint = [NSLayoutConstraint constraintWithItem:self.modeSwitch
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.9
+                                                                    constant:0];
+
+    NSLayoutConstraint *modeSwitchXConstraint = [NSLayoutConstraint constraintWithItem:self.modeSwitch
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                  multiplier:1
+                                                                    constant:0];
+
+    [self.view addConstraints:@[modeSwitchYConstraint, modeSwitchXConstraint]];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
