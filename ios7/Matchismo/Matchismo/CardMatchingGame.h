@@ -13,7 +13,7 @@
 
 @property (nonatomic, readonly) NSInteger score;
 
-@property (nonatomic) BOOL twoCardMatch;
+@property (nonatomic) int requiredMatcheeCount;
 
 @property (nonatomic) NSString *previousResult;
 @property (nonatomic) int scoreChange;

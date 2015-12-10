@@ -45,7 +45,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc] init]];
-        _game.twoCardMatch = YES;
+        _game.requiredMatcheeCount = 2;
     }
     return _game;
 }
@@ -212,7 +212,7 @@
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
-    self.game.twoCardMatch = !self.game.twoCardMatch;
+    self.game.requiredMatcheeCount = self.game.requiredMatcheeCount == 1 ? 2 : 1;
 }
 
 #pragma mark - Utility Methods

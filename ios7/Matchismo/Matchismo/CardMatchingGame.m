@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 
+@property (nonatomic, strong) Card *lastChosenCard;
+
 @end
 
 @implementation CardMatchingGame
@@ -59,39 +61,54 @@ static const int COST_TO_CHOOSE = 1;
     if (card.isMatched) {
         card.chosen = NO;
     } else {
-        // NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+        NSMutableArray *otherCards = [[NSMutableArray alloc] init];
 
-        // match against other chosen cards
+        // How do you match against last 2 chosen cards??
+        // NOTE: in 3-card mode, MUST choose at least 3 cards before seeing results
+
+        // iterate through self.cards
+        // if card.isChosen then push into otherCards
+            // repeat until requiredMatcheeCount reached
+
+        // if otherCards.count < requiredMatcheeCount then
+            // set card chosen (other card is already chosen)
+            // set score - choosing fee
+        // else
+            // card match:otherCards
+            // set score
+            // set matched
+
         for (Card *otherCard in self.cards) {
+            if (otherCards.count == self.requiredMatcheeCount) break;
+
             if (otherCard.isChosen && !otherCard.isMatched) {
-                // if is chosen & is matched
-                    // move into otherCards
-
-                int matchScore = [card match:@[otherCard]];
-
-                if (matchScore) {
-                    int points = matchScore * MATCH_BONUS;
-                    self.score += points;
-                    card.matched = YES;
-                    otherCard.matched = YES;
-                    NSLog(@"-- matched --");
-                    self.scoreChange = points;
-                } else {
-                    self.score -= MISMATCH_PENALTY;
-                    otherCard.chosen = NO;
-                    self.scoreChange = -1 * MISMATCH_PENALTY;
-                }
-
-                self.previousResult = [NSString stringWithFormat:@"%@%@", card.contents, otherCard.contents];
-                break;
+                [otherCards addObject:otherCard];
             }
-
-            
         }
 
-        self.score -= COST_TO_CHOOSE;
+        if (otherCards.count < self.requiredMatcheeCount) {
+            card.chosen = YES;
+            self.score -= COST_TO_CHOOSE;
+        } else {
+            // set score
+            int score = [card match:otherCards];
+
+            if (score) {
+                self.score += score * MATCH_BONUS;
+                card.matched = YES;
+                for (Card *otherCard in otherCards) {
+                    otherCard.matched = YES;
+                }
+            } else {
+                self.score -= MISMATCH_PENALTY;
+                self.lastChosenCard.chosen = NO;
+            }
+        }
+
         card.chosen = YES;
     }
+
+    self.lastChosenCard = card;
 }
 
 - (Card *)cardAtIndex:(NSUInteger)index {
