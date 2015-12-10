@@ -221,6 +221,15 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
+- (void)updateLastResultLabel {
+    NSString *previousResult = self.game.previousResult;
+    if (previousResult) {
+        self.lastResultLabel.text = [NSString stringWithFormat:@"%@ for %d points", previousResult, self.game.scoreChange];
+    } else {
+        self.lastResultLabel.text = @"";
+    }
+}
+
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardButton];
@@ -235,6 +244,7 @@
     }
 
     [self updateScoreLabel];
+    [self updateLastResultLabel];
 }
 
 - (NSString *)titleForCard:(Card *)card {

@@ -15,7 +15,8 @@
 
 @property (nonatomic) BOOL twoCardMatch;
 
-@property (nonatomic) BOOL previousMatch;
+@property (nonatomic) NSString *previousResult;
+@property (nonatomic) int scoreChange;
 
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count

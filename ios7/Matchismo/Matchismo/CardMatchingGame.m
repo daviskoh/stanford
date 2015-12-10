@@ -16,6 +16,8 @@
 
 @property (nonatomic) int tries;
 
+@property (nonatomic) BOOL previousMatch;
+
 @end
 
 @implementation CardMatchingGame
@@ -51,7 +53,7 @@
 #pragma mark - Methods
 
 static const int MISMATCH_PENALTY = 2;
-static const int MISMATCH_BONUS = 4;
+static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
 // more like toggleCardAtIndex
@@ -67,17 +69,21 @@ static const int COST_TO_CHOOSE = 1;
                 int matchScore = [card match:@[otherCard]];
 
                 if (matchScore) {
-                    self.score += matchScore * MISMATCH_BONUS;
+                    int points = matchScore * MATCH_BONUS;
+                    self.score += points;
                     card.matched = YES;
                     otherCard.matched = YES;
                     NSLog(@"-- matched --");
                     self.previousMatch = YES;
+                    self.scoreChange = points;
                 } else {
                     self.score -= MISMATCH_PENALTY;
                     otherCard.chosen = NO;
                     self.previousMatch = NO;
+                    self.scoreChange = -1 * MISMATCH_PENALTY;
                 }
 
+                self.previousResult = [NSString stringWithFormat:@"%@%@", card.contents, otherCard.contents];
                 break;
             }
 
@@ -87,6 +93,7 @@ static const int COST_TO_CHOOSE = 1;
                 if (self.tries > 2 && self.previousMatch) {
                     card.matched = YES;
                     self.tries = 0;
+                    self.previousResult = @"";
                 }
             }
         }
