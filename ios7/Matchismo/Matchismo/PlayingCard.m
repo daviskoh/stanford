@@ -21,14 +21,12 @@
     int score = 0;
 
     if (otherCards.count == 1) {
-        // like grabbing obj at i = 0, except
-        // will NOT crash if out of bounds
-        PlayingCard *otherCard = [otherCards firstObject];
-
-        if (self.rank == otherCard.rank) {
-            score = 4;
-        } else if (self.suit == otherCard.suit) {
-            score = 1;
+        for (PlayingCard *otherCard in otherCards) {
+            if (self.rank == otherCard.rank) {
+                score += 4;
+            } else if (self.suit == otherCard.suit) {
+                score += 1;
+            }
         }
     }
 
