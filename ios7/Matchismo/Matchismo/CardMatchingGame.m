@@ -14,6 +14,9 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 
+@property (atomic) int tries;
+@property (atomic) BOOL previousMatch;
+
 @end
 
 @implementation CardMatchingGame
@@ -68,14 +71,26 @@ static const int COST_TO_CHOOSE = 1;
                     self.score += matchScore * MISMATCH_BONUS;
                     card.matched = YES;
                     otherCard.matched = YES;
+                    NSLog(@"-- matched --");
+                    self.previousMatch = YES;
                 } else {
                     self.score -= MISMATCH_PENALTY;
                     otherCard.chosen = NO;
+                    self.previousMatch = NO;
                 }
 
                 break;
             }
+
+            NSLog(@"self.previousMatch: %d", self.previousMatch);
+            NSLog(@"self.tries: %d", self.tries);
+            if (self.tries > 2 && self.previousMatch) {
+                card.matched = YES;
+                self.tries = 0;
+            }
         }
+
+        self.tries++;
 
         self.score -= COST_TO_CHOOSE;
         card.chosen = YES;
