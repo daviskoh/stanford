@@ -20,6 +20,7 @@
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIButton *dealButton;
 @property (strong, nonatomic) UISwitch *modeSwitch;
+@property (strong, nonatomic) UILabel *lastResultLabel;
 
 @end
 
@@ -128,6 +129,20 @@
                                                                     constant:0];
 
     [self.view addConstraints:@[modeSwitchYConstraint, modeSwitchXConstraint]];
+
+    self.lastResultLabel = [[UILabel alloc] init];
+    self.lastResultLabel.text = @"Last Result";
+    self.lastResultLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.lastResultLabel];
+
+    NSLayoutConstraint *lastResultYConstraint = [NSLayoutConstraint constraintWithItem:self.lastResultLabel
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.8
+                                                                    constant:0];
+    [self.view addConstraint:lastResultYConstraint];
 }
 
 #pragma mark - UICollectionViewDataSource protocol

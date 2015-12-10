@@ -15,6 +15,8 @@
 
 @property (nonatomic) BOOL twoCardMatch;
 
+@property (nonatomic) BOOL previousMatch;
+
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck;

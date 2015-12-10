@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSMutableArray *cards;
 
 @property (nonatomic) int tries;
-@property (nonatomic) BOOL previousMatch;
 
 @end
 
