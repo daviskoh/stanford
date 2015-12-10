@@ -147,9 +147,20 @@
 
     self.historySlider = [[UISlider alloc] init];
     self.historySlider.minimumValue = 0;
-    self.historySlider.maximumValue = 1;
+    self.historySlider.maximumValue = 2;
     self.historySlider.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.historySlider];
+    [self.historySlider addTarget:self
+                           action:@selector(onSliderValueChange:)
+                 forControlEvents:UIControlEventValueChanged];
+
+    NSLayoutConstraint *historySliderXConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                  multiplier:1
+                                                                    constant:0];
 
     NSLayoutConstraint *historySliderYConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
                                                                    attribute:NSLayoutAttributeCenterY
@@ -164,10 +175,10 @@
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self.view
                                                                    attribute:NSLayoutAttributeWidth
-                                                                  multiplier:1
+                                                                  multiplier:0.8
                                                                     constant:0];
 
-    [self.view addConstraints:@[historySliderYConstraint, historySliderWidthConstraint]];
+    [self.view addConstraints:@[historySliderXConstraint, historySliderYConstraint, historySliderWidthConstraint]];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
@@ -238,6 +249,10 @@
 
 - (void)onSwitchToggle:(UISwitch *)sender {
     self.game.requiredMatcheeCount = self.game.requiredMatcheeCount == 1 ? 2 : 1;
+}
+
+- (void)onSliderValueChange:(UISlider *)sender {
+    NSLog(@"value: %f", sender.value);
 }
 
 #pragma mark - Utility Methods
