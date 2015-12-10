@@ -50,7 +50,7 @@
 
 #pragma mark - Methods
 
-static const int MISMATCH_PENALTY = 2;
+static const int MISMATCH_PENALTY = -2;
 static const int MATCH_BONUS = 4;
 static const int COST_TO_CHOOSE = 1;
 
@@ -77,12 +77,14 @@ static const int COST_TO_CHOOSE = 1;
             // card match:otherCards
             // set score
             // set matched
+        self.previousResult = card.contents;
 
         for (Card *otherCard in self.cards) {
             if (otherCards.count == self.requiredMatcheeCount) break;
 
             if (otherCard.isChosen && !otherCard.isMatched) {
                 [otherCards addObject:otherCard];
+                self.previousResult = [self.previousResult stringByAppendingString:otherCard.contents];
             }
         }
 
@@ -94,15 +96,17 @@ static const int COST_TO_CHOOSE = 1;
             int score = [card match:otherCards];
 
             if (score) {
-                self.score += score * MATCH_BONUS;
+                self.scoreChange = score * MATCH_BONUS;
                 card.matched = YES;
                 for (Card *otherCard in otherCards) {
                     otherCard.matched = YES;
                 }
             } else {
-                self.score -= MISMATCH_PENALTY;
+                self.scoreChange = MISMATCH_PENALTY;
                 self.lastChosenCard.chosen = NO;
             }
+
+            self.score += self.scoreChange;
         }
 
         card.chosen = YES;
