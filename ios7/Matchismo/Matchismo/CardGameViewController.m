@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UIButton *dealButton;
 @property (strong, nonatomic) UISwitch *modeSwitch;
 @property (strong, nonatomic) UILabel *lastResultLabel;
+@property (strong, nonatomic) UISlider *historySlider;
 
 @end
 
@@ -143,6 +144,30 @@
                                                                   multiplier:1.8
                                                                     constant:0];
     [self.view addConstraint:lastResultYConstraint];
+
+    self.historySlider = [[UISlider alloc] init];
+    self.historySlider.minimumValue = 0;
+    self.historySlider.maximumValue = 1;
+    self.historySlider.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.historySlider];
+
+    NSLayoutConstraint *historySliderYConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1.7
+                                                                    constant:0];
+
+    NSLayoutConstraint *historySliderWidthConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeWidth
+                                                                  multiplier:1
+                                                                    constant:0];
+
+    [self.view addConstraints:@[historySliderYConstraint, historySliderWidthConstraint]];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
