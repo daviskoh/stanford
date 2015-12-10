@@ -20,7 +20,7 @@
 - (int)match:(NSArray *)otherCards {
     int score = 0;
 
-    if (otherCards.count == 1) {
+    if (otherCards.count) {
         for (PlayingCard *otherCard in otherCards) {
             if (self.rank == otherCard.rank) {
                 score += 4;
