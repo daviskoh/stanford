@@ -14,10 +14,6 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 
-@property (nonatomic) int tries;
-
-@property (nonatomic) BOOL previousMatch;
-
 @end
 
 @implementation CardMatchingGame
@@ -63,9 +59,14 @@ static const int COST_TO_CHOOSE = 1;
     if (card.isMatched) {
         card.chosen = NO;
     } else {
+        // NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+
         // match against other chosen cards
         for (Card *otherCard in self.cards) {
             if (otherCard.isChosen && !otherCard.isMatched) {
+                // if is chosen & is matched
+                    // move into otherCards
+
                 int matchScore = [card match:@[otherCard]];
 
                 if (matchScore) {
@@ -74,12 +75,10 @@ static const int COST_TO_CHOOSE = 1;
                     card.matched = YES;
                     otherCard.matched = YES;
                     NSLog(@"-- matched --");
-                    self.previousMatch = YES;
                     self.scoreChange = points;
                 } else {
                     self.score -= MISMATCH_PENALTY;
                     otherCard.chosen = NO;
-                    self.previousMatch = NO;
                     self.scoreChange = -1 * MISMATCH_PENALTY;
                 }
 
@@ -87,18 +86,8 @@ static const int COST_TO_CHOOSE = 1;
                 break;
             }
 
-            NSLog(@"self.previousMatch: %d", self.previousMatch);
-            NSLog(@"self.tries: %d", self.tries);
-            if (!self.twoCardMatch) {
-                if (self.tries > 2 && self.previousMatch) {
-                    card.matched = YES;
-                    self.tries = 0;
-                    self.previousResult = @"";
-                }
-            }
+            
         }
-
-        self.tries++;
 
         self.score -= COST_TO_CHOOSE;
         card.chosen = YES;
