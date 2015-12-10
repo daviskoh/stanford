@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIButton *dealButton;
-@property (strong, nonatomic) UISwitch *modeSwitch;
+@property (strong, nonatomic) UISwitch *gameModeSwitch;
 @property (strong, nonatomic) UILabel *lastResultLabel;
 @property (strong, nonatomic) UISlider *historySlider;
 
@@ -113,14 +113,14 @@
 
     [self.view addConstraints:@[dealButtonYConstraint, dealButtonXConstraint]];
 
-    self.modeSwitch = [[UISwitch alloc] init];
-    [self.modeSwitch setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.view addSubview:self.modeSwitch];
-    [self.modeSwitch addTarget:self
+    self.gameModeSwitch = [[UISwitch alloc] init];
+    [self.gameModeSwitch setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.view addSubview:self.gameModeSwitch];
+    [self.gameModeSwitch addTarget:self
                         action:@selector(onSwitchToggle:)
               forControlEvents:UIControlEventTouchUpInside];
 
-    NSLayoutConstraint *modeSwitchYConstraint = [NSLayoutConstraint constraintWithItem:self.modeSwitch
+    NSLayoutConstraint *modeSwitchYConstraint = [NSLayoutConstraint constraintWithItem:self.gameModeSwitch
                                                                    attribute:NSLayoutAttributeCenterY
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self.view
@@ -128,7 +128,7 @@
                                                                   multiplier:1.9
                                                                     constant:0];
 
-    NSLayoutConstraint *modeSwitchXConstraint = [NSLayoutConstraint constraintWithItem:self.modeSwitch
+    NSLayoutConstraint *modeSwitchXConstraint = [NSLayoutConstraint constraintWithItem:self.gameModeSwitch
                                                                    attribute:NSLayoutAttributeCenterX
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self.view
@@ -244,14 +244,14 @@
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
 
-    self.modeSwitch.enabled = NO;
+    self.gameModeSwitch.enabled = NO;
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
-    self.modeSwitch.enabled = YES;
+    self.gameModeSwitch.enabled = YES;
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
