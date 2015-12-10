@@ -45,7 +45,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc] init]];
-        _game.requiredMatcheeCount = 2;
+        _game.requiredMatcheeCount = 1;
     }
     return _game;
 }
