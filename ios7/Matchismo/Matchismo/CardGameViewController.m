@@ -252,6 +252,8 @@
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
     self.gameModeSwitch.enabled = YES;
+    self.history = [[NSMutableArray alloc] init];
+    self.lastResultLabel.text = @"";
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
