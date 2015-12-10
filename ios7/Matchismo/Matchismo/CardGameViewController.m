@@ -53,7 +53,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cardCell"];
+    // OPTIMIZE: use custom collection view so all this view logic is abstracted out of ctrl
+    [self.collectionView registerClass:[UICollectionViewCell class]
+            forCellWithReuseIdentifier:@"cardCell"];
 
     [self.collectionView setBackgroundColor:[UIColor greenColor]];
 
