@@ -13,6 +13,8 @@
 
 @property (nonatomic, readonly) NSInteger score;
 
+@property (nonatomic) int minTries;
+
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck;

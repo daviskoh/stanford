@@ -44,6 +44,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+        _game.minTries = 2;
     }
     return _game;
 }

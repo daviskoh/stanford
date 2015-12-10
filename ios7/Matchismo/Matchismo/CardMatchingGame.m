@@ -84,7 +84,7 @@ static const int COST_TO_CHOOSE = 1;
 
             NSLog(@"self.previousMatch: %d", self.previousMatch);
             NSLog(@"self.tries: %d", self.tries);
-            if (self.tries > 2 && self.previousMatch) {
+            if (self.tries > self.minTries && self.previousMatch) {
                 card.matched = YES;
                 self.tries = 0;
             }
