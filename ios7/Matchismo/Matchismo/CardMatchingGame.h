@@ -13,7 +13,7 @@
 
 @property (nonatomic, readonly) NSInteger score;
 
-@property (nonatomic) int minTries;
+@property (nonatomic) BOOL twoCardMatch;
 
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count

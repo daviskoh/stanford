@@ -44,7 +44,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                  usingDeck:[[PlayingCardDeck alloc] init]];
-        _game.minTries = 2;
+        _game.twoCardMatch = YES;
     }
     return _game;
 }
@@ -107,6 +107,9 @@
     self.modeSwitch = [[UISwitch alloc] init];
     [self.modeSwitch setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addSubview:self.modeSwitch];
+    [self.modeSwitch addTarget:self
+                        action:@selector(onSwitchToggle:)
+              forControlEvents:UIControlEventTouchUpInside];
 
     NSLayoutConstraint *modeSwitchYConstraint = [NSLayoutConstraint constraintWithItem:self.modeSwitch
                                                                    attribute:NSLayoutAttributeCenterY
@@ -188,6 +191,10 @@
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
+}
+
+- (void)onSwitchToggle:(UISwitch *)sender {
+    self.game.twoCardMatch = !self.game.twoCardMatch;
 }
 
 #pragma mark - Utility Methods
