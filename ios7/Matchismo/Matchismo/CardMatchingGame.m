@@ -57,7 +57,6 @@ static const int COST_TO_CHOOSE = 1;
 // more like toggleCardAtIndex
 - (void)chooseCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
-    self.previousResult = @"";
 
     if (card.isMatched) {
         card.chosen = NO;

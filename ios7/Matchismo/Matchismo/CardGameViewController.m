@@ -23,6 +23,8 @@
 @property (strong, nonatomic) UILabel *lastResultLabel;
 @property (strong, nonatomic) UISlider *historySlider;
 
+@property (strong, nonatomic) NSMutableArray *history;
+
 @end
 
 @implementation CardGameViewController
@@ -49,6 +51,11 @@
         _game.requiredMatcheeCount = 1;
     }
     return _game;
+}
+
+- (NSMutableArray *)history {
+    if (!_history) _history = [[NSMutableArray alloc] init];
+    return _history;
 }
 
 #pragma mark - View
@@ -252,7 +259,13 @@
 }
 
 - (void)onSliderValueChange:(UISlider *)sender {
-    NSLog(@"value: %f", sender.value);
+    int i = (int)(sender.value + 0.5);
+
+    // if index NOT out of bounds then update label
+    if (i < self.history.count) {
+        self.lastResultLabel.text = self.history[i];
+    }
+
 }
 
 #pragma mark - Utility Methods
@@ -261,13 +274,9 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
-- (void)updateLastResultLabel {
-    NSString *previousResult = self.game.previousResult;
-    if (previousResult) {
-        self.lastResultLabel.text = [NSString stringWithFormat:@"%@ for %d points", previousResult, self.game.scoreChange];
-    } else {
-        self.lastResultLabel.text = @"";
-    }
+- (void)updateLastResultLabelWithPreviousResult:(NSString *)previousResult
+                                    scoreChange:(int)scoreChange {
+    self.lastResultLabel.text = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
 }
 
 - (void)updateUI {
@@ -284,7 +293,10 @@
     }
 
     [self updateScoreLabel];
-    [self updateLastResultLabel];
+    [self updateLastResultLabelWithPreviousResult:self.game.previousResult
+                                      scoreChange:self.game.scoreChange];
+
+    [self.history addObject:self.lastResultLabel.text];
 }
 
 - (NSString *)titleForCard:(Card *)card {
