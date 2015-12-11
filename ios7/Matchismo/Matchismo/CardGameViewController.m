@@ -25,6 +25,8 @@
 
 @property (strong, nonatomic) NSMutableArray *history;
 
+@property (nonatomic) int previousChosenCardIndex;
+
 @end
 
 @implementation CardGameViewController
@@ -237,14 +239,16 @@
 
 #pragma mark - Event Handlers
 
-// FIXME: prevent card from matching with itself
-// try tapping same card twice
 - (void)onCardChosen:(UIButton *)sender {
     int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
+    if (chosenButtonIndex == self.previousChosenCardIndex) return;
+
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
 
     self.gameModeSwitch.enabled = NO;
+
+    self.previousChosenCardIndex = chosenButtonIndex;
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
