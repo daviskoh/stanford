@@ -10,18 +10,16 @@
 #import "PlayingCardDeck.h"
 #import "CardView.h"
 #import "CardMatchingGame.h"
+#import "PlayingCardTableView.h"
 
 @interface CardGameViewController ()
+
+// FIXME: find better way to do below than overriding collectionView prop
+@property (strong, nonatomic) PlayingCardTableView *collectionView;
 
 @property (strong, nonatomic) CardMatchingGame *game;
 
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
-
-@property (strong, nonatomic) UILabel *scoreLabel;
-@property (strong, nonatomic) UIButton *dealButton;
-@property (strong, nonatomic) UISwitch *gameModeSwitch;
-@property (strong, nonatomic) UILabel *lastResultLabel;
-@property (strong, nonatomic) UISlider *historySlider;
 
 @property (strong, nonatomic) NSMutableArray *history;
 
@@ -31,7 +29,7 @@
 
 @implementation CardGameViewController
 
-@dynamic view;
+@dynamic collectionView;
 
 - (instancetype)init {
     self = [super initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
@@ -65,129 +63,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // OPTIMIZE: use custom collection view so all this view logic is abstracted out of ctrl
-    [self.collectionView registerClass:[UICollectionViewCell class]
-            forCellWithReuseIdentifier:@"cardCell"];
-
-    [self.collectionView setBackgroundColor:[UIColor greenColor]];
+    self.collectionView = [[PlayingCardTableView alloc] initWithFrame:self.view.bounds
+                                                 collectionViewLayout:self.collectionViewLayout];
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
 
-    // add score label
-    self.scoreLabel = [[UILabel alloc] init];
-    self.scoreLabel.text = @"Score: 0";
-    [self.scoreLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.collectionView addSubview:self.scoreLabel];
-
-    NSLayoutConstraint *yConstraint = [NSLayoutConstraint constraintWithItem:self.scoreLabel
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.9
-                                                                    constant:0];
-    [self.collectionView addConstraint:yConstraint];
-
-    self.dealButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 200, 50)];
-    [self.dealButton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.dealButton setTitle:@"Deal" forState:UIControlStateNormal];
-    [self.collectionView addSubview:self.dealButton];
-    [self.dealButton addTarget:self
+    [self.collectionView.dealButton addTarget:self
                         action:@selector(onDealButtonTouch:)
               forControlEvents:UIControlEventTouchUpInside];
-
-    NSLayoutConstraint *dealButtonYConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.9
-                                                                    constant:0];
-
-    NSLayoutConstraint *dealButtonXConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                  multiplier:1.8
-                                                                    constant:0];
-
-    [self.collectionView addConstraints:@[dealButtonYConstraint, dealButtonXConstraint]];
-
-    self.gameModeSwitch = [[UISwitch alloc] init];
-    [self.gameModeSwitch setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.collectionView addSubview:self.gameModeSwitch];
-    [self.gameModeSwitch addTarget:self
+    
+    [self.collectionView.gameModeSwitch addTarget:self
                         action:@selector(onSwitchToggle:)
               forControlEvents:UIControlEventTouchUpInside];
 
-    NSLayoutConstraint *modeSwitchYConstraint = [NSLayoutConstraint constraintWithItem:self.gameModeSwitch
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.9
-                                                                    constant:0];
-
-    NSLayoutConstraint *modeSwitchXConstraint = [NSLayoutConstraint constraintWithItem:self.gameModeSwitch
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                  multiplier:1
-                                                                    constant:0];
-
-    [self.collectionView addConstraints:@[modeSwitchYConstraint, modeSwitchXConstraint]];
-
-    self.lastResultLabel = [[UILabel alloc] init];
-    self.lastResultLabel.text = @"Last Result";
-    self.lastResultLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.collectionView addSubview:self.lastResultLabel];
-
-    NSLayoutConstraint *lastResultYConstraint = [NSLayoutConstraint constraintWithItem:self.lastResultLabel
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.8
-                                                                    constant:0];
-    [self.collectionView addConstraint:lastResultYConstraint];
-
-    self.historySlider = [[UISlider alloc] init];
-    self.historySlider.minimumValue = 0;
-    self.historySlider.maximumValue = 2;
-    self.historySlider.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.collectionView addSubview:self.historySlider];
-    [self.historySlider addTarget:self
+    [self.collectionView.historySlider addTarget:self
                            action:@selector(onSliderValueChange:)
                  forControlEvents:UIControlEventValueChanged];
-
-    NSLayoutConstraint *historySliderXConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                  multiplier:1
-                                                                    constant:0];
-
-    NSLayoutConstraint *historySliderYConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.7
-                                                                    constant:0];
-
-    NSLayoutConstraint *historySliderWidthConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self.collectionView
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                  multiplier:0.8
-                                                                    constant:0];
-
-    [self.collectionView addConstraints:@[historySliderXConstraint, historySliderYConstraint, historySliderWidthConstraint]];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
@@ -246,7 +138,7 @@
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
 
-    self.gameModeSwitch.enabled = NO;
+    self.collectionView.gameModeSwitch.enabled = NO;
 
     self.previousChosenCardIndex = chosenButtonIndex;
 }
@@ -255,9 +147,9 @@
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
     [self updateUI];
-    self.gameModeSwitch.enabled = YES;
+    self.collectionView.gameModeSwitch.enabled = YES;
     self.history = [[NSMutableArray alloc] init];
-    self.lastResultLabel.text = @"";
+    self.collectionView.lastResultLabel.text = @"";
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
@@ -269,7 +161,7 @@
 
     // if index NOT out of bounds then update label
     if (i < self.history.count) {
-        self.lastResultLabel.text = self.history[i];
+        self.collectionView.lastResultLabel.text = self.history[i];
     }
 
 }
@@ -277,12 +169,12 @@
 #pragma mark - Utility Methods
 
 - (void)updateScoreLabel {
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
+    self.collectionView.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
 - (void)updateLastResultLabelWithPreviousResult:(NSString *)previousResult
                                     scoreChange:(int)scoreChange {
-    self.lastResultLabel.text = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
+    self.collectionView.lastResultLabel.text = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
 }
 
 - (void)updateUI {
@@ -302,7 +194,7 @@
     [self updateLastResultLabelWithPreviousResult:self.game.previousResult
                                       scoreChange:self.game.scoreChange];
 
-    [self.history addObject:self.lastResultLabel.text];
+    [self.history addObject:self.collectionView.lastResultLabel.text];
 }
 
 - (NSString *)titleForCard:(Card *)card {
