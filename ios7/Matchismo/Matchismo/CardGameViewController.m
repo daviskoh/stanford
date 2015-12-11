@@ -150,6 +150,8 @@
     self.collectionView.gameModeSwitch.enabled = YES;
     self.history = [[NSMutableArray alloc] init];
     self.collectionView.lastResultLabel.text = @"";
+    // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
+    self.previousChosenCardIndex = -1;
 }
 
 - (void)onSwitchToggle:(UISwitch *)sender {
