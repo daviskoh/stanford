@@ -102,7 +102,9 @@ static const int COST_TO_CHOOSE = 1;
                     otherCard.matched = YES;
                 }
             } else {
-                self.scoreChange = MISMATCH_PENALTY;
+                if (self.lastChosenCard) {
+                    self.scoreChange = MISMATCH_PENALTY;
+                }
                 self.lastChosenCard.chosen = NO;
             }
 
