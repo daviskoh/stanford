@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "CardGameViewController.h"
+#import "PlayingCardGameViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
 
     CGRect bounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:bounds];
-    self.window.rootViewController = [[CardGameViewController alloc] init];
+    self.window.rootViewController = [[PlayingCardGameViewController alloc] init];
 
     [self.window makeKeyAndVisible];
     

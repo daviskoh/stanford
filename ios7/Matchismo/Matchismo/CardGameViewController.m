@@ -7,23 +7,22 @@
 //
 
 #import "CardGameViewController.h"
-#import "PlayingCardDeck.h"
+#import "Deck.h"
 #import "CardView.h"
 #import "CardMatchingGame.h"
-#import "PlayingCardTableView.h"
 
 @interface CardGameViewController ()
 
 // FIXME: find better way to do below than overriding collectionView prop
 @property (strong, nonatomic) PlayingCardTableView *collectionView;
 
-@property (strong, nonatomic) CardMatchingGame *game;
-
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
 @property (strong, nonatomic) NSMutableArray *history;
 
 @property (nonatomic) int previousChosenCardIndex;
+
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
@@ -44,10 +43,14 @@
     return _cardButtons;
 }
 
+- (Deck *)createDeck { // abstract
+    return nil;
+}
+
 - (CardMatchingGame *)game {
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                 usingDeck:[[PlayingCardDeck alloc] init]];
+                                                 usingDeck:[self createDeck]];
         _game.requiredMatcheeCount = 1;
     }
     return _game;
@@ -145,7 +148,7 @@
 
 - (void)onDealButtonTouch:(UIButton *)sender {
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+                                                  usingDeck:[self createDeck]];
     [self updateUI];
     self.collectionView.gameModeSwitch.enabled = YES;
     self.history = [[NSMutableArray alloc] init];
