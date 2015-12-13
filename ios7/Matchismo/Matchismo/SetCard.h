@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIColor *color;
 
+// TODO: make more semantic
 @property (strong, nonatomic) NSNumber *strokeWidth;
 
 @end
