@@ -69,7 +69,7 @@
 // needed because overriding BOTH getter & setter
 @synthesize suit = _suit;
 
-- (NSString *) suit {
+- (NSString *)suit {
     return _suit ? _suit : @"?";
 }
 
