@@ -7,9 +7,12 @@
 //
 
 #import "PlayingCard.h"
+#import "UIKit/UIKit.h"
 
 @interface SetCard : PlayingCard
 
-// NSAttributedString for color/shading
+@property (strong, nonatomic) UIColor *color;
+
+@property (strong, nonatomic) NSNumber *strokeWidth;
 
 @end
