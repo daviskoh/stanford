@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CardTableView.h"
 
-@interface PlayingCardTableView : UICollectionView
+@interface PlayingCardTableView : CardTableView
 
-@property (strong, nonatomic) UILabel *scoreLabel;
-@property (strong, nonatomic) UIButton *dealButton;
 @property (strong, nonatomic) UISwitch *gameModeSwitch;
-@property (strong, nonatomic) UILabel *lastResultLabel;
-@property (strong, nonatomic) UISlider *historySlider;
 
 @end

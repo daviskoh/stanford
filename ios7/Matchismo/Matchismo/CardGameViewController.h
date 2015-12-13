@@ -9,11 +9,16 @@
 
 #import <UIKit/UIKit.h>
 #import "CardMatchingGame.h"
-#import "PlayingCardTableView.h"
+#import "CardTableView.h"
 
 @interface CardGameViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (strong, nonatomic) CardMatchingGame *game;
+
 - (Deck *)createDeck; // abstract
+
+- (void)onCardChosen:(UIButton *)sender;
+- (void)onDealButtonTouch:(UIButton *)sender;
 
 @end
 

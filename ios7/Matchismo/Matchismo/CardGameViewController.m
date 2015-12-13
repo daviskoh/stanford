@@ -14,15 +14,13 @@
 @interface CardGameViewController ()
 
 // FIXME: find better way to do below than overriding collectionView prop
-@property (strong, nonatomic) PlayingCardTableView *collectionView;
+@property (strong, nonatomic) CardTableView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
 @property (strong, nonatomic) NSMutableArray *history;
 
 @property (nonatomic) int previousChosenCardIndex;
-
-@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
@@ -63,11 +61,15 @@
 
 #pragma mark - View
 
+- (CardTableView *)createCardTableView {
+    return [[CardTableView alloc] initWithFrame:self.view.bounds
+                                  collectionViewLayout:self.collectionViewLayout];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.collectionView = [[PlayingCardTableView alloc] initWithFrame:self.view.bounds
-                                                 collectionViewLayout:self.collectionViewLayout];
+    self.collectionView = [self createCardTableView];
 
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -76,10 +78,6 @@
                         action:@selector(onDealButtonTouch:)
               forControlEvents:UIControlEventTouchUpInside];
     
-    [self.collectionView.gameModeSwitch addTarget:self
-                        action:@selector(onSwitchToggle:)
-              forControlEvents:UIControlEventTouchUpInside];
-
     [self.collectionView.historySlider addTarget:self
                            action:@selector(onSliderValueChange:)
                  forControlEvents:UIControlEventValueChanged];
@@ -141,8 +139,6 @@
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
 
-    self.collectionView.gameModeSwitch.enabled = NO;
-
     self.previousChosenCardIndex = chosenButtonIndex;
 }
 
@@ -150,15 +146,10 @@
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[self createDeck]];
     [self updateUI];
-    self.collectionView.gameModeSwitch.enabled = YES;
     self.history = [[NSMutableArray alloc] init];
     self.collectionView.lastResultLabel.text = @"";
     // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
     self.previousChosenCardIndex = -1;
-}
-
-- (void)onSwitchToggle:(UISwitch *)sender {
-    self.game.requiredMatcheeCount = self.game.requiredMatcheeCount == 1 ? 2 : 1;
 }
 
 - (void)onSliderValueChange:(UISlider *)sender {
