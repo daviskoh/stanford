@@ -16,7 +16,6 @@
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
 		DD9ACCC31C0E83420013B67D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACCC21C0E83420013B67D /* Assets.xcassets */; };
-		DD9ACCC61C0E83420013B67D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */; };
 		DD9ACCD11C0E83420013B67D /* MatchismoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCD01C0E83420013B67D /* MatchismoTests.m */; };
 		DD9ACCDC1C0E83420013B67D /* MatchismoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCDB1C0E83420013B67D /* MatchismoUITests.m */; };
 		DDA2DB711C0F765000A593AB /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA2DB701C0F765000A593AB /* CardView.m */; };
@@ -60,7 +59,6 @@
 		DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardGameViewController.h; sourceTree = "<group>"; };
 		DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardGameViewController.m; sourceTree = "<group>"; };
 		DD9ACCC21C0E83420013B67D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DD9ACCC51C0E83420013B67D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD9ACCC71C0E83420013B67D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD9ACCCC1C0E83420013B67D /* MatchismoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchismoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCD01C0E83420013B67D /* MatchismoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchismoTests.m; sourceTree = "<group>"; };
@@ -103,6 +101,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD1880A71C1CF7E800BE2EF9 /* PlayingCard */ = {
+			isa = PBXGroup;
+			children = (
+				DDE1EB3E1C109A3E002DC075 /* PlayingCard.h */,
+				DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */,
+				DD1880A11C1CD8E600BE2EF9 /* PlayingCardGameViewController.h */,
+				DD1880A21C1CD8E600BE2EF9 /* PlayingCardGameViewController.m */,
+				DD37A1A91C1B34640020A7CB /* PlayingCardTableView.h */,
+				DD37A1AA1C1B34640020A7CB /* PlayingCardTableView.m */,
+				DD17F5F61C10B666009B5706 /* PlayingCardDeck.h */,
+				DD17F5F71C10B666009B5706 /* PlayingCardDeck.m */,
+			);
+			name = PlayingCard;
+			sourceTree = "<group>";
+		};
+		DD1880A81C1CF8C800BE2EF9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */,
+				DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */,
+				DDC92DD61C0FEC8700B51A13 /* Card.h */,
+				DDC92DD71C0FEC8700B51A13 /* Card.m */,
+				DDC92DD91C0FF5DD00B51A13 /* Deck.h */,
+				DDC92DDA1C0FF5DD00B51A13 /* Deck.m */,
+				DDA2DB6F1C0F765000A593AB /* CardView.h */,
+				DDA2DB701C0F765000A593AB /* CardView.m */,
+				DD1880A41C1CF21F00BE2EF9 /* CardTableView.h */,
+				DD1880A51C1CF21F00BE2EF9 /* CardTableView.m */,
+				DD1CBAEC1C174BE000DFA462 /* CardMatchingGame.h */,
+				DD1CBAED1C174BE000DFA462 /* CardMatchingGame.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 		DD9ACCAA1C0E83420013B67D = {
 			isa = PBXGroup;
 			children = (
@@ -126,30 +158,11 @@
 		DD9ACCB51C0E83420013B67D /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				DD1880A81C1CF8C800BE2EF9 /* Common */,
+				DD1880A71C1CF7E800BE2EF9 /* PlayingCard */,
 				DD9ACCB91C0E83420013B67D /* AppDelegate.h */,
 				DD9ACCBA1C0E83420013B67D /* AppDelegate.m */,
-				DD9ACCBC1C0E83420013B67D /* CardGameViewController.h */,
-				DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */,
 				DD9ACCC21C0E83420013B67D /* Assets.xcassets */,
-				DDC92DD61C0FEC8700B51A13 /* Card.h */,
-				DDC92DD71C0FEC8700B51A13 /* Card.m */,
-				DDC92DD91C0FF5DD00B51A13 /* Deck.h */,
-				DDC92DDA1C0FF5DD00B51A13 /* Deck.m */,
-				DDA2DB6F1C0F765000A593AB /* CardView.h */,
-				DDA2DB701C0F765000A593AB /* CardView.m */,
-				DD1880A11C1CD8E600BE2EF9 /* PlayingCardGameViewController.h */,
-				DD1880A21C1CD8E600BE2EF9 /* PlayingCardGameViewController.m */,
-				DD1880A41C1CF21F00BE2EF9 /* CardTableView.h */,
-				DD1880A51C1CF21F00BE2EF9 /* CardTableView.m */,
-				DDE1EB3E1C109A3E002DC075 /* PlayingCard.h */,
-				DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */,
-				DD17F5F61C10B666009B5706 /* PlayingCardDeck.h */,
-				DD1CBAEC1C174BE000DFA462 /* CardMatchingGame.h */,
-				DD1CBAED1C174BE000DFA462 /* CardMatchingGame.m */,
-				DD37A1A91C1B34640020A7CB /* PlayingCardTableView.h */,
-				DD37A1AA1C1B34640020A7CB /* PlayingCardTableView.m */,
-				DD17F5F71C10B666009B5706 /* PlayingCardDeck.m */,
-				DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */,
 				DD9ACCC71C0E83420013B67D /* Info.plist */,
 				DD9ACCB61C0E83420013B67D /* Supporting Files */,
 			);
@@ -285,7 +298,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD9ACCC61C0E83420013B67D /* LaunchScreen.storyboard in Resources */,
 				DD9ACCC31C0E83420013B67D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,17 +368,6 @@
 			targetProxy = DD9ACCD81C0E83420013B67D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DD9ACCC41C0E83420013B67D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD9ACCC51C0E83420013B67D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DD9ACCDE1C0E83420013B67D /* Debug */ = {
