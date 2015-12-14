@@ -181,7 +181,7 @@
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardButton];
         Card *card = [self.game cardAtIndex:cardButtonIndex];
 
-        [cardButton setTitle:[self titleForCard:card]
+        [cardButton setAttributedTitle:[self titleForCard:card]
                     forState:UIControlStateNormal];
         [cardButton setBackgroundImage:[self backgroundImageForCard:card]
                               forState:UIControlStateNormal];
@@ -196,8 +196,9 @@
     [self.history addObject:self.collectionView.lastResultLabel.text];
 }
 
-- (NSString *)titleForCard:(Card *)card {
-    return card.isChosen ? card.contents : @"";
+- (NSAttributedString *)titleForCard:(Card *)card {
+    NSString *string = card.isChosen ? card.contents : @"";
+    return [[NSAttributedString alloc] initWithString:string];
 }
 
 - (UIImage *)backgroundImageForCard:(Card *)card {
