@@ -145,6 +145,8 @@
 - (void)onDealButtonTouch:(UIButton *)sender {
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
                                                   usingDeck:[self createDeck]];
+    self.game.requiredMatcheeCount = 1;
+
     [self updateUI];
     self.history = [[NSMutableArray alloc] init];
     self.collectionView.lastResultLabel.text = @"";
@@ -158,6 +160,7 @@
     // if index NOT out of bounds then update label
     if (i < self.history.count) {
         self.collectionView.lastResultLabel.text = self.history[i];
+        self.collectionView.historySlider.maximumValue = self.history.count - 1;
     }
 
 }

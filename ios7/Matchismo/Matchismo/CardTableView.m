@@ -90,7 +90,6 @@
 - (void)setupHistorySlider {
     self.historySlider = [[UISlider alloc] init];
     self.historySlider.minimumValue = 0;
-    self.historySlider.maximumValue = 2;
     self.historySlider.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.historySlider];
 
