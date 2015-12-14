@@ -20,7 +20,8 @@
 
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck;
+                        usingDeck:(Deck *)deck
+         withRequiredMatcheeCount:(int)requiredMatcheeCount;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;

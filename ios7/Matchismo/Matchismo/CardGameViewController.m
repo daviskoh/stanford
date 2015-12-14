@@ -48,8 +48,8 @@
 - (CardMatchingGame *)game {
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                 usingDeck:[self createDeck]];
-        _game.requiredMatcheeCount = 1;
+                                                 usingDeck:[self createDeck]
+                                  withRequiredMatcheeCount:1];
     }
     return _game;
 }
@@ -144,8 +144,8 @@
 
 - (void)onDealButtonTouch:(UIButton *)sender {
     self.game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
-                                                  usingDeck:[self createDeck]];
-    self.game.requiredMatcheeCount = 1;
+                                                  usingDeck:[self createDeck]
+                                   withRequiredMatcheeCount:1];
 
     [self updateUI];
     self.history = [[NSMutableArray alloc] init];

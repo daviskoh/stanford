@@ -21,10 +21,13 @@
 @implementation CardMatchingGame
 
 - (instancetype)initWithCardCount:(NSUInteger)count
-                        usingDeck:(Deck *)deck {
+                        usingDeck:(Deck *)deck
+          withRequiredMatcheeCount:(int)requiredMatcheeCount {
     self = [super init]; // super class designated initializer
 
     if (self) {
+        self.requiredMatcheeCount = requiredMatcheeCount;
+
         for (int i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
             if (card) {
