@@ -14,9 +14,24 @@
 
 @implementation SetCardGameViewController
 
+- (instancetype)init {
+    self = [super init];
+
+    if (self) {
+        self.game.requiredMatcheeCount = 2;
+    }
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)onDealButtonTouch:(UIButton *)sender {
+    [super onDealButtonTouch:sender];
+    self.game.requiredMatcheeCount = 2;
 }
 
 - (void)didReceiveMemoryWarning {
