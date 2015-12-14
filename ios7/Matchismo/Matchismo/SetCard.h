@@ -16,4 +16,13 @@
 // TODO: make more semantic
 @property (strong, nonatomic) NSNumber *strokeWidth;
 
+// designated initializer
+- (instancetype)initWithSuit:(NSString *)suit
+                        rank:(int)rank
+                       color:(UIColor *)color
+                 strokeWidth:(NSNumber *)strokeWidth;
+
++ (NSArray *)validColors;
++ (NSArray *)validStrokeWidths;
+
 @end

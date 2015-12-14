@@ -31,6 +31,22 @@
     return @[@-5, @0, @5];
 }
 
+- (instancetype)initWithSuit:(NSString *)suit
+                        rank:(int)rank
+                       color:(UIColor *)color
+                 strokeWidth:(NSNumber *)strokeWidth {
+    self = [super init];
+
+    if (self) {
+        self.suit = suit;
+        self.rank = rank;
+        self.color = color;
+        self.strokeWidth = strokeWidth;
+    }
+
+    return self;
+}
+
 - (void)setColor:(UIColor *)color {
     if ([[SetCard validColors] containsObject:color]) {
         _color = color;
