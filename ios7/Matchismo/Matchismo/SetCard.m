@@ -59,6 +59,14 @@
     }
 }
 
+@synthesize suit = _suit;
+
+- (void)setSuit:(NSString *)suit {
+    if ([[SetCard validSuits] containsObject:suit]) {
+        _suit = suit;
+    }
+}
+
 - (int)match:(NSArray *)otherCards {
     int score = 0;
 

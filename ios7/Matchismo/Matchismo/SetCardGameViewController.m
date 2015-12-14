@@ -7,6 +7,7 @@
 //
 
 #import "SetCardGameViewController.h"
+#import "SetCardDeck.h"
 
 @interface SetCardGameViewController ()
 
@@ -27,6 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (Deck *)createDeck {
+    return [[SetCardDeck alloc] init];
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {

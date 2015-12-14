@@ -22,6 +22,8 @@
 
 @property (nonatomic) int previousChosenCardIndex;
 
+@property (nonatomic) int numberOfCards;
+
 @end
 
 @implementation CardGameViewController
@@ -30,6 +32,11 @@
 
 - (instancetype)init {
     self = [super initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+
+    if (self) {
+        // TODO: allow prop to be configurable in init
+        self.numberOfCards = 12;
+    }
 
     return self;
 }
@@ -41,13 +48,14 @@
     return _cardButtons;
 }
 
-- (Deck *)createDeck { // abstract
+// abstract
+- (Deck *)createDeck {
     return nil;
 }
 
 - (CardMatchingGame *)game {
     if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:self.cardButtons.count
+        _game = [[CardMatchingGame alloc] initWithCardCount:self.numberOfCards
                                                  usingDeck:[self createDeck]
                                   withRequiredMatcheeCount:1];
     }
@@ -88,7 +96,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section {
     // 4 x 3
-    return 12;
+    return self.numberOfCards;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
