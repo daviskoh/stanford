@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
+// TODO: change to property list - [][Card]
 @property (strong, nonatomic) NSMutableArray *history;
 
 @property (nonatomic) int previousChosenCardIndex;
@@ -157,7 +158,7 @@
 
     [self updateUI];
     self.history = [[NSMutableArray alloc] init];
-    self.collectionView.lastResultLabel.text = @"";
+    self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:@""];
     // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
     self.previousChosenCardIndex = -1;
 }
@@ -167,7 +168,7 @@
 
     // if index NOT out of bounds then update label
     if (i < self.history.count) {
-        self.collectionView.lastResultLabel.text = self.history[i];
+        self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:self.history[i]];
         self.collectionView.historySlider.maximumValue = self.history.count - 1;
     }
 
@@ -181,7 +182,8 @@
 
 - (void)updateLastResultLabelWithPreviousResult:(NSString *)previousResult
                                     scoreChange:(int)scoreChange {
-    self.collectionView.lastResultLabel.text = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
+    NSString *string = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
+    self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:string];
 }
 
 - (void)updateUI {
@@ -201,7 +203,7 @@
     [self updateLastResultLabelWithPreviousResult:self.game.previousResult
                                       scoreChange:self.game.scoreChange];
 
-    [self.history addObject:self.collectionView.lastResultLabel.text];
+    [self.history addObject:self.collectionView.lastResultLabel.attributedText];
 }
 
 - (NSAttributedString *)titleForCard:(Card *)card {

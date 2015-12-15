@@ -12,9 +12,14 @@
 
 @interface SetCardGameViewController ()
 
+// FIXME: find better way to do below than overriding collectionView prop
+@property (strong, nonatomic) CardTableView *collectionView;
+
 @end
 
 @implementation SetCardGameViewController
+
+@dynamic collectionView;
 
 - (instancetype)init {
     self = [super init];
