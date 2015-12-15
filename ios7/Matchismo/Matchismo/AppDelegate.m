@@ -24,10 +24,15 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
 
     PlayingCardGameViewController *playingCardGameViewCtrl = [[PlayingCardGameViewController alloc] init];
+    UINavigationController *playingCardNavCtrl = [[UINavigationController alloc] initWithRootViewController:playingCardGameViewCtrl];
+    playingCardNavCtrl.title = @"Playing Card Game";
+
     SetCardGameViewController *setCardGameViewCtrl = [[SetCardGameViewController alloc] init];
+    UINavigationController *setCardNavCtrl = [[UINavigationController alloc] initWithRootViewController:setCardGameViewCtrl];
+    setCardNavCtrl.title = @"Set Card Game";
 
     UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];
-    tabBarCtrl.viewControllers = @[playingCardGameViewCtrl, setCardGameViewCtrl];
+    tabBarCtrl.viewControllers = @[playingCardNavCtrl, setCardNavCtrl];
     self.window.rootViewController = tabBarCtrl;
 
     [self.window makeKeyAndVisible];

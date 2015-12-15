@@ -75,6 +75,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"History"
+                                    style:UIBarButtonItemStylePlain
+                                   target:nil
+                                   action:nil];
+    self.navigationItem.rightBarButtonItem = button;
+
     self.collectionView = [self createCardTableView];
 
     self.collectionView.dataSource = self;
