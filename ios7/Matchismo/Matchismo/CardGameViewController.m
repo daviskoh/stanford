@@ -18,9 +18,6 @@
 
 @property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
 
-// TODO: change to property list - [][Card]
-@property (strong, nonatomic) NSMutableArray *history;
-
 @property (nonatomic) int previousChosenCardIndex;
 
 @property (nonatomic) int numberOfCards;
@@ -86,10 +83,6 @@
     [self.collectionView.dealButton addTarget:self
                         action:@selector(onDealButtonTouch:)
               forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.collectionView.historySlider addTarget:self
-                           action:@selector(onSliderValueChange:)
-                 forControlEvents:UIControlEventValueChanged];
 }
 
 #pragma mark - UICollectionViewDataSource protocol
@@ -161,17 +154,6 @@
     self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:@""];
     // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
     self.previousChosenCardIndex = -1;
-}
-
-- (void)onSliderValueChange:(UISlider *)sender {
-    int i = (int)(sender.value + 0.5);
-
-    // if index NOT out of bounds then update label
-    if (i < self.history.count) {
-        self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:self.history[i]];
-        self.collectionView.historySlider.maximumValue = self.history.count - 1;
-    }
-
 }
 
 #pragma mark - Utility Methods

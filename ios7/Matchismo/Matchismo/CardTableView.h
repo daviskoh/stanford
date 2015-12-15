@@ -13,6 +13,5 @@
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIButton *dealButton;
 @property (strong, nonatomic) UILabel *lastResultLabel;
-@property (strong, nonatomic) UISlider *historySlider;
 
 @end

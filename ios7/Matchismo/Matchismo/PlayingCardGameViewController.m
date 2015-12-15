@@ -31,6 +31,10 @@
 
     self.title = @"Playing Card Game";
 
+    [self.collectionView.historySlider addTarget:self
+                           action:@selector(onSliderValueChange:)
+                 forControlEvents:UIControlEventValueChanged];
+
     [self.collectionView.gameModeSwitch addTarget:self
                         action:@selector(onSwitchToggle:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -52,6 +56,18 @@
 - (void)onDealButtonTouch:(UIButton *)sender {
     [super onDealButtonTouch:sender];
     self.collectionView.gameModeSwitch.enabled = YES;
+}
+
+- (void)onSliderValueChange:(UISlider *)sender {
+    int i = (int)(sender.value + 0.5);
+
+    // if index NOT out of bounds then update label
+    if (i < self.history.count) {
+
+        self.collectionView.lastResultLabel.attributedText = (NSAttributedString *)self.history[i];
+        self.collectionView.historySlider.maximumValue = self.history.count - 1;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {

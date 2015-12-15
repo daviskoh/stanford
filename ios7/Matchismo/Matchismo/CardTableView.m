@@ -24,7 +24,6 @@
         [self setupScoreLabel];
         [self setupDealButton];
         [self setupLastResultLabel];
-        [self setupHistorySlider];
     }
 
     return self;
@@ -85,39 +84,6 @@
                                                                   multiplier:1.8
                                                                     constant:0];
     [self addConstraint:lastResultYConstraint];
-}
-
-- (void)setupHistorySlider {
-    self.historySlider = [[UISlider alloc] init];
-    self.historySlider.minimumValue = 0;
-    self.historySlider.translatesAutoresizingMaskIntoConstraints = NO;
-    [self addSubview:self.historySlider];
-
-    NSLayoutConstraint *historySliderXConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self
-                                                                   attribute:NSLayoutAttributeCenterX
-                                                                  multiplier:1
-                                                                    constant:0];
-
-    NSLayoutConstraint *historySliderYConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self
-                                                                   attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.7
-                                                                    constant:0];
-
-    NSLayoutConstraint *historySliderWidthConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                   relatedBy:NSLayoutRelationEqual
-                                                                      toItem:self
-                                                                   attribute:NSLayoutAttributeWidth
-                                                                  multiplier:0.8
-                                                                    constant:0];
-
-    [self addConstraints:@[historySliderXConstraint, historySliderYConstraint, historySliderWidthConstraint]];
 }
 
 @end

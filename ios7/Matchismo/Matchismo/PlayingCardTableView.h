@@ -11,6 +11,7 @@
 
 @interface PlayingCardTableView : CardTableView
 
+@property (strong, nonatomic) UISlider *historySlider;
 @property (strong, nonatomic) UISwitch *gameModeSwitch;
 
 @end
