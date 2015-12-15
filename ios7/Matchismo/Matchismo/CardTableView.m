@@ -41,7 +41,7 @@
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self
                                                                    attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.9
+                                                                  multiplier:1.6
                                                                     constant:0];
     [self addConstraint:yConstraint];
 }

@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.title = @"Playing Card Game";
+
     [self.collectionView.gameModeSwitch addTarget:self
                         action:@selector(onSwitchToggle:)
               forControlEvents:UIControlEventTouchUpInside];

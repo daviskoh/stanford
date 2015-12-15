@@ -22,8 +22,13 @@
 
     CGRect bounds = [[UIScreen mainScreen] bounds];
     self.window = [[UIWindow alloc] initWithFrame:bounds];
-    // self.window.rootViewController = [[PlayingCardGameViewController alloc] init];
-    self.window.rootViewController = [[SetCardGameViewController alloc] init];
+
+    PlayingCardGameViewController *playingCardGameViewCtrl = [[PlayingCardGameViewController alloc] init];
+    SetCardGameViewController *setCardGameViewCtrl = [[SetCardGameViewController alloc] init];
+
+    UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];
+    tabBarCtrl.viewControllers = @[playingCardGameViewCtrl, setCardGameViewCtrl];
+    self.window.rootViewController = tabBarCtrl;
 
     [self.window makeKeyAndVisible];
     
