@@ -45,9 +45,18 @@
 
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:text];
 
+    NSRange suitRange = [text rangeOfString:card.suit];
+
     [string addAttribute:NSForegroundColorAttributeName
                    value:card.color
-                   range:[text rangeOfString:card.suit]];
+                   range:suitRange];
+
+    [string addAttribute:NSStrokeWidthAttributeName
+                   value:card.strokeWidth
+                   range:suitRange];
+    [string addAttribute:NSStrokeColorAttributeName
+                    value:[UIColor blackColor]
+                    range:suitRange];
 
     return string;
 }
