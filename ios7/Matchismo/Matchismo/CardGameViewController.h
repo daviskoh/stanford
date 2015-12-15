@@ -20,5 +20,7 @@
 - (void)onCardChosen:(UIButton *)sender;
 - (void)onDealButtonTouch:(UIButton *)sender;
 
+- (NSAttributedString *)titleForCard:(Card *)card;
+
 @end
 
