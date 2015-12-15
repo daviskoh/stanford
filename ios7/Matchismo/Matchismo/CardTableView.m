@@ -57,7 +57,7 @@
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self
                                                                    attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.9
+                                                                  multiplier:1.8
                                                                     constant:0];
 
     NSLayoutConstraint *dealButtonXConstraint = [NSLayoutConstraint constraintWithItem:self.dealButton
