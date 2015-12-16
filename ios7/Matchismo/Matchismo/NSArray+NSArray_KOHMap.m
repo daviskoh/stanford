@@ -10,4 +10,14 @@
 
 @implementation NSArray (NSArray_KOHMap)
 
+- (NSArray *) map:(id(^)(id obj))block {
+    NSMutableArray *result = @[].mutableCopy;
+
+    for (id o in self) {
+        [result addObject:block(o)];
+    }
+
+    return result;
+}
+
 @end

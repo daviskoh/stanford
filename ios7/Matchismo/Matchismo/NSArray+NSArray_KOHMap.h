@@ -10,4 +10,6 @@
 
 @interface NSArray (NSArray_KOHMap)
 
+- (NSArray *) map:(id(^)(id obj))block;
+
 @end
