@@ -165,7 +165,9 @@
 }
 
 - (void)onHistoryButtonTouch:(UIBarButtonItem *)sender {
-    [self.navigationController pushViewController:[[HistoryViewController alloc] init]
+    HistoryViewController *historyViewCtrl = [[HistoryViewController alloc] init];
+    historyViewCtrl.history = self.history;
+    [self.navigationController pushViewController:historyViewCtrl
                                          animated:YES];
 }
 

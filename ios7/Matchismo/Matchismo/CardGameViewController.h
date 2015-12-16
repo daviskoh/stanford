@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) CardMatchingGame *game;
 
-// TODO: change to property list - [][Card]
 @property (strong, nonatomic) NSMutableArray *history;
 
 - (Deck *)createDeck; // abstract
