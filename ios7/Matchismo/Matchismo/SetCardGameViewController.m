@@ -48,22 +48,30 @@
 - (NSAttributedString *)titleForCard:(SetCard *)card {
     NSString *text = card.isChosen ? card.contents : @"";
 
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:text];
-
-    NSRange suitRange = [text rangeOfString:card.suit];
-
-    [string addAttribute:NSForegroundColorAttributeName
-                   value:card.color
-                   range:suitRange];
-
-    [string addAttribute:NSStrokeWidthAttributeName
-                   value:card.strokeWidth
-                   range:suitRange];
-    [string addAttribute:NSStrokeColorAttributeName
-                    value:[UIColor blackColor]
-                    range:suitRange];
-
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text
+                                                                 attributes:@{
+                                                                              NSForegroundColorAttributeName: card.color,
+                                                                              NSStrokeWidthAttributeName: card.strokeWidth,
+                                                                              NSStrokeColorAttributeName: [UIColor blackColor]
+                                                                              }];
     return string;
+}
+
+- (void)updateLastResultLabelWithPreviousResult:(NSArray *)previouslyMatchedCards
+                                    scoreChange:(int)scoreChange {
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
+
+    for (SetCard *card in previouslyMatchedCards) {
+        NSAttributedString *subString = [[NSAttributedString alloc] initWithString:card.contents
+                                        attributes:@{
+                                                     NSForegroundColorAttributeName: card.color,
+                                                     NSStrokeWidthAttributeName: card.strokeWidth,
+                                                     NSStrokeColorAttributeName: [UIColor blackColor]
+                                                     }];
+        [string appendAttributedString:subString];
+    }
+
+    self.collectionView.lastResultLabel.attributedText = string;
 }
 
 - (void)didReceiveMemoryWarning {
