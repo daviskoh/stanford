@@ -25,7 +25,7 @@
 
 - (NSAttributedString *)titleForCard:(Card *)card;
 
-- (void)updateLastResultLabelWithPreviousResult:(NSString *)previousResult
+- (void)updateLastResultLabelWithPreviousResult:(NSArray *)previousResult
                                     scoreChange:(int)scoreChange;
 
 @end

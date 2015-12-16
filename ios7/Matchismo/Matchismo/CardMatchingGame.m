@@ -47,8 +47,13 @@
 #pragma mark - Getters & Setters
 
 - (NSMutableArray *)cards {
-    if (!_cards) _cards = [[NSMutableArray alloc] init];
+    if (!_cards) _cards = @[].mutableCopy;
     return _cards;
+}
+
+- (NSMutableArray *)previouslyMatchedCards {
+    if (!_previouslyMatchedCards) _previouslyMatchedCards = @[].mutableCopy;
+    return _previouslyMatchedCards;
 }
 
 #pragma mark - Methods
@@ -59,6 +64,8 @@ static const int COST_TO_CHOOSE = 1;
 
 // more like toggleCardAtIndex
 - (void)chooseCardAtIndex:(NSUInteger)index {
+    self.previouslyMatchedCards = @[].mutableCopy;
+
     Card *card = [self cardAtIndex:index];
 
     if (card.isMatched) {
@@ -80,14 +87,14 @@ static const int COST_TO_CHOOSE = 1;
             // card match:otherCards
             // set score
             // set matched
-        self.previousResult = card.contents;
+        [self.previouslyMatchedCards addObject:card];
 
         for (Card *otherCard in self.cards) {
             if (otherCards.count == self.requiredMatcheeCount) break;
 
             if (otherCard.isChosen && !otherCard.isMatched) {
                 [otherCards addObject:otherCard];
-                self.previousResult = [self.previousResult stringByAppendingString:otherCard.contents];
+                [self.previouslyMatchedCards addObject:otherCard];
             }
         }
 

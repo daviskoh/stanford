@@ -10,6 +10,7 @@
 #import "Deck.h"
 #import "CardView.h"
 #import "CardMatchingGame.h"
+#import "NSArray+NSArray_KOHMap.h"
 
 @interface CardGameViewController ()
 
@@ -168,10 +169,15 @@
     self.collectionView.scoreLabel.text = [NSString stringWithFormat:@"Score: %ld", (long)self.game.score];
 }
 
-- (void)updateLastResultLabelWithPreviousResult:(NSString *)previousResult
+- (void)updateLastResultLabelWithPreviousResult:(NSArray *)previouslyMatchedCards
                                     scoreChange:(int)scoreChange {
-    NSString *string = [NSString stringWithFormat:@"%@ at %d points", previousResult, scoreChange];
-    self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:string];
+    NSArray *mappedArray = [previouslyMatchedCards map:^id(Card *obj) {
+        return obj.contents;
+    }];
+    NSString *contentString = [mappedArray componentsJoinedByString:@""];
+    NSString *string = [NSString stringWithFormat:@"%@ at %d points", contentString, scoreChange];
+    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:string];
+    self.collectionView.lastResultLabel.attributedText = attributeString;
 }
 
 - (void)updateUI {
@@ -188,7 +194,7 @@
     }
 
     [self updateScoreLabel];
-    [self updateLastResultLabelWithPreviousResult:self.game.previousResult
+    [self updateLastResultLabelWithPreviousResult:self.game.previouslyMatchedCards
                                       scoreChange:self.game.scoreChange];
 
     [self.history addObject:self.collectionView.lastResultLabel.attributedText];

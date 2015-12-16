@@ -15,7 +15,7 @@
 
 @property (nonatomic) int requiredMatcheeCount;
 
-@property (nonatomic) NSString *previousResult;
+@property (nonatomic) NSMutableArray *previouslyMatchedCards;
 @property (nonatomic) int scoreChange;
 
 // designated initializer
