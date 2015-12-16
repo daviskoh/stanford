@@ -71,6 +71,10 @@
         [string appendAttributedString:subString];
     }
 
+    NSString *scoreString = [NSString stringWithFormat:@"%d points", scoreChange];
+    NSAttributedString *scoreAttString = [[NSAttributedString alloc] initWithString:scoreString];
+    [string appendAttributedString:scoreAttString];
+
     self.collectionView.lastResultLabel.attributedText = string;
 }
 
