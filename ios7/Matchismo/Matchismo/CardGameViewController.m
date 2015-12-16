@@ -7,6 +7,7 @@
 //
 
 #import "CardGameViewController.h"
+#import "HistoryViewController.h"
 #import "Deck.h"
 #import "CardView.h"
 #import "CardMatchingGame.h"
@@ -78,8 +79,8 @@
 
     UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"History"
                                     style:UIBarButtonItemStylePlain
-                                   target:nil
-                                   action:nil];
+                                   target:self
+                                   action:@selector(onHistoryButtonTouch:)];
     self.navigationItem.rightBarButtonItem = button;
 
     self.collectionView = [self createCardTableView];
@@ -161,6 +162,11 @@
     self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:@""];
     // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
     self.previousChosenCardIndex = -1;
+}
+
+- (void)onHistoryButtonTouch:(UIBarButtonItem *)sender {
+    [self.navigationController pushViewController:[[HistoryViewController alloc] init]
+                                         animated:YES];
 }
 
 #pragma mark - Utility Methods

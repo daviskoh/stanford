@@ -33,7 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Set Card Game";
+    self.title = @"Set Card";
 }
 
 - (Deck *)createDeck {

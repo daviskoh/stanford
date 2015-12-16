@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"Playing Card Game";
+    self.title = @"Playing Card";
 
     [self.collectionView.historySlider addTarget:self
                            action:@selector(onSliderValueChange:)
