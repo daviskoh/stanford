@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "PlayingCardGameViewController.h"
 #import "SetCardGameViewController.h"
+// REALLY FUCKING GHETTO APPLE
+#import "Matchismo-Swift.h"
 
 @interface AppDelegate ()
 
@@ -31,8 +33,11 @@
     UINavigationController *setCardNavCtrl = [[UINavigationController alloc] initWithRootViewController:setCardGameViewCtrl];
     setCardNavCtrl.title = @"Set Card Game";
 
+    HighScoresViewController *highScoresViewCtrl = [[HighScoresViewController alloc] init];
+    highScoresViewCtrl.title = @"High Scores";
+
     UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];
-    tabBarCtrl.viewControllers = @[playingCardNavCtrl, setCardNavCtrl];
+    tabBarCtrl.viewControllers = @[playingCardNavCtrl, setCardNavCtrl, highScoresViewCtrl];
     self.window.rootViewController = tabBarCtrl;
 
     [self.window makeKeyAndVisible];

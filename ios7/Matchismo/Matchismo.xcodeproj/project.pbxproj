@@ -15,6 +15,7 @@
 		DD19E3BA1C1E63AF00C212AE /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = DD19E3B91C1E63AF00C212AE /* SetCardDeck.m */; };
 		DD1CBAEE1C174BE000DFA462 /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1CBAED1C174BE000DFA462 /* CardMatchingGame.m */; };
 		DD37A1AB1C1B34640020A7CB /* PlayingCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD37A1AA1C1B34640020A7CB /* PlayingCardTableView.m */; };
+		DD435A001C22530000D063C6 /* HighScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4359FF1C22530000D063C6 /* HighScoresViewController.swift */; };
 		DD5444E51C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E41C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m */; };
 		DD5444E81C21056900DCD867 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E71C21056900DCD867 /* HistoryViewController.m */; };
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
@@ -63,6 +64,8 @@
 		DD1CBAED1C174BE000DFA462 /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		DD37A1A91C1B34640020A7CB /* PlayingCardTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardTableView.h; sourceTree = "<group>"; };
 		DD37A1AA1C1B34640020A7CB /* PlayingCardTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardTableView.m; sourceTree = "<group>"; };
+		DD4359FB1C224E2900D063C6 /* Matchismo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Matchismo-Bridging-Header.h"; sourceTree = "<group>"; };
+		DD4359FF1C22530000D063C6 /* HighScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresViewController.swift; sourceTree = "<group>"; };
 		DD5444E31C20E02D00DCD867 /* NSArray+NSArray_KOHMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NSArray_KOHMap.h"; sourceTree = "<group>"; };
 		DD5444E41C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSArray_KOHMap.m"; sourceTree = "<group>"; };
 		DD5444E61C21056900DCD867 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 				DD1CBAED1C174BE000DFA462 /* CardMatchingGame.m */,
 				DDE1EB3E1C109A3E002DC075 /* PlayingCard.h */,
 				DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */,
+				DD4359FB1C224E2900D063C6 /* Matchismo-Bridging-Header.h */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -165,6 +169,14 @@
 				DD1880AE1C1D03D000BE2EF9 /* SetCard.m */,
 			);
 			name = SetCard;
+			sourceTree = "<group>";
+		};
+		DD4359FE1C224E4000D063C6 /* HighScore */ = {
+			isa = PBXGroup;
+			children = (
+				DD4359FF1C22530000D063C6 /* HighScoresViewController.swift */,
+			);
+			name = HighScore;
 			sourceTree = "<group>";
 		};
 		DD9ACCAA1C0E83420013B67D = {
@@ -190,6 +202,7 @@
 		DD9ACCB51C0E83420013B67D /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				DD4359FE1C224E4000D063C6 /* HighScore */,
 				DD1880A81C1CF8C800BE2EF9 /* Common */,
 				DD1880A71C1CF7E800BE2EF9 /* PlayingCard */,
 				DD1880A91C1D002000BE2EF9 /* SetCard */,
@@ -290,6 +303,7 @@
 		DD9ACCAB1C0E83420013B67D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = com.DavisKoh;
 				TargetAttributes = {
@@ -365,6 +379,7 @@
 				DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */,
 				DD1CBAEE1C174BE000DFA462 /* CardMatchingGame.m in Sources */,
 				DD37A1AB1C1B34640020A7CB /* PlayingCardTableView.m in Sources */,
+				DD435A001C22530000D063C6 /* HighScoresViewController.swift in Sources */,
 				DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */,
 				DD1880AF1C1D03D100BE2EF9 /* SetCard.m in Sources */,
 				DD1880A61C1CF21F00BE2EF9 /* CardTableView.m in Sources */,
@@ -492,10 +507,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Matchismo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Daviskoh.Matchismo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Matchismo/Matchismo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -503,10 +521,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Matchismo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Daviskoh.Matchismo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Matchismo/Matchismo-Bridging-Header.h";
 			};
 			name = Release;
 		};
