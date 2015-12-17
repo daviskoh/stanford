@@ -23,6 +23,7 @@ class HighScoresViewController: UIViewController {
         self.view.addSubview(self.textViewWithText(textView))
     }
 
+    // FIXME: view should reload when it is visible
     func textViewWithText(textView: UITextView) -> UITextView {
         textView.text = self.createScoreString("Playing Card") + "\n"
         textView.text = textView.text + self.createScoreString("Set Card")
