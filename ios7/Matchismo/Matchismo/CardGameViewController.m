@@ -142,6 +142,32 @@
 
 #pragma mark - Event Handlers
 
+- (void)addScore:(NSInteger)score forGameType:(NSString *)gameType {
+    NSString *key = [gameType stringByAppendingString:@"HighScores"];
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *scores = [defaults arrayForKey:key].mutableCopy;
+
+    if (!scores.count) {
+        scores = @[].mutableCopy;
+    }
+
+    NSNumber *scoreObj = @(score);
+    [scores addObject:scoreObj];
+
+    NSSortDescriptor *scoreDescriptor = [[NSSortDescriptor alloc] initWithKey:@"intValue"
+                                                                    ascending:NO];
+    NSArray *sortDescriptors = @[scoreDescriptor];
+    NSArray *sortedArray = [scores sortedArrayUsingDescriptors:sortDescriptors];
+
+    if (sortedArray.count > 2) {
+        sortedArray = [sortedArray subarrayWithRange:NSMakeRange(0, 3)].mutableCopy;
+    }
+
+    [defaults setObject:sortedArray
+                 forKey:key];
+}
+
 - (void)onCardChosen:(UIButton *)sender {
     int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
     if (chosenButtonIndex == self.previousChosenCardIndex) return;
@@ -150,6 +176,9 @@
     [self updateUI];
 
     self.previousChosenCardIndex = chosenButtonIndex;
+
+    [self addScore:self.game.score
+       forGameType:self.title];
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
