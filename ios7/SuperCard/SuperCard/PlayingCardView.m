@@ -53,6 +53,9 @@
     [self setNeedsDisplay];
 }
 
+#pragma mark - Gestures
+
+// adjust face card scale
 - (void)pinch:(UIPinchGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateChanged ||
         gesture.state == UIGestureRecognizerStateEnded) {

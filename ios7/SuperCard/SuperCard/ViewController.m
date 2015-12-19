@@ -34,11 +34,25 @@
     self.playingCardView.suit = @"📬";
     self.playingCardView.center = self.view.center;
 
-    UIGestureRecognizer *gestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCardView
+    UIGestureRecognizer *pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCardView
                                                                              action:@selector(pinch:)];
-    [self.playingCardView addGestureRecognizer:gestureRecognizer];
+    [self.playingCardView addGestureRecognizer:pinchGesture];
+
+    UIGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(swipe:)];
+    [self.playingCardView addGestureRecognizer:swipeGesture];
 
     [self.view addSubview:self.playingCardView];
+}
+
+/**
+ * Q - Why does Ctrl handles swipe, while View handles pinch?
+ * A - Because when integrate Deck to draw new playing card during swipe,
+ * should not tie View to Deck Model
+ */
+
+- (void)swipe:(UISwipeGestureRecognizer *)gesture {
+    self.playingCardView.faceUp = !self.playingCardView.faceUp;
 }
 
 @end
