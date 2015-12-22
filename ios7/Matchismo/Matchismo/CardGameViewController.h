@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) NSMutableArray *history;
 
+@property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
+
 - (Deck *)createDeck; // abstract
 
 - (void)onCardChosen:(UIButton *)sender;
@@ -26,6 +28,8 @@
 
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previousResult
                                     scoreChange:(int)scoreChange;
+
+- (void)updateCards;
 
 @end
 

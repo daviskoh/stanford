@@ -9,6 +9,9 @@
 #import "PlayingCardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCardTableView.h"
+#import "PlayingCard.h"
+// OPTIMIZE: separate out PlayingCard specific logic and include PlayingCardView.h
+#import "CardView.h"
 
 @interface PlayingCardGameViewController ()
 
@@ -68,6 +71,21 @@
         self.collectionView.historySlider.maximumValue = self.history.count - 1;
     }
 
+}
+
+- (void)updateCards {
+    for (CardView *cardView in self.cardButtons) {
+        int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
+        // OPTIMIZE: is below typecasting allowed / normal?
+        PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:cardButtonIndex];
+
+        cardView.suit = card.suit;
+        cardView.rank = card.rank;
+        cardView.faceUp = card.isChosen;
+
+        // TODO: implement enabled property
+        // cardView.enabled = card.isMatched;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

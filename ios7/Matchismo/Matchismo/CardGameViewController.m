@@ -18,8 +18,6 @@
 // FIXME: find better way to do below than overriding collectionView prop
 @property (strong, nonatomic) CardTableView *collectionView;
 
-@property (strong, nonatomic) NSMutableArray *cardButtons; // of CardViews
-
 @property (nonatomic) int previousChosenCardIndex;
 
 @property (nonatomic) int numberOfCards;
@@ -106,14 +104,14 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
                                                                            forIndexPath:indexPath];
 
-    CardView *card = [[CardView alloc] initWithFrame:cell.bounds];
+    CardView *cardView = [[CardView alloc] initWithFrame:cell.bounds];
 
-    [card addTarget:self
-             action:@selector(onCardChosen:)
-   forControlEvents:UIControlEventTouchUpInside];
+    UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                         action:@selector(onCardChosen:)];
+    [cardView addGestureRecognizer:touchGesture];
 
-    [cell.contentView addSubview:card];
-    [self.cardButtons addObject:card];
+    [cell.contentView addSubview:cardView];
+    [self.cardButtons addObject:cardView];
 
     return cell;
 }
@@ -168,8 +166,8 @@
                  forKey:key];
 }
 
-- (void)onCardChosen:(UIButton *)sender {
-    int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender];
+- (void)onCardChosen:(UITapGestureRecognizer *)sender {
+    int chosenButtonIndex = (int)[self.cardButtons indexOfObject:sender.view];
     if (chosenButtonIndex == self.previousChosenCardIndex) return;
 
     [self.game chooseCardAtIndex:chosenButtonIndex];
@@ -217,34 +215,16 @@
     self.collectionView.lastResultLabel.attributedText = attributeString;
 }
 
+- (void)updateCards {} // abstract / MUST be implemented
+
 - (void)updateUI {
-    for (UIButton *cardButton in self.cardButtons) {
-        int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardButton];
-        Card *card = [self.game cardAtIndex:cardButtonIndex];
-
-        [cardButton setAttributedTitle:[self titleForCard:card]
-                    forState:UIControlStateNormal];
-        [cardButton setBackgroundImage:[self backgroundImageForCard:card]
-                              forState:UIControlStateNormal];
-
-        cardButton.enabled = !card.isMatched;
-    }
+    [self updateCards];
 
     [self updateScoreLabel];
     [self updateLastResultLabelWithPreviousResult:self.game.previouslyMatchedCards
                                       scoreChange:self.game.scoreChange];
 
     [self.history addObject:self.collectionView.lastResultLabel.attributedText];
-}
-
-- (NSAttributedString *)titleForCard:(Card *)card {
-    NSString *string = card.isChosen ? card.contents : @"";
-    return [[NSAttributedString alloc] initWithString:string];
-}
-
-- (UIImage *)backgroundImageForCard:(Card *)card {
-    NSString *imageName = card.isChosen ? @"cardfront" : @"cardback";
-    return [UIImage imageNamed:imageName];
 }
 
 #pragma mark - Performance

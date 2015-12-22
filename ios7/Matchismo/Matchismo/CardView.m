@@ -192,10 +192,4 @@
     return self;
 }
 
-#pragma mark - Methods
-
-- (void)addTarget:(id)target action:(nonnull SEL)action forControlEvents:(UIControlEvents)controlEvents {
-    // TODO: implement method
-}
-
 @end

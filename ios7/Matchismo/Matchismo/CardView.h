@@ -18,7 +18,4 @@
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
 
-// OPTIMIZE: check if there is a protocol that can be implemented
-- (void)addTarget:(id)target action:(nonnull SEL)action forControlEvents:(UIControlEvents)controlEvents;
-
 @end
