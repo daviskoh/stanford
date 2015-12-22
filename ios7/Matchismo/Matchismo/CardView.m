@@ -96,6 +96,7 @@
     if (self.faceUp) {
 
         NSString *imageName = [NSString stringWithFormat:@"%@%@", [self rankAsString],self.suit];
+        NSLog(@"%@", imageName);
         UIImage *faceImage = [UIImage imageNamed:imageName];
         if (faceImage) {
             // prevent image from "smashing corners"
