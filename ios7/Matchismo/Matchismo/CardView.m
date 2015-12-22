@@ -152,7 +152,8 @@
     NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:string
                                                                      attributes:@{
                                                                                   NSFontAttributeName: cornerFont,
-                                                                                  NSParagraphStyleAttributeName: paragraphStyle
+                                                                                  NSParagraphStyleAttributeName: paragraphStyle,
+                                                                                  NSForegroundColorAttributeName: self.color
                                                                                   }];
     // top
     CGRect textBounds;

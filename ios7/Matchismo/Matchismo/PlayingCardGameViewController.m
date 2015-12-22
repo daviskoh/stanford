@@ -70,7 +70,6 @@
         self.collectionView.lastResultLabel.attributedText = (NSAttributedString *)self.history[i];
         self.collectionView.historySlider.maximumValue = self.history.count - 1;
     }
-
 }
 
 - (void)updateCards {
@@ -81,6 +80,13 @@
 
         cardView.suit = card.suit;
         cardView.rank = card.rank;
+
+        if ([card.suit  isEqual: @"♧"] || [card.suit  isEqual: @"♤"]) {
+            cardView.color = [UIColor blackColor];
+        } else {
+            cardView.color = [UIColor redColor];
+        }
+
         cardView.faceUp = card.isChosen;
 
         // TODO: implement enabled property

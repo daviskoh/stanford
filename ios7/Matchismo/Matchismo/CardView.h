@@ -14,6 +14,7 @@
 @property (nonatomic) NSUInteger rank;
 // FIXME: fix nullability specifier warning
 @property (strong, nonatomic) NSString *suit;
+@property (strong, nonatomic) UIColor *color;
 @property (nonatomic) BOOL faceUp;
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
