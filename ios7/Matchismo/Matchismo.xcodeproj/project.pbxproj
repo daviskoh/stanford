@@ -18,6 +18,7 @@
 		DD435A001C22530000D063C6 /* HighScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4359FF1C22530000D063C6 /* HighScoresViewController.swift */; };
 		DD5444E51C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E41C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m */; };
 		DD5444E81C21056900DCD867 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E71C21056900DCD867 /* HistoryViewController.m */; };
+		DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */; };
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
@@ -70,6 +71,8 @@
 		DD5444E41C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NSArray_KOHMap.m"; sourceTree = "<group>"; };
 		DD5444E61C21056900DCD867 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
 		DD5444E71C21056900DCD867 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		DD5C6EE21C26006300CDF1FE /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
+		DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
 		DD9ACCB31C0E83420013B67D /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB71C0E83420013B67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9ACCB91C0E83420013B67D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 		DD1880A71C1CF7E800BE2EF9 /* PlayingCard */ = {
 			isa = PBXGroup;
 			children = (
+				DD5C6EE21C26006300CDF1FE /* PlayingCardView.h */,
+				DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */,
 				DD1880A11C1CD8E600BE2EF9 /* PlayingCardGameViewController.h */,
 				DD1880A21C1CD8E600BE2EF9 /* PlayingCardGameViewController.m */,
 				DD37A1A91C1B34640020A7CB /* PlayingCardTableView.h */,
@@ -384,6 +389,7 @@
 				DD1880AF1C1D03D100BE2EF9 /* SetCard.m in Sources */,
 				DD1880A61C1CF21F00BE2EF9 /* CardTableView.m in Sources */,
 				DDA2DB711C0F765000A593AB /* CardView.m in Sources */,
+				DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */,
 				DD9ACCB81C0E83420013B67D /* main.m in Sources */,
 				DD5444E51C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m in Sources */,
 				DDE1EB401C109A3E002DC075 /* PlayingCard.m in Sources */,
