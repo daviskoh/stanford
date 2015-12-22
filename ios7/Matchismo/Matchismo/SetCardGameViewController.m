@@ -45,18 +45,6 @@
     self.game.requiredMatcheeCount = 2;
 }
 
-- (NSAttributedString *)titleForCard:(SetCard *)card {
-    NSString *text = card.isChosen ? card.contents : @"";
-
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text
-                                                                 attributes:@{
-                                                                              NSForegroundColorAttributeName: card.color,
-                                                                              NSStrokeWidthAttributeName: card.strokeWidth,
-                                                                              NSStrokeColorAttributeName: [UIColor blackColor]
-                                                                              }];
-    return string;
-}
-
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previouslyMatchedCards
                                     scoreChange:(int)scoreChange {
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];

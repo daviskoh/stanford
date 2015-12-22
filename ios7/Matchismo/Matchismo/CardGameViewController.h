@@ -24,8 +24,6 @@
 - (void)onCardChosen:(UIButton *)sender;
 - (void)onDealButtonTouch:(UIButton *)sender;
 
-- (NSAttributedString *)titleForCard:(Card *)card;
-
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previousResult
                                     scoreChange:(int)scoreChange;
 
