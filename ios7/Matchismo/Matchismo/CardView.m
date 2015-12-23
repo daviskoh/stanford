@@ -76,7 +76,6 @@
 
     if (!self.faceUp) {
         [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
-        return;
     }
 }
 
