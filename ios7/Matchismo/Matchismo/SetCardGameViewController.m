@@ -9,6 +9,7 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "Matchismo-Swift.h"
 
 @interface SetCardGameViewController ()
 
@@ -64,6 +65,22 @@
     [string appendAttributedString:scoreAttString];
 
     self.collectionView.lastResultLabel.attributedText = string;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                           forIndexPath:indexPath];
+    SetCardView *cardView = [[SetCardView alloc] initWithFrame:cell.bounds];
+
+    UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                         action:@selector(onCardChosen:)];
+    [cardView addGestureRecognizer:touchGesture];
+
+    [cell.contentView addSubview:cardView];
+    [self.cardButtons addObject:cardView];
+
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
