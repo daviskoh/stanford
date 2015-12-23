@@ -37,11 +37,15 @@
 
 - (void)setEnabled:(BOOL)enabled {
     _enabled = enabled;
+
     if (!enabled) {
-        self.userInteractionEnabled = enabled;
         self.alpha = 0.8f;
         self.backgroundColor = [UIColor grayColor];
+    } else {
+        [self setup];
     }
+
+    self.userInteractionEnabled = enabled;
 }
 
 #pragma mark - Drawing
@@ -76,6 +80,7 @@
 - (void)setup {
     self.backgroundColor = nil;
     self.opaque = NO;
+    self.alpha = 1.0;
     self.contentMode = UIViewContentModeRedraw;
 }
 
