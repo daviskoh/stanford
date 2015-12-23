@@ -9,37 +9,47 @@
 import UIKit
 
 class SetCardView: CardView {
-    func drawDiamond() {
-        let diamondPath = UIBezierPath()
+    // OPTIMIZE: make dimensios dynamic based on view size
+    let dimensions = CGSize(
+        width: 10.0,
+        height: 5.0
+    )
 
-        let origin = CGPoint(
+    func origin() -> CGPoint {
+        return CGPoint(
             x: CGRectGetMidX(self.bounds),
             y: CGRectGetMidY(self.bounds)
         )
-        let dimensions = CGSize(
-            width: 10.0,
-            height: 5.0
-        )
-        let startingPoint = CGPointMake(origin.x, origin.y)
+    }
 
-        diamondPath.moveToPoint(startingPoint)
+    func startingPoint() -> CGPoint {
+        return CGPoint(
+            x: self.origin().x,
+            y: self.origin().y
+        )
+    }
+
+    func drawDiamond() {
+        let diamondPath = UIBezierPath()
+
+        diamondPath.moveToPoint(self.startingPoint())
 
         // Right/Down
         diamondPath.addLineToPoint(CGPoint(
-            x: origin.x + dimensions.width,
-            y: origin.y + dimensions.height
+            x: self.origin().x + self.dimensions.width,
+            y: self.origin().y + self.dimensions.height
         ))
 
         // Left/Down
         diamondPath.addLineToPoint(CGPoint(
-            x: origin.x,
-            y: origin.y + (2.0 * dimensions.height)
+            x: self.origin().x,
+            y: self.origin().y + (2.0 * self.dimensions.height)
         ))
 
         // Left/Up
         diamondPath.addLineToPoint(CGPoint(
-            x: origin.x - dimensions.width,
-            y: origin.y + dimensions.height
+            x: self.origin().x - self.dimensions.width,
+            y: self.origin().y + self.dimensions.height
         ))
 
         diamondPath.closePath()
@@ -50,6 +60,54 @@ class SetCardView: CardView {
         diamondPath.stroke()
     }
 
+    func drawOval() {
+        let ovalPath = UIBezierPath()
+
+        ovalPath.moveToPoint(CGPoint(
+            x: self.startingPoint().x - (self.dimensions.width / 2.0),
+            y: self.startingPoint().y
+        ))
+
+        ovalPath.addLineToPoint(CGPoint(
+            x: self.origin().x + (self.dimensions.width / 2.0),
+            y: self.origin().y
+        ))
+
+        ovalPath.addArcWithCenter(
+            CGPoint(
+                x: self.origin().x + (self.dimensions.width / 2.0),
+                y: self.origin().y + self.dimensions.height
+            ),
+            radius: (self.dimensions.width / 2.0),
+            startAngle: 270.degreesToRadians,
+            endAngle: 90.degreesToRadians,
+            clockwise: true
+        )
+
+        ovalPath.addLineToPoint(CGPoint(
+            x: self.origin().x - (self.dimensions.width / 2.0),
+            y: self.origin().y + (2.0 * self.dimensions.height)
+        ))
+
+        ovalPath.addArcWithCenter(
+            CGPoint(
+                x: self.origin().x - (self.dimensions.width / 2.0),
+                y: self.origin().y + self.dimensions.height
+            ),
+            radius: (self.dimensions.width / 2.0),
+            startAngle: 90.degreesToRadians,
+            endAngle: 270.degreesToRadians,
+            clockwise: true
+        )
+
+        ovalPath.closePath()
+
+        self.color.setFill()
+        ovalPath.fill()
+        self.color.setStroke()
+        ovalPath.stroke()
+    }
+
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
 
@@ -58,7 +116,7 @@ class SetCardView: CardView {
             case "diamond":
                 self.drawDiamond()
             case "oval":
-                break
+                self.drawOval()
             case "squiggle":
                 break
             default:

@@ -20,6 +20,7 @@
 		DD5444E81C21056900DCD867 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E71C21056900DCD867 /* HistoryViewController.m */; };
 		DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */; };
 		DD5C6EE61C2A2F0700CDF1FE /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */; };
+		DD5C6EE81C2B338300CDF1FE /* Int+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE71C2B338300CDF1FE /* Int+Geometry.swift */; };
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
@@ -75,6 +76,7 @@
 		DD5C6EE21C26006300CDF1FE /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
 		DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
 		DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
+		DD5C6EE71C2B338300CDF1FE /* Int+Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Geometry.swift"; sourceTree = "<group>"; };
 		DD9ACCB31C0E83420013B67D /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB71C0E83420013B67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9ACCB91C0E83420013B67D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				DDE1EB3E1C109A3E002DC075 /* PlayingCard.h */,
 				DDE1EB3F1C109A3E002DC075 /* PlayingCard.m */,
 				DD4359FB1C224E2900D063C6 /* Matchismo-Bridging-Header.h */,
+				DD5C6EE71C2B338300CDF1FE /* Int+Geometry.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */,
 				DD1880AF1C1D03D100BE2EF9 /* SetCard.m in Sources */,
 				DD1880A61C1CF21F00BE2EF9 /* CardTableView.m in Sources */,
+				DD5C6EE81C2B338300CDF1FE /* Int+Geometry.swift in Sources */,
 				DDA2DB711C0F765000A593AB /* CardView.m in Sources */,
 				DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */,
 				DD9ACCB81C0E83420013B67D /* main.m in Sources */,
