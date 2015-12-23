@@ -80,8 +80,6 @@
     }
 }
 
-- (void)drawPips {} // abstract
-
 - (void)setup {
     self.backgroundColor = nil;
     self.opaque = NO;

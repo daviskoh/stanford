@@ -145,8 +145,6 @@
 
 #pragma mark - Gestures
 
-#pragma mark - Gestures
-
 // adjust face card scale
 - (void)pinch:(UIPinchGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateChanged ||

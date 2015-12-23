@@ -20,6 +20,5 @@
 
 - (CGFloat)cornerScaleFactor;
 - (CGFloat)cornerRadius;
-- (void)drawPips;
 
 @end
