@@ -83,6 +83,22 @@
     return cell;
 }
 
+- (void)updateCards {
+    for (SetCardView *cardView in self.cardButtons) {
+        int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
+        // OPTIMIZE: is below typecasting allowed / normal?
+        SetCard *card = (SetCard *)[self.game cardAtIndex:cardButtonIndex];
+
+        cardView.suit = card.suit;
+        cardView.rank = card.rank;
+        cardView.color = card.color;
+
+        cardView.faceUp = card.isChosen;
+
+        cardView.enabled = !card.isMatched;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

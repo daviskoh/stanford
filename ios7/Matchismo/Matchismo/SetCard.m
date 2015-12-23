@@ -11,7 +11,7 @@
 @implementation SetCard
 
 + (NSArray *)validSuits {
-    return @[@"▲", @"●", @"■"];
+    return @[@"diamond", @"squiggle", @"oval"];
 }
 
 + (NSArray *)rankStrings {
