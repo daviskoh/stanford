@@ -89,8 +89,7 @@
 
         cardView.faceUp = card.isChosen;
 
-        // TODO: implement enabled property
-        // cardView.enabled = card.isMatched;
+        cardView.enabled = !card.isMatched;
     }
 }
 

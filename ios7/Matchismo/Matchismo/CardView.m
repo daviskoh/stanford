@@ -53,6 +53,15 @@
     [self setNeedsDisplay];
 }
 
+- (void)setEnabled:(BOOL)enabled {
+    _enabled = enabled;
+    if (!enabled) {
+        self.userInteractionEnabled = enabled;
+        self.alpha = 0.8f;
+        self.backgroundColor = [UIColor grayColor];
+    }
+}
+
 #pragma mark - Gestures
 
 // adjust face card scale
