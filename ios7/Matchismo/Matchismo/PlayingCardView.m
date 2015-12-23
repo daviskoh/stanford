@@ -64,28 +64,23 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
 
-    if (self.faceUp) {
-
-        NSString *imageName = [NSString stringWithFormat:@"%@%@", [self rankAsString],self.suit];
-        UIImage *faceImage = [UIImage imageNamed:imageName];
-        if (faceImage) {
-            // prevent image from "smashing corners"
-            // scale image into rect
-            CGSize size = self.bounds.size;
-            CGRect imageRect = CGRectInset(self.bounds,
-                                           // 90% of card
-                                           size.width * (1.0 - self.faceCardScaleFactor),
-                                           size.height * (1.0 - self.faceCardScaleFactor)
-                                           );
-            [faceImage drawInRect:imageRect];
-        } else {
-            [self drawPips];
-        }
-
-        [self drawCorners];
+    NSString *imageName = [NSString stringWithFormat:@"%@%@", [self rankAsString],self.suit];
+    UIImage *faceImage = [UIImage imageNamed:imageName];
+    if (faceImage) {
+        // prevent image from "smashing corners"
+        // scale image into rect
+        CGSize size = self.bounds.size;
+        CGRect imageRect = CGRectInset(self.bounds,
+                                       // 90% of card
+                                       size.width * (1.0 - self.faceCardScaleFactor),
+                                       size.height * (1.0 - self.faceCardScaleFactor)
+                                       );
+        [faceImage drawInRect:imageRect];
     } else {
-        [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
+        [self drawPips];
     }
+
+    [self drawCorners];
 }
 
 - (void)drawCorners {

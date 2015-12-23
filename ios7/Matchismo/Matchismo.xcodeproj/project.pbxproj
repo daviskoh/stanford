@@ -19,6 +19,7 @@
 		DD5444E51C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E41C20E02D00DCD867 /* NSArray+NSArray_KOHMap.m */; };
 		DD5444E81C21056900DCD867 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5444E71C21056900DCD867 /* HistoryViewController.m */; };
 		DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */; };
+		DD5C6EE61C2A2F0700CDF1FE /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */; };
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
@@ -73,6 +74,7 @@
 		DD5444E71C21056900DCD867 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		DD5C6EE21C26006300CDF1FE /* PlayingCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayingCardView.h; sourceTree = "<group>"; };
 		DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
+		DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 		DD9ACCB31C0E83420013B67D /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB71C0E83420013B67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9ACCB91C0E83420013B67D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		DD1880A91C1D002000BE2EF9 /* SetCard */ = {
 			isa = PBXGroup;
 			children = (
+				DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */,
 				DD19E3B51C1E5B2B00C212AE /* SetCardGameViewController.h */,
 				DD19E3B61C1E5B2B00C212AE /* SetCardGameViewController.m */,
 				DD19E3B81C1E63AF00C212AE /* SetCardDeck.h */,
@@ -376,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD19E3BA1C1E63AF00C212AE /* SetCardDeck.m in Sources */,
+				DD5C6EE61C2A2F0700CDF1FE /* SetCardView.swift in Sources */,
 				DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */,
 				DD19E3B71C1E5B2B00C212AE /* SetCardGameViewController.m in Sources */,
 				DD17F5F81C10B666009B5706 /* PlayingCardDeck.m in Sources */,

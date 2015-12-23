@@ -73,6 +73,11 @@
 
     [[UIColor blackColor] setStroke];
     [roundedRect stroke];
+
+    if (!self.faceUp) {
+        [[UIImage imageNamed:@"cardback"] drawInRect:self.bounds];
+        return;
+    }
 }
 
 - (void)drawPips {} // abstract
