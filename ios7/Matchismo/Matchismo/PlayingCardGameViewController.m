@@ -11,7 +11,7 @@
 #import "PlayingCardTableView.h"
 #import "PlayingCard.h"
 // OPTIMIZE: separate out PlayingCard specific logic and include PlayingCardView.h
-#import "CardView.h"
+#import "PlayingCardView.h"
 
 @interface PlayingCardGameViewController ()
 
@@ -73,7 +73,7 @@
 }
 
 - (void)updateCards {
-    for (CardView *cardView in self.cardButtons) {
+    for (PlayingCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
         // OPTIMIZE: is below typecasting allowed / normal?
         PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:cardButtonIndex];
@@ -91,6 +91,22 @@
 
         cardView.enabled = !card.isMatched;
     }
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                           forIndexPath:indexPath];
+    PlayingCardView *cardView = [[PlayingCardView alloc] initWithFrame:cell.bounds];
+
+    UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                         action:@selector(onCardChosen:)];
+    [cardView addGestureRecognizer:touchGesture];
+
+    [cell.contentView addSubview:cardView];
+    [self.cardButtons addObject:cardView];
+
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

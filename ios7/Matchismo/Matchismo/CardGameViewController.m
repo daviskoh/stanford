@@ -9,7 +9,6 @@
 #import "CardGameViewController.h"
 #import "HistoryViewController.h"
 #import "Deck.h"
-#import "CardView.h"
 #import "CardMatchingGame.h"
 #import "NSArray+NSArray_KOHMap.h"
 
@@ -99,21 +98,10 @@
     return self.numberOfCards;
 }
 
+// abstract
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
-                                                                           forIndexPath:indexPath];
-
-    CardView *cardView = [[CardView alloc] initWithFrame:cell.bounds];
-
-    UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                         action:@selector(onCardChosen:)];
-    [cardView addGestureRecognizer:touchGesture];
-
-    [cell.contentView addSubview:cardView];
-    [self.cardButtons addObject:cardView];
-
-    return cell;
+    return nil;
 }
 
 #pragma mark - UICollectionViewFlowLayout protocol

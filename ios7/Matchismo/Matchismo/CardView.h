@@ -20,4 +20,6 @@
 
 - (void)pinch:(UIPinchGestureRecognizer *)gesture;
 
+- (void)drawPips;
+
 @end
