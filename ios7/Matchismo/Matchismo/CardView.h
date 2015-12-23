@@ -18,8 +18,8 @@
 @property (nonatomic) BOOL faceUp;
 @property (nonatomic) BOOL enabled;
 
-- (void)pinch:(UIPinchGestureRecognizer *)gesture;
-
+- (CGFloat)cornerScaleFactor;
+- (CGFloat)cornerRadius;
 - (void)drawPips;
 
 @end

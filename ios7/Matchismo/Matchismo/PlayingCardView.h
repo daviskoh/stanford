@@ -10,4 +10,6 @@
 
 @interface PlayingCardView : CardView
 
+- (void)pinch:(UIPinchGestureRecognizer *)gesture;
+
 @end
