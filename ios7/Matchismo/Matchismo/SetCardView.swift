@@ -29,6 +29,8 @@ class SetCardView: CardView {
         )
     }
 
+    // TODO: add shading ---------[NEXT]---------
+
     // OPTIMIZE: remove hard-coded values & use some fucking vars gosh...
     func drawDiamond() {
         let diamondPath = UIBezierPath()
