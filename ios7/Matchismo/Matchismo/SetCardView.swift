@@ -25,7 +25,7 @@ class SetCardView: CardView {
     func basePoint() -> CGPoint {
         return CGPoint(
             x: self.origin().x,
-            y: self.origin().y
+            y: self.origin().y - self.dimensions.height
         )
     }
 
@@ -38,19 +38,19 @@ class SetCardView: CardView {
         // Right/Down
         diamondPath.addLineToPoint(CGPoint(
             x: self.origin().x + self.dimensions.width,
-            y: self.origin().y + self.dimensions.height
+            y: self.origin().y
         ))
 
         // Left/Down
         diamondPath.addLineToPoint(CGPoint(
             x: self.origin().x,
-            y: self.origin().y + (2.0 * self.dimensions.height)
+            y: self.origin().y + self.dimensions.height
         ))
 
         // Left/Up
         diamondPath.addLineToPoint(CGPoint(
             x: self.origin().x - self.dimensions.width,
-            y: self.origin().y + self.dimensions.height
+            y: self.origin().y
         ))
 
         diamondPath.closePath()
@@ -70,14 +70,14 @@ class SetCardView: CardView {
         ))
 
         ovalPath.addLineToPoint(CGPoint(
-            x: self.origin().x + (self.dimensions.width / 2.0),
-            y: self.origin().y
+            x: self.basePoint().x + (self.dimensions.width / 2.0),
+            y: self.basePoint().y
         ))
 
         ovalPath.addArcWithCenter(
             CGPoint(
-                x: self.origin().x + (self.dimensions.width / 2.0),
-                y: self.origin().y + self.dimensions.height
+                x: self.basePoint().x + (self.dimensions.width / 2.0),
+                y: self.basePoint().y + self.dimensions.height
             ),
             radius: (self.dimensions.width / 2.0),
             startAngle: 270.degreesToRadians,
@@ -86,14 +86,14 @@ class SetCardView: CardView {
         )
 
         ovalPath.addLineToPoint(CGPoint(
-            x: self.origin().x - (self.dimensions.width / 2.0),
-            y: self.origin().y + (2.0 * self.dimensions.height)
+            x: self.basePoint().x - (self.dimensions.width / 2.0),
+            y: self.basePoint().y + (2.0 * self.dimensions.height)
         ))
 
         ovalPath.addArcWithCenter(
             CGPoint(
-                x: self.origin().x - (self.dimensions.width / 2.0),
-                y: self.origin().y + self.dimensions.height
+                x: self.basePoint().x - (self.dimensions.width / 2.0),
+                y: self.basePoint().y + self.dimensions.height
             ),
             radius: (self.dimensions.width / 2.0),
             startAngle: 90.degreesToRadians,
@@ -113,23 +113,23 @@ class SetCardView: CardView {
         let squigglePath = UIBezierPath()
         let startPoint = CGPoint(
             x: self.basePoint().x - self.dimensions.width,
-            y: self.basePoint().y + self.dimensions.height
+            y: self.basePoint().y + (self.dimensions.height * 2.0)
         )
 
         squigglePath.moveToPoint(startPoint)
 
         let endpoint = CGPoint(
             x: self.basePoint().x + self.dimensions.width,
-            y: self.basePoint().y - self.dimensions.height
+            y: self.basePoint().y
         )
 
         let topPoint1 = CGPoint(
             x: self.basePoint().x - self.dimensions.width,
-            y: self.basePoint().y - self.dimensions.height * 5.0
+            y: self.basePoint().y - self.dimensions.height * 2.0
         )
         let topPoint2 = CGPoint(
             x: self.basePoint().x + 1.0,
-            y: self.basePoint().y + self.dimensions.height
+            y: self.basePoint().y + (self.dimensions.height * 2.0)
         )
         squigglePath.addCurveToPoint(
             endpoint,
@@ -139,7 +139,7 @@ class SetCardView: CardView {
 
         let bottomPoint1 = CGPoint(
             x: self.basePoint().x + self.dimensions.width,
-            y: self.basePoint().y + self.dimensions.height * 5.0
+            y: self.basePoint().y + self.dimensions.height * 4.0
         )
         let bottomPoint2 = CGPoint(
             x: self.basePoint().x - 1.0,
