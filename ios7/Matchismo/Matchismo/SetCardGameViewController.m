@@ -54,7 +54,8 @@
         NSAttributedString *subString = [[NSAttributedString alloc] initWithString:card.contents
                                         attributes:@{
                                                      NSForegroundColorAttributeName: card.color,
-                                                     NSStrokeWidthAttributeName: card.strokeWidth,
+                                                     // FIXME: add stroke width below
+//                                                     NSStrokeWidthAttributeName: card.strokeWidth,
                                                      NSStrokeColorAttributeName: [UIColor blackColor]
                                                      }];
         [string appendAttributedString:subString];
@@ -92,6 +93,7 @@
         cardView.suit = card.suit;
         cardView.rank = card.rank;
         cardView.color = card.color;
+        cardView.shading = card.shading;
 
         cardView.faceUp = card.isChosen;
 

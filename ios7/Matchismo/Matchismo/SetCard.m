@@ -26,22 +26,22 @@
              ];
 }
 
-+ (NSArray *)validStrokeWidths {
++ (NSArray *)validShading {
     // fill+stroke, fill, stroke
-    return @[@-5, @0, @5];
+    return @[@"empty", @"stripe", @"fill"];
 }
 
 - (instancetype)initWithSuit:(NSString *)suit
                         rank:(int)rank
                        color:(UIColor *)color
-                 strokeWidth:(NSNumber *)strokeWidth {
+                 shading:(NSString *)shading {
     self = [super init];
 
     if (self) {
         self.suit = suit;
         self.rank = rank;
         self.color = color;
-        self.strokeWidth = strokeWidth;
+        self.shading = shading;
     }
 
     return self;
@@ -53,9 +53,9 @@
     }
 }
 
-- (void)setStrokeWidth:(NSNumber *)strokeWidth {
-    if ([[SetCard validStrokeWidths] containsObject:strokeWidth]) {
-        _strokeWidth = strokeWidth;
+- (void)setShading:(NSString *)shading {
+    if ([[SetCard validShading] containsObject:shading]) {
+        _shading = shading;
     }
 }
 
@@ -76,7 +76,7 @@
             if (self.rank == otherCard.rank ||
                 self.suit == otherCard.suit ||
                 self.color == self.color ||
-                self.strokeWidth == self.strokeWidth) {
+                self.shading == self.shading) {
 
                 // weight each attribute equally
                 score += 2;

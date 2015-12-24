@@ -14,15 +14,15 @@
 @property (strong, nonatomic) UIColor *color;
 
 // TODO: make more semantic
-@property (strong, nonatomic) NSNumber *strokeWidth;
+@property (strong, nonatomic) NSString *shading;
 
 // designated initializer
 - (instancetype)initWithSuit:(NSString *)suit
                         rank:(int)rank
                        color:(UIColor *)color
-                 strokeWidth:(NSNumber *)strokeWidth;
+                 shading:(NSString *)shading;
 
 + (NSArray *)validColors;
-+ (NSArray *)validStrokeWidths;
++ (NSArray *)validShading;
 
 @end

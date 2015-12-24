@@ -9,6 +9,8 @@
 import UIKit
 
 class SetCardView: CardView {
+    var shading: String = ""
+
     // OPTIMIZE: make dimensios dynamic based on view size
     let dimensions = CGSize(
         width: 20.0,
@@ -28,8 +30,6 @@ class SetCardView: CardView {
             y: self.origin().y - self.dimensions.height
         )
     }
-
-    // TODO: add shading ---------[NEXT]---------
 
     // OPTIMIZE: remove hard-coded values & use some fucking vars gosh...
     func drawDiamond() {
@@ -57,8 +57,10 @@ class SetCardView: CardView {
 
         diamondPath.closePath()
 
-        self.color.setFill()
-        diamondPath.fill()
+        if self.shading == "fill" {
+            self.color.setFill()
+            diamondPath.fill()
+        }
         self.color.setStroke()
         diamondPath.stroke()
     }

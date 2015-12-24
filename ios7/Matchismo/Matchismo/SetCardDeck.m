@@ -17,12 +17,12 @@
     if (self) {
         for (NSString *suit in [SetCard validSuits]) {
             for (UIColor *color in [SetCard validColors]) {
-                for (NSNumber *strokeWidth in [SetCard validStrokeWidths]) {
+                for (NSNumber *shading in [SetCard validShading]) {
                     for (int rank = 1; rank <= [SetCard maxRank]; rank++) {
                         SetCard *card = [[SetCard alloc] initWithSuit:suit
                                                                  rank:rank
                                                                 color:color
-                                                          strokeWidth:strokeWidth];
+                                                          shading:shading];
                         [self addCard:card];
                     }
                 }
