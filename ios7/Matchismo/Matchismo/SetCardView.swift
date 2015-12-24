@@ -11,8 +11,8 @@ import UIKit
 class SetCardView: CardView {
     // OPTIMIZE: make dimensios dynamic based on view size
     let dimensions = CGSize(
-        width: 10.0,
-        height: 5.0
+        width: 20.0,
+        height: 10.0
     )
 
     func origin() -> CGPoint {
@@ -112,24 +112,24 @@ class SetCardView: CardView {
     func drawSquiggle() {
         let squigglePath = UIBezierPath()
         let startPoint = CGPoint(
-            x: self.basePoint().x - (self.dimensions.width * 2.0),
-            y: self.basePoint().y + (self.dimensions.height * 3.0)
+            x: self.basePoint().x - self.dimensions.width,
+            y: self.basePoint().y + self.dimensions.height
         )
 
         squigglePath.moveToPoint(startPoint)
 
         let endpoint = CGPoint(
-            x: self.basePoint().x + (self.dimensions.width * 2.0),
-            y: self.basePoint().y - (self.dimensions.height * 2.0)
+            x: self.basePoint().x + self.dimensions.width,
+            y: self.basePoint().y - self.dimensions.height
         )
 
         let topPoint1 = CGPoint(
-            x: self.basePoint().x - (self.dimensions.width * 3.0),
-            y: self.basePoint().y - (self.dimensions.height * 7.0)
+            x: self.basePoint().x - self.dimensions.width,
+            y: self.basePoint().y - self.dimensions.height * 5.0
         )
         let topPoint2 = CGPoint(
             x: self.basePoint().x + 1.0,
-            y: self.basePoint().y + (self.dimensions.height * 3.0)
+            y: self.basePoint().y + self.dimensions.height
         )
         squigglePath.addCurveToPoint(
             endpoint,
@@ -138,12 +138,12 @@ class SetCardView: CardView {
         )
 
         let bottomPoint1 = CGPoint(
-            x: self.basePoint().x + (self.dimensions.width * 3.0),
-            y: self.basePoint().y + (self.dimensions.height * 7.0)
+            x: self.basePoint().x + self.dimensions.width,
+            y: self.basePoint().y + self.dimensions.height * 5.0
         )
         let bottomPoint2 = CGPoint(
             x: self.basePoint().x - 1.0,
-            y: self.basePoint().y - (self.dimensions.height * 3.0)
+            y: self.basePoint().y - self.dimensions.height
         )
         squigglePath.addCurveToPoint(
             startPoint,
