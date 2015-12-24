@@ -31,6 +31,36 @@ class SetCardView: CardView {
         )
     }
 
+    func addStripes(path: UIBezierPath) {
+        let widthUnit = self.bounds.width / 3.0
+
+        path.addClip()
+
+        path.moveToPoint(CGPoint(
+                x: widthUnit,
+                y: self.bounds.origin.y
+            ))
+        path.addLineToPoint(CGPoint(
+            x: widthUnit,
+            y: self.bounds.height
+        ))
+
+        path.moveToPoint(self.basePoint())
+        path.addLineToPoint(CGPoint(
+            x: self.basePoint().x,
+            y: self.bounds.height
+        ))
+
+        path.moveToPoint(CGPoint(
+            x: self.bounds.width - widthUnit,
+            y: self.bounds.origin.y
+        ))
+        path.addLineToPoint(CGPoint(
+            x: self.bounds.width - widthUnit,
+            y: self.bounds.height
+        ))
+    }
+
     // OPTIMIZE: remove hard-coded values & use some fucking vars gosh...
     func drawDiamond() {
         let diamondPath = UIBezierPath()
@@ -38,29 +68,37 @@ class SetCardView: CardView {
         diamondPath.moveToPoint(self.basePoint())
 
         // Right/Down
-        diamondPath.addLineToPoint(CGPoint(
+        let downRightEndPoint = CGPoint(
             x: self.origin().x + self.dimensions.width,
             y: self.origin().y
-        ))
+        )
+        diamondPath.addLineToPoint(downRightEndPoint)
 
         // Left/Down
-        diamondPath.addLineToPoint(CGPoint(
+        let leftDownEndPoint = CGPoint(
             x: self.origin().x,
             y: self.origin().y + self.dimensions.height
-        ))
+        )
+        diamondPath.addLineToPoint(leftDownEndPoint)
 
         // Left/Up
-        diamondPath.addLineToPoint(CGPoint(
+        let leftUpEndPoint = CGPoint(
             x: self.origin().x - self.dimensions.width,
             y: self.origin().y
-        ))
+        )
+        diamondPath.addLineToPoint(leftUpEndPoint)
 
-        diamondPath.closePath()
+        diamondPath.addLineToPoint(self.basePoint())
 
         if self.shading == "fill" {
             self.color.setFill()
             diamondPath.fill()
+        } else if self.shading == "stripe" {
+            self.addStripes(diamondPath)
         }
+
+        diamondPath.closePath()
+
         self.color.setStroke()
         diamondPath.stroke()
     }
@@ -68,15 +106,17 @@ class SetCardView: CardView {
     func drawOval() {
         let ovalPath = UIBezierPath()
 
-        ovalPath.moveToPoint(CGPoint(
+        let topLineStart = CGPoint(
             x: self.basePoint().x - (self.dimensions.width / 2.0),
             y: self.basePoint().y
-        ))
+        )
+        ovalPath.moveToPoint(topLineStart)
 
-        ovalPath.addLineToPoint(CGPoint(
+        let topLineEnd = CGPoint(
             x: self.basePoint().x + (self.dimensions.width / 2.0),
             y: self.basePoint().y
-        ))
+        )
+        ovalPath.addLineToPoint(topLineEnd)
 
         ovalPath.addArcWithCenter(
             CGPoint(
@@ -89,10 +129,11 @@ class SetCardView: CardView {
             clockwise: true
         )
 
-        ovalPath.addLineToPoint(CGPoint(
+        let bottomLineEnd = CGPoint(
             x: self.basePoint().x - (self.dimensions.width / 2.0),
             y: self.basePoint().y + (2.0 * self.dimensions.height)
-        ))
+        )
+        ovalPath.addLineToPoint(bottomLineEnd)
 
         ovalPath.addArcWithCenter(
             CGPoint(
@@ -107,8 +148,13 @@ class SetCardView: CardView {
 
         ovalPath.closePath()
 
-        self.color.setFill()
-        ovalPath.fill()
+        if self.shading == "fill" {
+            self.color.setFill()
+            ovalPath.fill()
+        } else if self.shading == "stripe" {
+            self.addStripes(ovalPath)
+        }
+
         self.color.setStroke()
         ovalPath.stroke()
     }
@@ -157,8 +203,12 @@ class SetCardView: CardView {
 
         squigglePath.closePath()
 
-        self.color.setFill()
-        squigglePath.fill()
+        if self.shading == "fill" {
+            self.color.setFill()
+            squigglePath.fill()
+        } else if self.shading == "stripe" {
+            self.addStripes(squigglePath)
+        }
         self.color.setStroke()
         squigglePath.stroke()
     }

@@ -21,6 +21,7 @@
 		DD5C6EE41C26006300CDF1FE /* PlayingCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */; };
 		DD5C6EE61C2A2F0700CDF1FE /* SetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */; };
 		DD5C6EE81C2B338300CDF1FE /* Int+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE71C2B338300CDF1FE /* Int+Geometry.swift */; };
+		DD5C6EEA1C2C4DEA00CDF1FE /* CGPoint+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5C6EE91C2C4DEA00CDF1FE /* CGPoint+Geometry.swift */; };
 		DD9ACCB81C0E83420013B67D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCB71C0E83420013B67D /* main.m */; };
 		DD9ACCBB1C0E83420013B67D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBA1C0E83420013B67D /* AppDelegate.m */; };
 		DD9ACCBE1C0E83420013B67D /* CardGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9ACCBD1C0E83420013B67D /* CardGameViewController.m */; };
@@ -77,6 +78,7 @@
 		DD5C6EE31C26006300CDF1FE /* PlayingCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardView.m; sourceTree = "<group>"; };
 		DD5C6EE51C2A2F0700CDF1FE /* SetCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardView.swift; sourceTree = "<group>"; };
 		DD5C6EE71C2B338300CDF1FE /* Int+Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Geometry.swift"; sourceTree = "<group>"; };
+		DD5C6EE91C2C4DEA00CDF1FE /* CGPoint+Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Geometry.swift"; sourceTree = "<group>"; };
 		DD9ACCB31C0E83420013B67D /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ACCB71C0E83420013B67D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD9ACCB91C0E83420013B67D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				DDC92DD91C0FF5DD00B51A13 /* Deck.h */,
 				DDC92DDA1C0FF5DD00B51A13 /* Deck.m */,
 				DDA2DB6F1C0F765000A593AB /* CardView.h */,
+				DD5C6EE91C2C4DEA00CDF1FE /* CGPoint+Geometry.swift */,
 				DDA2DB701C0F765000A593AB /* CardView.m */,
 				DD1880A41C1CF21F00BE2EF9 /* CardTableView.h */,
 				DD1880A51C1CF21F00BE2EF9 /* CardTableView.m */,
@@ -389,6 +392,7 @@
 				DD1880A31C1CD8E600BE2EF9 /* PlayingCardGameViewController.m in Sources */,
 				DD5444E81C21056900DCD867 /* HistoryViewController.m in Sources */,
 				DDC92DDB1C0FF5DD00B51A13 /* Deck.m in Sources */,
+				DD5C6EEA1C2C4DEA00CDF1FE /* CGPoint+Geometry.swift in Sources */,
 				DD1CBAEE1C174BE000DFA462 /* CardMatchingGame.m in Sources */,
 				DD37A1AB1C1B34640020A7CB /* PlayingCardTableView.m in Sources */,
 				DD435A001C22530000D063C6 /* HighScoresViewController.swift in Sources */,
