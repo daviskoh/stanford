@@ -51,13 +51,20 @@
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] init];
 
     for (SetCard *card in previouslyMatchedCards) {
+        NSMutableDictionary *attributes = @{
+                                     NSForegroundColorAttributeName: card.color,
+                                     NSStrokeColorAttributeName: [UIColor blackColor]
+                                     }.mutableCopy;
+        if ([card.shading  isEqualToString: @"fill"]) {
+            [attributes setObject:@0 forKey:@"NSStrokeWidthAttributeName"];
+        } else if ([card.shading isEqualToString:@"empty"]) {
+            [attributes setObject:@-5 forKey:@"NSStrokeWidthAttributeName"];
+        } else if ([card.shading isEqualToString:@"stripe"]) {
+            [attributes setObject:@5 forKey:@"NSStrokeWidthAttributeName"];
+        }
+
         NSAttributedString *subString = [[NSAttributedString alloc] initWithString:card.contents
-                                        attributes:@{
-                                                     NSForegroundColorAttributeName: card.color,
-                                                     // FIXME: add stroke width below
-//                                                     NSStrokeWidthAttributeName: card.strokeWidth,
-                                                     NSStrokeColorAttributeName: [UIColor blackColor]
-                                                     }];
+                                        attributes:attributes];
         [string appendAttributedString:subString];
     }
 
