@@ -11,7 +11,7 @@ import UIKit
 class SetCardView: CardView {
     var shading: String = ""
 
-    // OPTIMIZE: make dimensios dynamic based on view size
+    // OPTIMIZE: make dimensios dynamic based on view size ------[NEXT]------
     let dimensions = CGSize(
         width: 20.0,
         height: 10.0
@@ -61,7 +61,6 @@ class SetCardView: CardView {
         ))
     }
 
-    // OPTIMIZE: remove hard-coded values & use some fucking vars gosh...
     func drawDiamond() {
         let diamondPath = UIBezierPath()
 
