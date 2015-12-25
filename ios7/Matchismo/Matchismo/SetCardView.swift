@@ -246,13 +246,24 @@ class SetCardView: CardView {
 
             draw(self.basePoint())
 
+            let offset = (self.dimensions().height + (self.dimensions().height / 5.0))
             if self.rank == 2 {
                 draw(CGPoint(
                     x: self.basePoint().x,
-                    y: self.basePoint().y + (self.dimensions().height + (self.dimensions().height / 5.0))
+                    y: self.basePoint().y + offset
                 ))
             }
 
+            if self.rank == 3 {
+                draw(CGPoint(
+                    x: self.basePoint().x,
+                    y: self.basePoint().y - offset
+                ))
+                draw(CGPoint(
+                    x: self.basePoint().x,
+                    y: self.basePoint().y + offset
+                ))
+            }
         }
     }
 }
