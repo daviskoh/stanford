@@ -64,6 +64,11 @@
     return _history;
 }
 
+- (int)previousChosenCardIndex {
+    if (!_previousChosenCardIndex) _previousChosenCardIndex = -1;
+    return _previousChosenCardIndex;
+}
+
 #pragma mark - View
 
 - (CardTableView *)createCardTableView {
