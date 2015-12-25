@@ -41,18 +41,19 @@ class SetCardView: CardView {
     func addStripes(path: UIBezierPath) {
         let widthUnit = self.bounds.width / 3.0
 
-        path.addClip()
-
         path.moveToPoint(CGPoint(
-                x: widthUnit,
-                y: self.bounds.origin.y
-            ))
+            x: widthUnit,
+            y: self.bounds.origin.y
+        ))
         path.addLineToPoint(CGPoint(
             x: widthUnit,
             y: self.bounds.height
         ))
 
-        path.moveToPoint(self.basePoint())
+        path.moveToPoint(CGPoint(
+            x: self.basePoint().x,
+            y: self.bounds.origin.y
+        ))
         path.addLineToPoint(CGPoint(
             x: self.basePoint().x,
             y: self.bounds.height
@@ -79,6 +80,8 @@ class SetCardView: CardView {
         self.color.setStroke()
         path.stroke()
 
+        print(self.rank)
+        print(self.suit)
         if self.rank == 2 {
             CGContextMoveToPoint(
                 UIGraphicsGetCurrentContext(),
