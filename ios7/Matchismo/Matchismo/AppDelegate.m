@@ -27,11 +27,11 @@
 
     PlayingCardGameViewController *playingCardGameViewCtrl = [[PlayingCardGameViewController alloc] init];
     UINavigationController *playingCardNavCtrl = [[UINavigationController alloc] initWithRootViewController:playingCardGameViewCtrl];
-    playingCardNavCtrl.title = @"Playing Card Game";
+    playingCardNavCtrl.title = @"Playing Card";
 
     SetCardGameViewController *setCardGameViewCtrl = [[SetCardGameViewController alloc] init];
     UINavigationController *setCardNavCtrl = [[UINavigationController alloc] initWithRootViewController:setCardGameViewCtrl];
-    setCardNavCtrl.title = @"Set Card Game";
+    setCardNavCtrl.title = @"Set Card";
 
     HighScoresViewController *highScoresViewCtrl = [[HighScoresViewController alloc] init];
     highScoresViewCtrl.title = @"High Scores";
