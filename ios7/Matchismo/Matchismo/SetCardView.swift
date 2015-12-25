@@ -26,10 +26,16 @@ class SetCardView: CardView {
     }
 
     func basePoint() -> CGPoint {
-        return CGPoint(
+        var base = CGPoint(
             x: self.origin().x,
             y: self.origin().y - (self.dimensions().height / 2.0)
         )
+
+        if self.rank == 2 {
+            base.y = self.origin().y - (self.dimensions().height + (self.dimensions().height / 5.0))
+        }
+
+        return base
     }
 
     func addStripes(path: UIBezierPath) {
@@ -62,72 +68,86 @@ class SetCardView: CardView {
         ))
     }
 
-    func drawDiamond() {
+    func strokeAtPath(path: UIBezierPath) {
+        if self.shading == "fill" {
+            self.color.setFill()
+            path.fill()
+        } else if self.shading == "stripe" {
+            self.addStripes(path)
+        }
+
+        self.color.setStroke()
+        path.stroke()
+
+        if self.rank == 2 {
+            CGContextMoveToPoint(
+                UIGraphicsGetCurrentContext(),
+                self.basePoint().x,
+                self.basePoint().y + 1.0 + self.dimensions().height
+            )
+
+            path.stroke()
+        }
+
+        path.closePath()
+    }
+
+    func drawDiamond(basePoint: CGPoint) {
         let diamondPath = UIBezierPath()
 
         let width = self.dimensions().width
         let height = self.dimensions().height
 
-        diamondPath.moveToPoint(self.basePoint())
+        diamondPath.moveToPoint(basePoint)
 
         // Right/Down
         let downRightEndPoint = CGPoint(
-            x: self.origin().x + (width / 2.0),
-            y: self.origin().y
+            x: basePoint.x + (width / 2.0),
+            y: basePoint.y + (height / 2.0)
         )
         diamondPath.addLineToPoint(downRightEndPoint)
 
         // Left/Down
         let leftDownEndPoint = CGPoint(
-            x: self.origin().x,
-            y: self.origin().y + (height / 2.0)
+            x: basePoint.x,
+            y: basePoint.y + height
         )
         diamondPath.addLineToPoint(leftDownEndPoint)
 
         // Left/Up
         let leftUpEndPoint = CGPoint(
-            x: self.origin().x - (width / 2.0),
-            y: self.origin().y
+            x: basePoint.x - (width / 2.0),
+            y: basePoint.y + (height / 2.0)
         )
         diamondPath.addLineToPoint(leftUpEndPoint)
 
-        diamondPath.addLineToPoint(self.basePoint())
+        diamondPath.addLineToPoint(basePoint)
 
-        if self.shading == "fill" {
-            self.color.setFill()
-            diamondPath.fill()
-        } else if self.shading == "stripe" {
-            self.addStripes(diamondPath)
-        }
-
-        diamondPath.closePath()
-
-        self.color.setStroke()
-        diamondPath.stroke()
+        self.strokeAtPath(diamondPath)
     }
 
-    func drawOval() {
+    func drawOval(basePoint: CGPoint) {
         let ovalPath = UIBezierPath()
 
         let width = self.dimensions().width
         let height = self.dimensions().height
 
         let topLineStart = CGPoint(
-            x: self.basePoint().x - (width / 4.0),
-            y: self.basePoint().y
+            x: basePoint.x - (width / 4.0),
+            y: basePoint.y
         )
         ovalPath.moveToPoint(topLineStart)
 
         let topLineEnd = CGPoint(
-            x: self.basePoint().x + (width / 4.0),
-            y: self.basePoint().y
+            x: basePoint.x + (width / 4.0),
+            y: basePoint.y
         )
         ovalPath.addLineToPoint(topLineEnd)
 
         ovalPath.addArcWithCenter(
             CGPoint(
-                x: self.basePoint().x + (width / 4.0),
-                y: self.basePoint().y + (height / 2.0)
+                x: basePoint.x + (width / 4.0),
+                y: basePoint.y + (height / 2.0)
             ),
             radius: height / 2.0,
             startAngle: 270.degreesToRadians,
@@ -136,15 +156,15 @@ class SetCardView: CardView {
         )
 
         let bottomLineEnd = CGPoint(
-            x: self.basePoint().x - (width / 4.0),
-            y: self.basePoint().y + height
+            x: basePoint.x - (width / 4.0),
+            y: basePoint.y + height
         )
         ovalPath.addLineToPoint(bottomLineEnd)
 
         ovalPath.addArcWithCenter(
             CGPoint(
-                x: self.basePoint().x - (width / 4.0),
-                y: self.basePoint().y + (height / 2.0)
+                x: basePoint.x - (width / 4.0),
+                y: basePoint.y + (height / 2.0)
             ),
             radius: (height / 2.0),
             startAngle: 90.degreesToRadians,
@@ -152,44 +172,34 @@ class SetCardView: CardView {
             clockwise: true
         )
 
-        ovalPath.closePath()
-
-        if self.shading == "fill" {
-            self.color.setFill()
-            ovalPath.fill()
-        } else if self.shading == "stripe" {
-            self.addStripes(ovalPath)
-        }
-
-        self.color.setStroke()
-        ovalPath.stroke()
+        self.strokeAtPath(ovalPath)
     }
 
-    func drawSquiggle() {
+    func drawSquiggle(basePoint: CGPoint) {
         let squigglePath = UIBezierPath()
 
         let width = self.dimensions().width
         let height = self.dimensions().height
 
         let startPoint = CGPoint(
-            x: self.basePoint().x - (width / 2.0),
-            y: self.basePoint().y + height
+            x: basePoint.x - (width / 2.0),
+            y: basePoint.y + height
         )
 
         squigglePath.moveToPoint(startPoint)
 
         let endpoint = CGPoint(
-            x: self.basePoint().x + (width / 2.0),
-            y: self.basePoint().y
+            x: basePoint.x + (width / 2.0),
+            y: basePoint.y
         )
 
         let topPoint1 = CGPoint(
-            x: self.basePoint().x - width,
-            y: self.basePoint().y - height
+            x: basePoint.x - width,
+            y: basePoint.y - height
         )
         let topPoint2 = CGPoint(
-            x: self.basePoint().x + 1.0,
-            y: self.basePoint().y + height
+            x: basePoint.x + 1.0,
+            y: basePoint.y + height
         )
         squigglePath.addCurveToPoint(
             endpoint,
@@ -198,12 +208,12 @@ class SetCardView: CardView {
         )
 
         let bottomPoint1 = CGPoint(
-            x: self.basePoint().x + width,
-            y: self.basePoint().y + (height * 2.0)
+            x: basePoint.x + width,
+            y: basePoint.y + (height * 2.0)
         )
         let bottomPoint2 = CGPoint(
-            x: self.basePoint().x - 1.0,
-            y: self.basePoint().y - 1.0
+            x: basePoint.x - 1.0,
+            y: basePoint.y - 1.0
         )
         squigglePath.addCurveToPoint(
             startPoint,
@@ -211,32 +221,38 @@ class SetCardView: CardView {
             controlPoint2: bottomPoint2
         )
 
-        squigglePath.closePath()
-
-        if self.shading == "fill" {
-            self.color.setFill()
-            squigglePath.fill()
-        } else if self.shading == "stripe" {
-            self.addStripes(squigglePath)
-        }
-        self.color.setStroke()
-        squigglePath.stroke()
+        self.strokeAtPath(squigglePath)
     }
 
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
 
+        var draw: (CGPoint) -> ()
+
         if self.faceUp {
             switch self.suit {
             case "diamond":
-                self.drawDiamond()
+                draw = self.drawDiamond
             case "oval":
-                self.drawOval()
+                draw = self.drawOval
             case "squiggle":
-                self.drawSquiggle()
+                draw = self.drawSquiggle
             default:
-                break
+                // TODO: draw another shape that clearly shows non-option
+                // below needed because switch needs to be exhaustive
+                // and draw needs to be initialized
+                draw = self.drawDiamond
             }
+
+            draw(self.basePoint())
+
+            if self.rank == 2 {
+                draw(CGPoint(
+                    x: self.basePoint().x,
+                    y: self.basePoint().y + (self.dimensions().height + (self.dimensions().height / 5.0))
+                ))
+            }
+
         }
     }
 }
