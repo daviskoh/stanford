@@ -91,7 +91,6 @@
     return cell;
 }
 
-// TODO: ---[NEXT]--- remove matched cards ---[NEXT]---
 - (void)updateCards {
     for (SetCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
