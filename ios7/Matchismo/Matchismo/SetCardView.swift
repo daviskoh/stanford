@@ -254,8 +254,6 @@ class SetCardView: CardView {
                 ), path)
             }
 
-            print("-- shading: \(self.shading) --")
-
             path.addClip()
             self.addShading(path)
         }

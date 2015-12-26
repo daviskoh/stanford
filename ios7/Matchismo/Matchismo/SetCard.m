@@ -67,24 +67,29 @@
     }
 }
 
+// advantage: Set Card always uses 3 cards to match
 - (int)match:(NSArray *)otherCards {
-    int score = 0;
+    // all match or all diff: rank, suit, color, stripe
 
-    if (otherCards.count) {
-        for (SetCard *otherCard in otherCards) {
-            // TODO: check if below is legal or use isEqualTo... methods
-            if (self.rank == otherCard.rank ||
-                self.suit == otherCard.suit ||
-                self.color == self.color ||
-                self.shading == self.shading) {
+    // for all available attributes
+    // if card1[attribute] == card2[attribute] == card3[attribute] continue
+    // if card1[attribute] != card2[attribute] != card3[attribute] continue
+    // else return 0
 
-                // weight each attribute equally
-                score += 2;
-            }
+    SetCard *card1 = self;
+    SetCard *card2 = otherCards[0];
+    SetCard *card3 = otherCards[1];
+
+    for (NSString *property in @[@"rank", @"suit", @"color", @"shading"]) {
+        BOOL card1MatchesCard2 = [[card1 valueForKey:property] isEqual:[card2 valueForKey:property]];
+        BOOL card2MatchesCard3 = [[card2 valueForKey:property] isEqual:[card3 valueForKey:property]];
+        if ((card1MatchesCard2 && !card2MatchesCard3) ||
+            (!card1MatchesCard2 && card2MatchesCard3)) {
+            return 0;
         }
     }
 
-    return score;
+    return 8;
 }
 
 @end
