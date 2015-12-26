@@ -107,10 +107,13 @@ static const int COST_TO_CHOOSE = 1;
 
             if (score) {
                 self.scoreChange = score * MATCH_BONUS;
+
                 card.matched = YES;
                 for (Card *otherCard in otherCards) {
                     otherCard.matched = YES;
+                    [self.cards removeObject:otherCard];
                 }
+                [self.cards removeObject:card];
             } else {
                 if (self.lastChosenCard) {
                     self.scoreChange = MISMATCH_PENALTY;

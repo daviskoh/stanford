@@ -92,13 +92,17 @@
 }
 
 - (void)updateCards {
+    NSMutableArray *matchedCardViews = @[].mutableCopy;
+
     for (SetCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
         // OPTIMIZE: is below typecasting allowed / normal?
         SetCard *card = (SetCard *)[self.game cardAtIndex:cardButtonIndex];
 
-        if (card.isMatched) {
-            [cardView removeFromSuperview];
+        // card has been matched & removed by game
+        if (!card) {
+            [matchedCardViews addObject:cardView];
+            continue;
         }
 
         cardView.suit = card.suit;
@@ -109,6 +113,13 @@
         cardView.faceUp = card.isChosen;
 
         cardView.enabled = !card.isMatched;
+    }
+
+    // needed because removing views in above loop would be
+    // mutating mid-loop
+    for (SetCardView *cardView in matchedCardViews) {
+        [self.cardButtons removeObject:cardView];
+        [cardView.superview removeFromSuperview];
     }
 }
 
