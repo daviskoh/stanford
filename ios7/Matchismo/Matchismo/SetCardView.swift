@@ -67,37 +67,26 @@ class SetCardView: CardView {
             x: self.bounds.width - widthUnit,
             y: self.bounds.height
         ))
+
+        self.color.setStroke()
+        path.stroke()
     }
 
-    func strokeAtPath(path: UIBezierPath) {
+    func addShading(path: UIBezierPath) {
         if self.shading == "fill" {
             self.color.setFill()
             path.fill()
         } else if self.shading == "stripe" {
             self.addStripes(path)
         }
-
-        self.color.setStroke()
-        path.stroke()
-
-        print(self.rank)
-        print(self.suit)
-        if self.rank == 2 {
-            CGContextMoveToPoint(
-                UIGraphicsGetCurrentContext(),
-                self.basePoint().x,
-                self.basePoint().y + 1.0 + self.dimensions().height
-            )
-
-            path.stroke()
-        }
-
-        path.closePath()
     }
 
-    func drawDiamond(basePoint: CGPoint) {
-        let diamondPath = UIBezierPath()
+    func strokeAtPath(path: UIBezierPath) {
+        self.color.setStroke()
+        path.stroke()
+    }
 
+    func drawDiamond(basePoint: CGPoint, diamondPath: UIBezierPath) {
         let width = self.dimensions().width
         let height = self.dimensions().height
 
@@ -129,9 +118,7 @@ class SetCardView: CardView {
         self.strokeAtPath(diamondPath)
     }
 
-    func drawOval(basePoint: CGPoint) {
-        let ovalPath = UIBezierPath()
-
+    func drawOval(basePoint: CGPoint, ovalPath: UIBezierPath) {
         let width = self.dimensions().width
         let height = self.dimensions().height
 
@@ -178,9 +165,7 @@ class SetCardView: CardView {
         self.strokeAtPath(ovalPath)
     }
 
-    func drawSquiggle(basePoint: CGPoint) {
-        let squigglePath = UIBezierPath()
-
+    func drawSquiggle(basePoint: CGPoint, squigglePath: UIBezierPath) {
         let width = self.dimensions().width
         let height = self.dimensions().height
 
@@ -230,7 +215,7 @@ class SetCardView: CardView {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
 
-        var draw: (CGPoint) -> ()
+        var draw: (CGPoint, UIBezierPath) -> ()
 
         if self.faceUp {
             switch self.suit {
@@ -247,26 +232,32 @@ class SetCardView: CardView {
                 draw = self.drawDiamond
             }
 
-            draw(self.basePoint())
+            let path = UIBezierPath()
+            draw(self.basePoint(), path)
 
             let offset = (self.dimensions().height + (self.dimensions().height / 5.0))
             if self.rank == 2 {
                 draw(CGPoint(
                     x: self.basePoint().x,
                     y: self.basePoint().y + offset
-                ))
+                ), path)
             }
 
             if self.rank == 3 {
                 draw(CGPoint(
                     x: self.basePoint().x,
                     y: self.basePoint().y - offset
-                ))
+                ), path)
                 draw(CGPoint(
                     x: self.basePoint().x,
                     y: self.basePoint().y + offset
-                ))
+                ), path)
             }
+
+            print("-- shading: \(self.shading) --")
+
+            path.addClip()
+            self.addShading(path)
         }
     }
 }
