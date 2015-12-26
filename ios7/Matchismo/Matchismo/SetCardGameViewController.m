@@ -91,13 +91,16 @@
     return cell;
 }
 
-// FIXME: ---[NEXT]--- update Set Card match rules to make sure all 3 share 1 attributes ---[NEXT]---
 // TODO: ---[NEXT]--- remove matched cards ---[NEXT]---
 - (void)updateCards {
     for (SetCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
         // OPTIMIZE: is below typecasting allowed / normal?
         SetCard *card = (SetCard *)[self.game cardAtIndex:cardButtonIndex];
+
+        if (card.isMatched) {
+            [cardView removeFromSuperview];
+        }
 
         cardView.suit = card.suit;
         cardView.rank = card.rank;
