@@ -41,6 +41,8 @@
     return [[SetCardDeck alloc] init];
 }
 
+// TODO: ---[NEXT]--- add options for 3 more card ---[NEXT]---
+
 - (void)onDealButtonTouch:(UIButton *)sender {
     [super onDealButtonTouch:sender];
     self.game.requiredMatcheeCount = 2;
