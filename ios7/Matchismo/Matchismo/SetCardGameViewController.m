@@ -113,6 +113,8 @@
         cardView.faceUp = card.isChosen;
 
         cardView.enabled = !card.isMatched;
+
+        cardView.userInteractionEnabled = !card.isChosen;
     }
 
     // needed because removing views in above loop would be
