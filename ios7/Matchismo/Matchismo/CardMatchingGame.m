@@ -16,9 +16,35 @@
 
 @property (nonatomic, strong) Card *lastChosenCard;
 
+@property (nonatomic, strong) Deck *deck;
+
 @end
 
 @implementation CardMatchingGame
+
+- (BOOL)drawCards:(int)numberOfCards onDraw:(void(^)(Card *))block
+            error:(NSError **)errorPtr {
+
+    for (int i = 0; i < numberOfCards; i++) {
+        Card *card = [self.deck drawRandomCard];
+        if (card) {
+            [self.cards addObject:card];
+            if (block) block(card);
+        } else {
+            NSDictionary *userInfo = @{
+                                       NSLocalizedDescriptionKey: NSLocalizedString(@"Not enough cards in deck.", nil),
+                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The operation did not complete.", nil),
+                                       NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"Please make sure there are enough cards in the deck to draw.", nil)
+                                       };
+            *errorPtr = [NSError errorWithDomain:@"self.deck"
+                                            code:400
+                                        userInfo:userInfo];
+            return NO;
+        }
+    }
+
+    return YES;
+}
 
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck
@@ -27,18 +53,11 @@
 
     if (self) {
         self.requiredMatcheeCount = requiredMatcheeCount;
+        self.deck = deck;
 
-        for (int i = 0; i < count; i++) {
-            Card *card = [deck drawRandomCard];
-            if (card) {
-                [self.cards addObject:card];
-            } else {
-                // return nil if cant initialize properly
-                // given method args
-                self = nil;
-                break;
-            }
-        }
+        NSError *drawCardsError;
+        BOOL success = [self drawCards:(int)count onDraw:nil error:&drawCardsError];
+        if (!success) return nil;
     }
 
     return self;
@@ -87,7 +106,7 @@ static const int COST_TO_CHOOSE = 1;
             // set matched
         NSMutableArray *otherCards = [[NSMutableArray alloc] init];
 
-        [self.previouslyMatchedCards addObject:card];
+        if (card) [self.previouslyMatchedCards addObject:card];
 
         for (Card *otherCard in self.cards) {
             if (otherCards.count == self.requiredMatcheeCount) break;

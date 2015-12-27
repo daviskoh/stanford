@@ -28,4 +28,7 @@
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card *)cardAtIndex:(NSUInteger)index;
 
+- (BOOL)drawCards:(int)numberOfCards onDraw:(void(^)(Card *))block
+            error:(NSError **)errorPtr;
+
 @end
