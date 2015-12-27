@@ -63,20 +63,33 @@
 
     // FIXME: do something when error occurs
     int baseIndex = (int)self.cardButtons.count;
-    [self.game drawCards:3
-                  onDraw:^(int i, Card *card) {
-                      NSUInteger indexes[] = {0, baseIndex + i};
-                      NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:indexes
-                                                                           length:2];
-                      UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
-                                                                                                  forIndexPath:indexPath];
-                      // TODO: draw card from self.game
-                      SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
-                      [cell.contentView addSubview:cardView];
-                      // OPTIMIZE: this should be done as batch
-                      [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-                  }
-                   error:nil];
+    BOOL success = [self.game drawCards:3
+                                 onDraw:^(int i, Card *card) {
+                                     NSUInteger indexes[] = {0, baseIndex + i};
+                                     NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:indexes
+                                                                                           length:2];
+                                     UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                                                                  forIndexPath:indexPath];
+                                     // TODO: draw card from self.game
+                                     SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
+                                     [cell.contentView addSubview:cardView];
+                                     // OPTIMIZE: this should be done as batch
+                                     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                 }
+                                  error:nil];
+
+    if (!success) {
+        UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"Deck is Empty"
+                                                                           message:@"No more set cards left to draw."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil];
+        [alertCtrl addAction:ok];
+        [self presentViewController:alertCtrl
+                           animated:YES
+                         completion:nil];
+    }
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
