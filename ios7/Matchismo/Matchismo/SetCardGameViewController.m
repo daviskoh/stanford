@@ -38,6 +38,11 @@
     self.title = @"Set Card";
 }
 
+- (CardTableView *)createCardTableView {
+    return [[SetCardTableView alloc] initWithFrame:self.view.bounds
+                                  collectionViewLayout:self.collectionViewLayout];
+}
+
 - (CardMatchingGame *)game {
     CardMatchingGame *game = [super game];
     game.allowReDeals = YES;
