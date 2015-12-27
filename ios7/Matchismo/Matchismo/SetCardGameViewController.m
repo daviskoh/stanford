@@ -35,7 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.title = @"Set Card";
+
+    [self.collectionView.dealThreeMoreButton addTarget:self
+                                                action:@selector(onThreeMoreButtonTouch:)
+                                      forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (CardTableView *)createCardTableView {
@@ -54,6 +59,9 @@
 }
 
 // TODO: ---[NEXT]--- add options for 3 more card ---[NEXT]---
+- (void)onThreeMoreButtonTouch:(UIButton *)sender {
+    NSLog(@"3 more please!");
+}
 
 - (void)onDealButtonTouch:(UIButton *)sender {
     [super onDealButtonTouch:sender];
