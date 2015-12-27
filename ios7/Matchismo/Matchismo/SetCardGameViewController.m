@@ -58,9 +58,25 @@
     return [[SetCardDeck alloc] init];
 }
 
-// TODO: ---[NEXT]--- add options for 3 more card ---[NEXT]---
 - (void)onThreeMoreButtonTouch:(UIButton *)sender {
-    NSLog(@"3 more please!");
+    if (self.cardButtons.count > 9) return;
+
+    // FIXME: do something when error occurs
+    int baseIndex = (int)self.cardButtons.count;
+    [self.game drawCards:3
+                  onDraw:^(int i, Card *card) {
+                      NSUInteger indexes[] = {0, baseIndex + i};
+                      NSIndexPath *indexPath = [[NSIndexPath alloc] initWithIndexes:indexes
+                                                                           length:2];
+                      UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                                                  forIndexPath:indexPath];
+                      // TODO: draw card from self.game
+                      SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
+                      [cell.contentView addSubview:cardView];
+                      // OPTIMIZE: this should be done as batch
+                      [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                  }
+                   error:nil];
 }
 
 - (void)onDealButtonTouch:(UIButton *)sender {
@@ -97,15 +113,21 @@
     self.collectionView.lastResultLabel.attributedText = string;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
-                                                                           forIndexPath:indexPath];
-    SetCardView *cardView = [[SetCardView alloc] initWithFrame:cell.bounds];
+- (SetCardView *)createCardViewWithFrame:(CGRect)frame {
+    SetCardView *cardView = [[SetCardView alloc] initWithFrame:frame];
 
     UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                          action:@selector(onCardChosen:)];
     [cardView addGestureRecognizer:touchGesture];
+
+    return cardView;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                                           forIndexPath:indexPath];
+    SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
 
     [cell.contentView addSubview:cardView];
     [self.cardButtons addObject:cardView];
@@ -143,7 +165,7 @@
     // mutating mid-loop
     for (SetCardView *cardView in matchedCardViews) {
         [self.cardButtons removeObject:cardView];
-        [cardView.superview removeFromSuperview];
+        [cardView removeFromSuperview];
     }
 }
 
