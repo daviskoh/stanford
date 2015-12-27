@@ -18,6 +18,8 @@
 @property (nonatomic) NSMutableArray *previouslyMatchedCards;
 @property (nonatomic) int scoreChange;
 
+@property (nonatomic) BOOL allowReDeals;
+
 // designated initializer
 - (instancetype)initWithCardCount:(NSUInteger)count
                         usingDeck:(Deck *)deck

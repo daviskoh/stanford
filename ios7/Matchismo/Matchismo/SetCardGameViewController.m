@@ -9,12 +9,13 @@
 #import "SetCardGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "SetCardTableView.h"
 #import "Matchismo-Swift.h"
 
 @interface SetCardGameViewController ()
 
 // FIXME: find better way to do below than overriding collectionView prop
-@property (strong, nonatomic) CardTableView *collectionView;
+@property (strong, nonatomic) SetCardTableView *collectionView;
 
 @end
 
@@ -35,6 +36,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Set Card";
+}
+
+- (CardMatchingGame *)game {
+    CardMatchingGame *game = [super game];
+    game.allowReDeals = YES;
+    return game;
 }
 
 - (Deck *)createDeck {

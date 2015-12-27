@@ -71,8 +71,6 @@ static const int COST_TO_CHOOSE = 1;
     if (card.isMatched) {
         card.chosen = NO;
     } else {
-        NSMutableArray *otherCards = [[NSMutableArray alloc] init];
-
         // How do you match against last 2 chosen cards??
         // NOTE: in 3-card mode, MUST choose at least 3 cards before seeing results
 
@@ -87,6 +85,8 @@ static const int COST_TO_CHOOSE = 1;
             // card match:otherCards
             // set score
             // set matched
+        NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+
         [self.previouslyMatchedCards addObject:card];
 
         for (Card *otherCard in self.cards) {
@@ -111,9 +111,9 @@ static const int COST_TO_CHOOSE = 1;
                 card.matched = YES;
                 for (Card *otherCard in otherCards) {
                     otherCard.matched = YES;
-                    [self.cards removeObject:otherCard];
+                    if (self.allowReDeals) [self.cards removeObject:otherCard];
                 }
-                [self.cards removeObject:card];
+                if (self.allowReDeals) [self.cards removeObject:card];
             } else {
                 if (self.lastChosenCard) {
                     self.scoreChange = MISMATCH_PENALTY;
