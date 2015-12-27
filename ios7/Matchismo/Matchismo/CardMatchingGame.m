@@ -22,14 +22,14 @@
 
 @implementation CardMatchingGame
 
-- (BOOL)drawCards:(int)numberOfCards onDraw:(void(^)(Card *))block
+- (BOOL)drawCards:(int)numberOfCards onDraw:(void(^)(int, Card *))block
             error:(NSError **)errorPtr {
 
     for (int i = 0; i < numberOfCards; i++) {
         Card *card = [self.deck drawRandomCard];
         if (card) {
             [self.cards addObject:card];
-            if (block) block(card);
+            if (block) block(i, card);
         } else {
             NSDictionary *userInfo = @{
                                        NSLocalizedDescriptionKey: NSLocalizedString(@"Not enough cards in deck.", nil),
