@@ -42,7 +42,7 @@
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self
                                                                    attribute:NSLayoutAttributeCenterY
-                                                                  multiplier:1.7
+                                                                  multiplier:1.6
                                                                     constant:0];
 
     NSLayoutConstraint *historySliderWidthConstraint = [NSLayoutConstraint constraintWithItem:self.historySlider
@@ -50,7 +50,7 @@
                                                                    relatedBy:NSLayoutRelationEqual
                                                                       toItem:self
                                                                    attribute:NSLayoutAttributeWidth
-                                                                  multiplier:0.8
+                                                                  multiplier:0.5
                                                                     constant:0];
 
     [self addConstraints:@[historySliderXConstraint, historySliderYConstraint, historySliderWidthConstraint]];
