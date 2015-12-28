@@ -51,7 +51,7 @@
     self.game.requiredMatcheeCount = self.game.requiredMatcheeCount == 1 ? 2 : 1;
 }
 
-- (void)onCardChosen:(UIButton *)sender {
+- (void)onCardChosen:(UITapGestureRecognizer *)sender {
     [super onCardChosen:sender];
     self.collectionView.gameModeSwitch.enabled = NO;
 }

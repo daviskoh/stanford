@@ -21,7 +21,7 @@
 
 - (Deck *)createDeck; // abstract
 
-- (void)onCardChosen:(UIButton *)sender;
+- (void)onCardChosen:(UITapGestureRecognizer *)sender;
 - (void)onDealButtonTouch:(UIButton *)sender;
 
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previousResult
