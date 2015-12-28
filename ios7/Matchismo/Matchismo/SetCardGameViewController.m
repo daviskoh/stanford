@@ -178,7 +178,14 @@
     // mutating mid-loop
     for (SetCardView *cardView in matchedCardViews) {
         [self.cardButtons removeObject:cardView];
-        [cardView removeFromSuperview];
+
+        [UIView animateWithDuration:1.5
+                         animations:^{
+                             cardView.alpha = 0;
+                         }
+                         completion:^(BOOL fin){
+                            [cardView removeFromSuperview];
+                         }];
     }
 }
 
