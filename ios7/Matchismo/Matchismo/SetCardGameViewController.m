@@ -70,11 +70,17 @@
                                                                                            length:2];
                                      UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
                                                                                                                   forIndexPath:indexPath];
-                                     // TODO: draw card from self.game
+
                                      SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
-                                     [cell.contentView addSubview:cardView];
-                                     // OPTIMIZE: this should be done as batch
-                                     [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                     [UIView transitionWithView:self.collectionView
+                                                       duration:1.0
+                                                        options:UIViewAnimationOptionTransitionCrossDissolve
+                                                      animations:^{
+                                                          [cell.contentView addSubview:cardView];
+                                                          // OPTIMIZE: this should be done as batch
+                                                          [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+                                                      }
+                                                      completion:nil];
                                  }
                                   error:nil];
 
