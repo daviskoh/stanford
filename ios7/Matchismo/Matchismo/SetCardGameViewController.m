@@ -101,6 +101,10 @@
 - (void)onDealButtonTouch:(UIButton *)sender {
     [super onDealButtonTouch:sender];
     self.game.requiredMatcheeCount = 2;
+
+    while (self.cardButtons.count < 12) {
+        [self onThreeMoreButtonTouch:nil];
+    }
 }
 
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previouslyMatchedCards
