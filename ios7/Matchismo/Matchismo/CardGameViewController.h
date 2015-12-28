@@ -27,7 +27,7 @@
 - (void)updateLastResultLabelWithPreviousResult:(NSArray *)previousResult
                                     scoreChange:(int)scoreChange;
 
-- (void)updateCards;
+- (void)updateCardsAndAnimate:(BOOL)animate;
 
 @end
 

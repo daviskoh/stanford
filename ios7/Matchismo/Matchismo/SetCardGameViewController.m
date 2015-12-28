@@ -154,7 +154,7 @@
     return cell;
 }
 
-- (void)updateCards {
+- (void)updateCardsAndAnimate:(BOOL)animate {
     NSMutableArray *matchedCardViews = @[].mutableCopy;
 
     for (SetCardView *cardView in self.cardButtons) {

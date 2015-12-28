@@ -213,10 +213,10 @@
     self.collectionView.lastResultLabel.attributedText = attributeString;
 }
 
-- (void)updateCards {} // abstract / MUST be implemented
+- (void)updateCardsAndAnimate:(BOOL)animate {} // abstract / MUST be implemented
 
 - (void)updateUIAndAnimate:(BOOL)animate {
-    [self updateCards];
+    [self updateCardsAndAnimate:animate];
 
     [self updateScoreLabel];
     [self updateLastResultLabelWithPreviousResult:self.game.previouslyMatchedCards

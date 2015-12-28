@@ -72,7 +72,7 @@
     }
 }
 
-- (void)updateCards {
+- (void)updateCardsAndAnimate:(BOOL)animate {
     for (PlayingCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
         // is below typecasting allowed / normal?
