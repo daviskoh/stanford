@@ -13,6 +13,7 @@
 		DD72D7AF1C30D97200F705CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD72D7AE1C30D97200F705CC /* Assets.xcassets */; };
 		DD72D7BD1C30D97200F705CC /* DropitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7BC1C30D97200F705CC /* DropitTests.m */; };
 		DD72D7C81C30D97200F705CC /* DropitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7C71C30D97200F705CC /* DropitUITests.m */; };
+		DD72D7D71C30DF6800F705CC /* DropitBehavior.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7D61C30DF6800F705CC /* DropitBehavior.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		DD72D7C31C30D97200F705CC /* DropitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72D7C71C30D97200F705CC /* DropitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropitUITests.m; sourceTree = "<group>"; };
 		DD72D7C91C30D97200F705CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD72D7D51C30DF6800F705CC /* DropitBehavior.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropitBehavior.h; sourceTree = "<group>"; };
+		DD72D7D61C30DF6800F705CC /* DropitBehavior.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropitBehavior.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				DD72D7A91C30D97200F705CC /* DropitViewController.m */,
 				DD72D7AE1C30D97200F705CC /* Assets.xcassets */,
 				DD72D7B31C30D97200F705CC /* Info.plist */,
+				DD72D7D51C30DF6800F705CC /* DropitBehavior.h */,
+				DD72D7D61C30DF6800F705CC /* DropitBehavior.m */,
 				DD72D7A21C30D97100F705CC /* Supporting Files */,
 			);
 			path = Dropit;
@@ -264,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD72D7AA1C30D97200F705CC /* DropitViewController.m in Sources */,
+				DD72D7D71C30DF6800F705CC /* DropitBehavior.m in Sources */,
 				DD72D7A71C30D97200F705CC /* AppDelegate.m in Sources */,
 				DD72D7A41C30D97100F705CC /* main.m in Sources */,
 			);
