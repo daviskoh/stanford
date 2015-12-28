@@ -164,7 +164,7 @@
     if (chosenButtonIndex == self.previousChosenCardIndex) return;
 
     [self.game chooseCardAtIndex:chosenButtonIndex];
-    [self updateUI];
+    [self updateUIAndAnimate:NO];
     [UIView transitionWithView:sender.view
                           duration:0.2
                            options:UIViewAnimationOptionTransitionFlipFromRight
@@ -182,7 +182,7 @@
                                                   usingDeck:[self createDeck]
                                    withRequiredMatcheeCount:1];
 
-    [self updateUI];
+    [self updateUIAndAnimate:YES];
     self.history = [[NSMutableArray alloc] init];
     self.collectionView.lastResultLabel.attributedText = [[NSAttributedString alloc] initWithString:@""];
     // set to dummy index / little hackish but at least comparing i is faster than comparing objs?
@@ -215,7 +215,7 @@
 
 - (void)updateCards {} // abstract / MUST be implemented
 
-- (void)updateUI {
+- (void)updateUIAndAnimate:(BOOL)animate {
     [self updateCards];
 
     [self updateScoreLabel];
