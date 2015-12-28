@@ -165,11 +165,7 @@
 
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUIAndAnimate:NO];
-    [UIView transitionWithView:sender.view
-                          duration:0.2
-                           options:UIViewAnimationOptionTransitionFlipFromRight
-                        animations:nil
-                        completion:nil];
+    [self flipCardView:sender.view];
 
     self.previousChosenCardIndex = chosenButtonIndex;
 
@@ -223,6 +219,16 @@
                                       scoreChange:self.game.scoreChange];
 
     [self.history addObject:self.collectionView.lastResultLabel.attributedText];
+}
+
+#pragma Animation
+
+- (void)flipCardView:(UIView *)cardView {
+    [UIView transitionWithView:cardView
+                          duration:0.2
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:nil
+                        completion:nil];
 }
 
 #pragma mark - Performance

@@ -29,5 +29,7 @@
 
 - (void)updateCardsAndAnimate:(BOOL)animate;
 
+- (void)flipCardView:(UIView *)cardView;
+
 @end
 

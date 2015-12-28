@@ -178,6 +178,8 @@
         cardView.enabled = !card.isMatched;
 
         cardView.userInteractionEnabled = !card.isChosen;
+
+        if (animate) [self flipCardView:cardView];
     }
 
     // needed because removing views in above loop would be

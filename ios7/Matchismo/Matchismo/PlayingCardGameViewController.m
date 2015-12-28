@@ -89,6 +89,8 @@
 
         cardView.faceUp = card.isChosen;
         cardView.enabled = !card.isMatched;
+
+        if (animate) [self flipCardView:cardView];
     }
 }
 
