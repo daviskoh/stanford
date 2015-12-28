@@ -10,9 +10,7 @@
 		DD72D7A41C30D97100F705CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7A31C30D97100F705CC /* main.m */; };
 		DD72D7A71C30D97200F705CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7A61C30D97200F705CC /* AppDelegate.m */; };
 		DD72D7AA1C30D97200F705CC /* DropitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7A91C30D97200F705CC /* DropitViewController.m */; };
-		DD72D7AD1C30D97200F705CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD72D7AB1C30D97200F705CC /* Main.storyboard */; };
 		DD72D7AF1C30D97200F705CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD72D7AE1C30D97200F705CC /* Assets.xcassets */; };
-		DD72D7B21C30D97200F705CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD72D7B01C30D97200F705CC /* LaunchScreen.storyboard */; };
 		DD72D7BD1C30D97200F705CC /* DropitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7BC1C30D97200F705CC /* DropitTests.m */; };
 		DD72D7C81C30D97200F705CC /* DropitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD72D7C71C30D97200F705CC /* DropitUITests.m */; };
 /* End PBXBuildFile section */
@@ -41,9 +39,7 @@
 		DD72D7A61C30D97200F705CC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DD72D7A81C30D97200F705CC /* DropitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropitViewController.h; sourceTree = "<group>"; };
 		DD72D7A91C30D97200F705CC /* DropitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropitViewController.m; sourceTree = "<group>"; };
-		DD72D7AC1C30D97200F705CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD72D7AE1C30D97200F705CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DD72D7B11C30D97200F705CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD72D7B31C30D97200F705CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD72D7B81C30D97200F705CC /* DropitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72D7BC1C30D97200F705CC /* DropitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropitTests.m; sourceTree = "<group>"; };
@@ -105,9 +101,7 @@
 				DD72D7A61C30D97200F705CC /* AppDelegate.m */,
 				DD72D7A81C30D97200F705CC /* DropitViewController.h */,
 				DD72D7A91C30D97200F705CC /* DropitViewController.m */,
-				DD72D7AB1C30D97200F705CC /* Main.storyboard */,
 				DD72D7AE1C30D97200F705CC /* Assets.xcassets */,
-				DD72D7B01C30D97200F705CC /* LaunchScreen.storyboard */,
 				DD72D7B31C30D97200F705CC /* Info.plist */,
 				DD72D7A21C30D97100F705CC /* Supporting Files */,
 			);
@@ -244,9 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD72D7B21C30D97200F705CC /* LaunchScreen.storyboard in Resources */,
 				DD72D7AF1C30D97200F705CC /* Assets.xcassets in Resources */,
-				DD72D7AD1C30D97200F705CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,25 +299,6 @@
 			targetProxy = DD72D7C41C30D97200F705CC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		DD72D7AB1C30D97200F705CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD72D7AC1C30D97200F705CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DD72D7B01C30D97200F705CC /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DD72D7B11C30D97200F705CC /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		DD72D7CA1C30D97200F705CC /* Debug */ = {
