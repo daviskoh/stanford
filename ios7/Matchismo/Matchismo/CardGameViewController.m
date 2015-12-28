@@ -166,7 +166,7 @@
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
     [UIView transitionWithView:sender.view
-                          duration:0.5
+                          duration:0.2
                            options:UIViewAnimationOptionTransitionFlipFromRight
                         animations:nil
                         completion:nil];
