@@ -9,7 +9,7 @@
 #import "DropitViewController.h"
 #import "DropitBehavior.h"
 
-@interface DropitViewController ()
+@interface DropitViewController () <UIDynamicAnimatorDelegate>
 
 @property (strong, nonatomic) UIView *gameView;
 
@@ -24,6 +24,40 @@
 - (UIDynamicAnimator *)animator {
     if (!_animator) _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.gameView];
     return _animator;
+}
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator {
+    [self removeCompletedRows];
+}
+
+- (void)animateRemovingDrops:(NSArray *)dropsToRemove {
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         for (UIView *drop in dropsToRemove) {
+                             CGFloat width = self.gameView.bounds.size.width;
+                             int x = (arc4random()%(int)(width * 5)) - (int)width * 2;
+                             int y = self.gameView.bounds.size.height;
+                             drop.center = CGPointMake(x, -y);
+                         }
+                     }
+                     completion:^(BOOL finished) {
+                         // remove obj from super view
+                         [dropsToRemove makeObjectsPerformSelector:@selector(removeFromSuperview)];
+                     }];
+}
+
+- (BOOL)removeCompletedRows {
+    // TODO: figure out which drops to remove
+    NSMutableArray *dropsToRemove = @[].mutableCopy;
+
+    if ([dropsToRemove count]) {
+        for (UIView *drop in dropsToRemove) {
+            [self.dropitBehavior removeItem:drop];
+        }
+        [self animateRemovingDrops:dropsToRemove];
+    }
+
+    return NO;
 }
 
 - (DropitBehavior *)dropitBehavior {
