@@ -165,6 +165,11 @@
 
     [self.game chooseCardAtIndex:chosenButtonIndex];
     [self updateUI];
+    [UIView transitionWithView:sender.view
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:nil
+                        completion:nil];
 
     self.previousChosenCardIndex = chosenButtonIndex;
 

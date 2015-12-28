@@ -75,7 +75,7 @@
 - (void)updateCards {
     for (PlayingCardView *cardView in self.cardButtons) {
         int cardButtonIndex = (int)[self.cardButtons indexOfObject:cardView];
-        // OPTIMIZE: is below typecasting allowed / normal?
+        // is below typecasting allowed / normal?
         PlayingCard *card = (PlayingCard *)[self.game cardAtIndex:cardButtonIndex];
 
         cardView.suit = card.suit;
@@ -88,7 +88,6 @@
         }
 
         cardView.faceUp = card.isChosen;
-
         cardView.enabled = !card.isMatched;
     }
 }
