@@ -8,7 +8,7 @@
 
 #import "ImageViewController.h"
 
-@interface ImageViewController ()
+@interface ImageViewController () <UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIImageView *imageView;
 
@@ -31,8 +31,18 @@
         // NOTE: in class, prof does this in setter
         // must do it here because using lazy instantiaion to init NOT storyboard
         _scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+
+        _scrollView.minimumZoomScale = 0.2;
+        _scrollView.maximumZoomScale = 2.0;
+
+        _scrollView.delegate = self;
     }
     return _scrollView;
+}
+
+// which of our views do we want to zoom
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imageView;
 }
 
 - (void)setImageURL:(NSURL *)imageURL {
