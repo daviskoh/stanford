@@ -14,9 +14,26 @@
 
 @property (strong, nonatomic) UIImage *image;
 
+@property (strong, nonatomic) UIScrollView *scrollView;
+
 @end
 
 @implementation ImageViewController
+
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+
+        // NOTE: below is needed here (as well as setImage:) because
+        // in setImage:, self.scrollView could potentially be nil
+        // due to view ctrl life cycle order
+
+        // NOTE: in class, prof does this in setter
+        // must do it here because using lazy instantiaion to init NOT storyboard
+        _scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+    }
+    return _scrollView;
+}
 
 - (void)setImageURL:(NSURL *)imageURL {
     _imageURL = imageURL;
@@ -40,12 +57,16 @@
 
     // ** UIImageView will adjust frame to fit image **
     [self.imageView sizeToFit];
+
+    // can cause trouble if self.image == nil
+    self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.view addSubview:self.imageView];
+    [self.view addSubview:self.scrollView];
+    [self.scrollView addSubview:self.imageView];
 }
 
 @end
