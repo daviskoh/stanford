@@ -17,6 +17,10 @@
 
 @property (strong, nonatomic) DropitBehavior *dropitBehavior;
 
+@property (strong, nonatomic) UIAttachmentBehavior *attachmentBehavior;
+// used to keep track of which view is currently dropping
+@property (strong, nonatomic) UIView *droppingView;
+
 @end
 
 @implementation DropitViewController
@@ -76,14 +80,48 @@ static const CGSize DROP_SIZE = { 40, 40 };
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.gameView = [[UIView alloc] initWithFrame:self.view.frame];
+
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(tap:)];
     [self.gameView addGestureRecognizer:tapGesture];
+
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(pan:)];
+    [self.gameView addGestureRecognizer:panGesture];
+
+
     [self.view addSubview:self.gameView];
 }
 
 - (void)tap:(UITapGestureRecognizer *)sender {
     [self drop];
+}
+
+// TODO: rename to grab drop (action not really panning)
+- (void)pan:(UIPanGestureRecognizer *)sender {
+    // where is pan pesture / where it happened
+    CGPoint gesturePoint = [sender locationInView:self.gameView];
+
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self attachDroppingViewToPoint:gesturePoint];
+    } else if (sender.state == UIGestureRecognizerStateChanged) {
+        self.attachmentBehavior.anchorPoint = gesturePoint;
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        // stop doing animation
+        [self.animator removeBehavior:self.attachmentBehavior];
+    }
+}
+
+- (void)attachDroppingViewToPoint:(CGPoint)anchorPoint {
+    if (self.droppingView) {
+        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.droppingView
+                                                            attachedToAnchor:anchorPoint];
+        // dont allow grabbing of drop again
+        self.droppingView = nil;
+
+        // as soon as below is executed, animator will begin animating the behavior
+        [self.animator addBehavior:self.attachmentBehavior];
+    }
 }
 
 - (void)drop {
@@ -97,6 +135,7 @@ static const CGSize DROP_SIZE = { 40, 40 };
     dropView.backgroundColor = [self randomColor];
     [self.gameView addSubview:dropView];
 
+    self.droppingView = dropView;
     [self.dropitBehavior addItem:dropView];
 }
 
