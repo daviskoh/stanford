@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    CGRect dimensions = [UIScreen mainScreen].bounds;
+    self.window = [[UIWindow alloc] initWithFrame:dimensions];
+
+    ViewController *viewCtrl = [[ViewController alloc] init];
+    UINavigationController *photoNavCtrl = [[UINavigationController alloc] initWithRootViewController:viewCtrl];
+    photoNavCtrl.title = @"Photos";
+
+    self.window.rootViewController = photoNavCtrl;
+
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

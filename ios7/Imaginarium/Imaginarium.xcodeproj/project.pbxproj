@@ -13,6 +13,7 @@
 		DDFA2FEF1C332CEB00669D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDFA2FEE1C332CEB00669D54 /* Assets.xcassets */; };
 		DDFA2FFD1C332CEB00669D54 /* ImaginariumTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA2FFC1C332CEB00669D54 /* ImaginariumTests.m */; };
 		DDFA30081C332CEB00669D54 /* ImaginariumUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA30071C332CEB00669D54 /* ImaginariumUITests.m */; };
+		DDFA30171C332D8D00669D54 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFA30161C332D8D00669D54 /* ImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		DDFA30031C332CEB00669D54 /* ImaginariumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImaginariumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDFA30071C332CEB00669D54 /* ImaginariumUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImaginariumUITests.m; sourceTree = "<group>"; };
 		DDFA30091C332CEB00669D54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DDFA30151C332D8D00669D54 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		DDFA30161C332D8D00669D54 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 			children = (
 				DDFA2FE51C332CEB00669D54 /* AppDelegate.h */,
 				DDFA2FE61C332CEB00669D54 /* AppDelegate.m */,
+				DDFA30151C332D8D00669D54 /* ImageViewController.h */,
+				DDFA30161C332D8D00669D54 /* ImageViewController.m */,
 				DDFA2FE81C332CEB00669D54 /* ViewController.h */,
 				DDFA2FE91C332CEB00669D54 /* ViewController.m */,
 				DDFA2FEE1C332CEB00669D54 /* Assets.xcassets */,
@@ -264,6 +269,7 @@
 			files = (
 				DDFA2FEA1C332CEB00669D54 /* ViewController.m in Sources */,
 				DDFA2FE71C332CEB00669D54 /* AppDelegate.m in Sources */,
+				DDFA30171C332D8D00669D54 /* ImageViewController.m in Sources */,
 				DDFA2FE41C332CEB00669D54 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
