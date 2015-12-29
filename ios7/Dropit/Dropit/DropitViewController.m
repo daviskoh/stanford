@@ -8,10 +8,11 @@
 
 #import "DropitViewController.h"
 #import "DropitBehavior.h"
+#import "BezierPathView.h"
 
 @interface DropitViewController () <UIDynamicAnimatorDelegate>
 
-@property (strong, nonatomic) UIView *gameView;
+@property (strong, nonatomic) BezierPathView *gameView;
 
 @property (strong, nonatomic) UIDynamicAnimator *animator;
 
@@ -79,7 +80,8 @@ static const CGSize DROP_SIZE = { 40, 40 };
 
     self.view.backgroundColor = [UIColor whiteColor];
 
-    self.gameView = [[UIView alloc] initWithFrame:self.view.frame];
+    self.gameView = [[BezierPathView alloc] initWithFrame:self.view.frame];
+    self.gameView.backgroundColor = [UIColor whiteColor];
 
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(tap:)];
@@ -109,6 +111,9 @@ static const CGSize DROP_SIZE = { 40, 40 };
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         // stop doing animation
         [self.animator removeBehavior:self.attachmentBehavior];
+
+        // otherwise line will remain in view
+        self.gameView.path = nil;
     }
 }
 
@@ -116,6 +121,21 @@ static const CGSize DROP_SIZE = { 40, 40 };
     if (self.droppingView) {
         self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:self.droppingView
                                                             attachedToAnchor:anchorPoint];
+
+        // NOTE: how self.droppingView is set to nil below block def
+        // thus, need to have ref when self.droppingView is defined
+        UIView *droppingView = self.droppingView;
+
+        // everytime animation run, block below is executed
+        // [[update "that thing" lol what fucking "thing"?]]
+        __weak DropitViewController *weakSelf = self;
+        self.attachmentBehavior.action = ^{
+            UIBezierPath *path = [[UIBezierPath alloc] init];
+            [path moveToPoint:weakSelf.attachmentBehavior.anchorPoint];
+            [path addLineToPoint:droppingView.center];
+            weakSelf.gameView.path = path;
+        };
+
         // dont allow grabbing of drop again
         self.droppingView = nil;
 
