@@ -16,9 +16,37 @@
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 
+@property (strong, nonatomic) UIActivityIndicatorView *spinner;
+
 @end
 
 @implementation ImageViewController
+
+- (UIActivityIndicatorView *)spinner {
+    if (!_spinner) {
+        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    }
+    return _spinner;
+}
+
+- (void)positionSpinner:(UIActivityIndicatorView *)spinner {
+    NSLayoutConstraint *xConstraint = [NSLayoutConstraint constraintWithItem:spinner
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                   relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterX
+                                                                  multiplier:1
+                                                                    constant:0];
+
+    NSLayoutConstraint *yConstraint = [NSLayoutConstraint constraintWithItem:spinner
+                                                                   attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual
+                                                                      toItem:self.view
+                                                                   attribute:NSLayoutAttributeCenterY
+                                                                  multiplier:1
+                                                                    constant:0];
+
+    [self.view addConstraints:@[xConstraint, yConstraint]];
+}
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
@@ -56,6 +84,11 @@
 
     // TODO: difficult to see perf improvement on sluggish simulator so check some other way
     if (self.imageURL) {
+        [self.view addSubview:self.spinner];
+        self.spinner.translatesAutoresizingMaskIntoConstraints = NO;
+        [self positionSpinner:self.spinner];
+        [self.spinner startAnimating];
+
         NSURLRequest *request = [NSURLRequest requestWithURL:self.imageURL];
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
@@ -105,6 +138,8 @@
 
     // can cause trouble if self.image == nil
     self.scrollView.contentSize = self.image ? self.image.size : CGSizeZero;
+
+    [self.spinner stopAnimating];
 }
 
 - (void)viewDidLoad {
