@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ImageViewController.h"
 
 @interface ViewController ()
 
@@ -34,8 +35,19 @@
         offset += 100;
         button.frame = frame;
 
+        [button addTarget:self
+                   action:@selector(onButtonTap:)
+         forControlEvents:UIControlEventTouchUpInside];
+
         [self.view addSubview:button];
     }
+}
+
+- (void)onButtonTap:(UIButton *)sender {
+    ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
+    imageViewCtrl.title = @"Image";
+    [self.navigationController pushViewController:imageViewCtrl
+                                         animated:YES];
 }
 
 @end

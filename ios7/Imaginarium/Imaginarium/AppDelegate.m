@@ -21,8 +21,8 @@
     self.window = [[UIWindow alloc] initWithFrame:dimensions];
 
     ViewController *viewCtrl = [[ViewController alloc] init];
+    viewCtrl.title = @"Photos";
     UINavigationController *photoNavCtrl = [[UINavigationController alloc] initWithRootViewController:viewCtrl];
-    photoNavCtrl.title = @"Photos";
 
     self.window.rootViewController = photoNavCtrl;
 
