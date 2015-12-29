@@ -65,6 +65,8 @@
     return NO;
 }
 
+// TODO: ---[NEXT]--- prevent drops from rotating ---[NEXT]---
+
 - (DropitBehavior *)dropitBehavior {
     if (!_dropitBehavior) {
         _dropitBehavior = [[DropitBehavior alloc] init];
