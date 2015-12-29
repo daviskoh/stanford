@@ -11,9 +11,24 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) NSDictionary *buttonURLs;
+
 @end
 
 @implementation ViewController
+
+- (NSDictionary *)buttonURLs {
+    if (!_buttonURLs) {
+        // OPTIMIZE: remove hardcoding
+        // OPTIMIZE: should this be a collection of image models?
+        _buttonURLs = @{
+                        @"Flower": @"photo_1",
+                        @"Peppers": @"photo_2",
+                        @"Jellyfish": @"photo_3"
+                        };
+    }
+    return _buttonURLs;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -21,8 +36,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     CGFloat offset = -100;
-    NSArray *buttons = @[@"Flower", @"Peppers", @"Jellyfish"];
-    for (NSString *buttonTitle in buttons) {
+    for (NSString *buttonTitle in self.buttonURLs) {
         UIButton *button = [[UIButton alloc] init];
         [button setTitle:buttonTitle forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
@@ -45,7 +59,23 @@
 
 - (void)onButtonTap:(UIButton *)sender {
     ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
-    imageViewCtrl.title = @"Image";
+
+    NSString *formattedString = [@[
+                                  @"http:/",
+                                  @"images.apple.com",
+                                  @"v/iphone-5s",
+                                  @"gallery",
+                                  @"a/images",
+                                  @"download",
+                                  @"%@.jpg"
+                                  ] componentsJoinedByString:@"/"];
+
+    NSString *photoURLString = [NSString stringWithFormat:formattedString,
+                                self.buttonURLs[sender.titleLabel.text]];
+
+    imageViewCtrl.imageURL = [NSURL URLWithString:photoURLString];
+    imageViewCtrl.title = photoURLString;
+
     [self.navigationController pushViewController:imageViewCtrl
                                          animated:YES];
 }
