@@ -148,8 +148,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
-                                                                           forIndexPath:indexPath];
+    UICollectionViewCell *cell = [super collectionView:collectionView
+                               cellForItemAtIndexPath:indexPath];
+
     SetCardView *cardView = [self createCardViewWithFrame:cell.bounds];
 
     [cell.contentView addSubview:cardView];

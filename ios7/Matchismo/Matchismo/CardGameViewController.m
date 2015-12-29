@@ -106,7 +106,8 @@
 // abstract
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    return [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
+                                                     forIndexPath:indexPath];
 }
 
 #pragma mark - UICollectionViewFlowLayout protocol

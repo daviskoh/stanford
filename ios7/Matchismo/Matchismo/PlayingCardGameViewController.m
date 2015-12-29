@@ -96,8 +96,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cardCell"
-                                                                           forIndexPath:indexPath];
+    UICollectionViewCell *cell = [super collectionView:collectionView
+                               cellForItemAtIndexPath:indexPath];
+
     PlayingCardView *cardView = [[PlayingCardView alloc] initWithFrame:cell.bounds];
 
     UIGestureRecognizer *touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
