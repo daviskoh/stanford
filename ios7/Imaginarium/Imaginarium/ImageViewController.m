@@ -47,8 +47,43 @@
 
 - (void)setImageURL:(NSURL *)imageURL {
     _imageURL = imageURL;
-    // below is blocking as its fetching from Internet
-    self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.imageURL]];
+    [self startDownloadingImage];
+}
+
+- (void)startDownloadingImage {
+    // clear out previous image
+    self.image = nil;
+
+    // TODO: difficult to see perf improvement on sluggish simulator so check some other way
+    if (self.imageURL) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:self.imageURL];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+        // OPTIMIZE: check if download is NOT currently happening for imageURL before executing fresh download
+        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request
+                                                        completionHandler:^(NSURL * _Nullable localfile,
+                                                                            NSURLResponse * _Nullable response,
+                                                                            NSError * _Nullable error) {
+                                                            if (!error) {
+                                                                // in case self.imageURL changed while request was executing
+                                                                // ex: user taps image, changes mind, taps another image
+                                                                if ([request.URL isEqual:self.imageURL]) {
+                                                                    // NOTE: not allowed to use UIKit classes OFF MAIN QUEUE
+                                                                    // UIImage is exception
+                                                                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:localfile]];
+
+                                                                    // UI-related code goes in main queue
+                                                                    // can also do performSelectorOnMainThread:
+                                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                                                        self.image = image;
+                                                                    });
+                                                                }
+                                                            }
+                                                        }];
+        // tasks start out suspended
+        // need to explicitly start / resume it
+        [task resume];
+    }
 }
 
 - (UIImageView *)imageView {
