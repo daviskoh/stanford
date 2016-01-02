@@ -14,6 +14,7 @@
 		DD8F5F2A1C388F6D002103C0 /* ShutterbugUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F291C388F6D002103C0 /* ShutterbugUITests.m */; };
 		DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */; };
 		DD8F5F3C1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */; };
+		DD8F5F421C389467002103C0 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F411C389467002103C0 /* FlickrFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,9 @@
 		DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotosTableViewController.m; sourceTree = "<group>"; };
 		DD8F5F3A1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JustPostedFlickrPhotosTableViewController.h; sourceTree = "<group>"; };
 		DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JustPostedFlickrPhotosTableViewController.m; sourceTree = "<group>"; };
+		DD8F5F3F1C389467002103C0 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrAPIKey.h; path = "../../../../../../Desktop/Flickr Fetcher/FlickrAPIKey.h"; sourceTree = "<group>"; };
+		DD8F5F401C389467002103C0 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlickrFetcher.h; path = "../../../../../../Desktop/Flickr Fetcher/FlickrFetcher.h"; sourceTree = "<group>"; };
+		DD8F5F411C389467002103C0 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlickrFetcher.m; path = "../../../../../../Desktop/Flickr Fetcher/FlickrFetcher.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,9 @@
 				DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */,
 				DD8F5F3A1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.h */,
 				DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */,
+				DD8F5F3F1C389467002103C0 /* FlickrAPIKey.h */,
+				DD8F5F401C389467002103C0 /* FlickrFetcher.h */,
+				DD8F5F411C389467002103C0 /* FlickrFetcher.m */,
 				DD8F5F101C388F6D002103C0 /* Assets.xcassets */,
 				DD8F5F151C388F6D002103C0 /* Info.plist */,
 				DD8F5F041C388F6D002103C0 /* Supporting Files */,
@@ -270,6 +277,7 @@
 				DD8F5F091C388F6D002103C0 /* AppDelegate.m in Sources */,
 				DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */,
 				DD8F5F3C1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m in Sources */,
+				DD8F5F421C389467002103C0 /* FlickrFetcher.m in Sources */,
 				DD8F5F061C388F6D002103C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
