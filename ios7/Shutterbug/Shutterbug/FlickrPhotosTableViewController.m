@@ -29,6 +29,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setPhotos:(NSArray *)photos {
+    _photos = photos;
+    // when model changes, update views
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -13,6 +13,7 @@
 		DD8F5F1F1C388F6D002103C0 /* ShutterbugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F1E1C388F6D002103C0 /* ShutterbugTests.m */; };
 		DD8F5F2A1C388F6D002103C0 /* ShutterbugUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F291C388F6D002103C0 /* ShutterbugUITests.m */; };
 		DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */; };
+		DD8F5F3C1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		DD8F5F2B1C388F6D002103C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD8F5F371C38904E002103C0 /* FlickrPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotosTableViewController.h; sourceTree = "<group>"; };
 		DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotosTableViewController.m; sourceTree = "<group>"; };
+		DD8F5F3A1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JustPostedFlickrPhotosTableViewController.h; sourceTree = "<group>"; };
+		DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JustPostedFlickrPhotosTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 				DD8F5F081C388F6D002103C0 /* AppDelegate.m */,
 				DD8F5F371C38904E002103C0 /* FlickrPhotosTableViewController.h */,
 				DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */,
+				DD8F5F3A1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.h */,
+				DD8F5F3B1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m */,
 				DD8F5F101C388F6D002103C0 /* Assets.xcassets */,
 				DD8F5F151C388F6D002103C0 /* Info.plist */,
 				DD8F5F041C388F6D002103C0 /* Supporting Files */,
@@ -264,6 +269,7 @@
 			files = (
 				DD8F5F091C388F6D002103C0 /* AppDelegate.m in Sources */,
 				DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */,
+				DD8F5F3C1C3892D2002103C0 /* JustPostedFlickrPhotosTableViewController.m in Sources */,
 				DD8F5F061C388F6D002103C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

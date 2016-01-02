@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FlickrPhotosTableViewController.h"
+#import "JustPostedFlickrPhotosTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +20,7 @@
     CGRect bounds = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:bounds];
 
-    self.window.rootViewController = [[FlickerPhotosTableViewController alloc] init];
+    self.window.rootViewController = [[JustPostedFlickrPhotosTableViewController alloc] init];
 
     [self.window makeKeyAndVisible];
 
