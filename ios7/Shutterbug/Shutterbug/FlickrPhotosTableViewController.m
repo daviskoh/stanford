@@ -6,13 +6,13 @@
 //  Copyright © 2016 com.DavisKoh. All rights reserved.
 //
 
-#import "FlickerPhotosTableViewController.h"
+#import "FlickrPhotosTableViewController.h"
 
-@interface FlickerPhotosTableViewController ()
+@interface FlickrPhotosTableViewController ()
 
 @end
 
-@implementation FlickerPhotosTableViewController
+@implementation FlickrPhotosTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

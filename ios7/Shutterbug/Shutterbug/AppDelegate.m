@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FlickerPhotosTableViewController.h"
+#import "FlickrPhotosTableViewController.h"
 
 @interface AppDelegate ()
 

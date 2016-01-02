@@ -12,7 +12,7 @@
 		DD8F5F111C388F6D002103C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD8F5F101C388F6D002103C0 /* Assets.xcassets */; };
 		DD8F5F1F1C388F6D002103C0 /* ShutterbugTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F1E1C388F6D002103C0 /* ShutterbugTests.m */; };
 		DD8F5F2A1C388F6D002103C0 /* ShutterbugUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F291C388F6D002103C0 /* ShutterbugUITests.m */; };
-		DD8F5F391C38904E002103C0 /* FlickerPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F381C38904E002103C0 /* FlickerPhotosTableViewController.m */; };
+		DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,8 @@
 		DD8F5F251C388F6D002103C0 /* ShutterbugUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShutterbugUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD8F5F291C388F6D002103C0 /* ShutterbugUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShutterbugUITests.m; sourceTree = "<group>"; };
 		DD8F5F2B1C388F6D002103C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD8F5F371C38904E002103C0 /* FlickerPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickerPhotosTableViewController.h; sourceTree = "<group>"; };
-		DD8F5F381C38904E002103C0 /* FlickerPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickerPhotosTableViewController.m; sourceTree = "<group>"; };
+		DD8F5F371C38904E002103C0 /* FlickrPhotosTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotosTableViewController.h; sourceTree = "<group>"; };
+		DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotosTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +99,8 @@
 			children = (
 				DD8F5F071C388F6D002103C0 /* AppDelegate.h */,
 				DD8F5F081C388F6D002103C0 /* AppDelegate.m */,
-				DD8F5F371C38904E002103C0 /* FlickerPhotosTableViewController.h */,
-				DD8F5F381C38904E002103C0 /* FlickerPhotosTableViewController.m */,
+				DD8F5F371C38904E002103C0 /* FlickrPhotosTableViewController.h */,
+				DD8F5F381C38904E002103C0 /* FlickrPhotosTableViewController.m */,
 				DD8F5F101C388F6D002103C0 /* Assets.xcassets */,
 				DD8F5F151C388F6D002103C0 /* Info.plist */,
 				DD8F5F041C388F6D002103C0 /* Supporting Files */,
@@ -263,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD8F5F091C388F6D002103C0 /* AppDelegate.m in Sources */,
-				DD8F5F391C38904E002103C0 /* FlickerPhotosTableViewController.m in Sources */,
+				DD8F5F391C38904E002103C0 /* FlickrPhotosTableViewController.m in Sources */,
 				DD8F5F061C388F6D002103C0 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

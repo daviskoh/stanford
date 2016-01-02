@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlickerPhotosTableViewController : UITableViewController
+@interface FlickrPhotosTableViewController : UITableViewController
 
 @end
