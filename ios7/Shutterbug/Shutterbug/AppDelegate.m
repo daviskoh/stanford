@@ -21,7 +21,12 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
 
     JustPostedFlickrPhotosTableViewController *flickrCtrl = [[JustPostedFlickrPhotosTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:flickrCtrl];
+    UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:flickrCtrl];
+
+    UISplitViewController *photoSplitViewCtrl = [[UISplitViewController alloc] init];
+    photoSplitViewCtrl.viewControllers = @[navCtrl];
+
+    self.window.rootViewController = photoSplitViewCtrl;
 
     [self.window makeKeyAndVisible];
 

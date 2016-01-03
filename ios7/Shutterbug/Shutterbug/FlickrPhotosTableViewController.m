@@ -75,6 +75,7 @@ static NSString *cellTitle = @"FlickrTableViewCell";
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
+
     [self prepareImageViewController:imageViewCtrl
                       toDisplayPhoto:self.photos[indexPath.row]];
 
