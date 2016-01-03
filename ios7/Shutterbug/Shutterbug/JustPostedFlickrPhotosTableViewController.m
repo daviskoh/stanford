@@ -21,8 +21,19 @@
     [self fetchPhotos];
 }
 
+// nil - object pointer
+// NULL - C pointer
+
 - (void)fetchPhotos {
-    self.photos = nil;
+    NSURL *url = [FlickrFetcher URLforRecentGeoreferencedPhotos];
+# warning Blocking Main Thread
+    NSData *jsonResults = [NSData dataWithContentsOfURL:url];
+    NSDictionary *propertyListResults = [NSJSONSerialization JSONObjectWithData:jsonResults
+                                                                        options:0
+                                                                          error:NULL];
+
+    NSArray *photos = [propertyListResults valueForKeyPath:FLICKR_RESULTS_PHOTOS];
+    self.photos = photos;
 }
 
 @end
