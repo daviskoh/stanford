@@ -20,7 +20,8 @@
     CGRect bounds = [UIScreen mainScreen].bounds;
     self.window = [[UIWindow alloc] initWithFrame:bounds];
 
-    self.window.rootViewController = [[JustPostedFlickrPhotosTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    JustPostedFlickrPhotosTableViewController *flickrCtrl = [[JustPostedFlickrPhotosTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:flickrCtrl];
 
     [self.window makeKeyAndVisible];
 

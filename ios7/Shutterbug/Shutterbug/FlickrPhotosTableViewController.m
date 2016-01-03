@@ -8,6 +8,7 @@
 
 #import "FlickrPhotosTableViewController.h"
 #import "FlickrFetcher.h"
+#import "ImageViewController.h"
 
 @interface FlickrPhotosTableViewController ()
 
@@ -61,6 +62,24 @@ static NSString *cellTitle = @"FlickrTableViewCell";
     cell.detailTextLabel.text = [photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
 
     return cell;
+}
+
+- (void)prepareImageViewController:(ImageViewController *)ivc
+                    toDisplayPhoto:(NSDictionary *)photo {
+
+    ivc.imageURL = [FlickrFetcher URLforPhoto:photo
+                                      format:FlickrPhotoFormatLarge];
+    ivc.title = [photo valueForKeyPath:FLICKR_PHOTO_TITLE];
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
+    [self prepareImageViewController:imageViewCtrl
+                      toDisplayPhoto:self.photos[indexPath.row]];
+
+    [self.navigationController pushViewController:imageViewCtrl
+                                         animated:YES];
 }
 
 @end
