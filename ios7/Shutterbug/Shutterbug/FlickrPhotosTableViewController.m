@@ -12,9 +12,16 @@
 
 @interface FlickrPhotosTableViewController ()
 
+@property (strong, nonatomic) ImageViewController *imageViewCtrl;
+
 @end
 
 @implementation FlickrPhotosTableViewController
+
+- (ImageViewController *)imageViewCtrl {
+    if (!_imageViewCtrl) _imageViewCtrl = [[ImageViewController alloc] init];
+    return _imageViewCtrl;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,13 +81,17 @@ static NSString *cellTitle = @"FlickrTableViewCell";
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
-
-    [self prepareImageViewController:imageViewCtrl
+    [self prepareImageViewController:self.imageViewCtrl
                       toDisplayPhoto:self.photos[indexPath.row]];
 
-    [self.navigationController pushViewController:imageViewCtrl
+    // check if detail view is visible
+    if (self.splitViewController.viewControllers.count > 1) {
+        NSArray *viewCtrls = @[self.navigationController, self.imageViewCtrl];
+        self.navigationController.splitViewController.viewControllers = viewCtrls;
+    } else {
+        [self.navigationController pushViewController:self.imageViewCtrl
                                          animated:YES];
+    }
 }
 
 @end

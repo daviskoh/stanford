@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ImageViewController.h"
 #import "JustPostedFlickrPhotosTableViewController.h"
 
 @interface AppDelegate ()
@@ -23,8 +24,10 @@
     JustPostedFlickrPhotosTableViewController *flickrCtrl = [[JustPostedFlickrPhotosTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:flickrCtrl];
 
+    ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
+
     UISplitViewController *photoSplitViewCtrl = [[UISplitViewController alloc] init];
-    photoSplitViewCtrl.viewControllers = @[navCtrl];
+    photoSplitViewCtrl.viewControllers = @[navCtrl, imageViewCtrl];
 
     self.window.rootViewController = photoSplitViewCtrl;
 
