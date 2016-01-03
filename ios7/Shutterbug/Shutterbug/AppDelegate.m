@@ -24,10 +24,8 @@
     JustPostedFlickrPhotosTableViewController *flickrCtrl = [[JustPostedFlickrPhotosTableViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:flickrCtrl];
 
-    ImageViewController *imageViewCtrl = [[ImageViewController alloc] init];
-
     UISplitViewController *photoSplitViewCtrl = [[UISplitViewController alloc] init];
-    photoSplitViewCtrl.viewControllers = @[navCtrl, imageViewCtrl];
+    photoSplitViewCtrl.viewControllers = @[navCtrl];
 
     self.window.rootViewController = photoSplitViewCtrl;
 
