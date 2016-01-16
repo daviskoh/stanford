@@ -11,6 +11,8 @@
 
 @interface TopPlacesTableViewController ()
 
+@property (strong, nonatomic) NSArray *places;
+
 @end
 
 @implementation TopPlacesTableViewController
@@ -43,10 +45,11 @@
   NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
   [[session dataTaskWithRequest:request
               completionHandler:^(NSData *jsonResults, NSURLResponse *response, NSError *error) {
-    NSDictionary *topPlaces = [NSJSONSerialization JSONObjectWithData:jsonResults
-                                                            options:0
-                                                              error:NULL];
-    NSLog(@"%@", topPlaces);
+                NSDictionary *topPlaces = [NSJSONSerialization JSONObjectWithData:jsonResults
+                                                                        options:0
+                                                                          error:NULL];
+                self.places = [topPlaces valueForKeyPath:FLICKR_RESULTS_PLACES];
+                NSLog(@"%@", self.places);
   }] resume];
 }
 
