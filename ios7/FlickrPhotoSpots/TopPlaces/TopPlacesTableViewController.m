@@ -41,9 +41,12 @@
   NSURL *topPlacesURL = [FlickrFetcher URLforTopPlaces];
   NSURLRequest *request = [NSURLRequest requestWithURL:topPlacesURL];
   NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-  [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    NSString *flickrTopPlaces = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-    NSLog(@"flickrTopPlaces: %@", flickrTopPlaces);
+  [[session dataTaskWithRequest:request
+              completionHandler:^(NSData *jsonResults, NSURLResponse *response, NSError *error) {
+    NSDictionary *topPlaces = [NSJSONSerialization JSONObjectWithData:jsonResults
+                                                            options:0
+                                                              error:NULL];
+    NSLog(@"%@", topPlaces);
   }] resume];
 }
 
