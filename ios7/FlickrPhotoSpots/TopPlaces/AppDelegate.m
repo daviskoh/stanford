@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "TopPlacesTableViewController.h"
+#import "RecentsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +22,12 @@
     self.window = [[UIWindow alloc] initWithFrame:bounds];
 
     UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];
-    tabBarCtrl.viewControllers = @[];
+    TopPlacesTableViewController *topPlacesTableViewCtrl = [[TopPlacesTableViewController alloc] init];
+    RecentsTableViewController *recentsTableViewCtrl = [[RecentsTableViewController alloc] init];
+    tabBarCtrl.viewControllers = @[
+                                   topPlacesTableViewCtrl,
+                                   recentsTableViewCtrl
+                                   ];
 
     self.window.rootViewController = tabBarCtrl;
     [self.window makeKeyAndVisible];

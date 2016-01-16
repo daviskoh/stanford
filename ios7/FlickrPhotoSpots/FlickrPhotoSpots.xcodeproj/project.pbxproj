@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD363B961C4AE54400D79CBD /* TopPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD363B951C4AE54400D79CBD /* TopPlacesTableViewController.m */; };
+		DD363B9A1C4AE5CB00D79CBD /* RecentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD363B991C4AE5CB00D79CBD /* RecentsTableViewController.m */; };
 		DD7192021C4AE203007EC033 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7192011C4AE203007EC033 /* main.m */; };
 		DD7192051C4AE203007EC033 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7192041C4AE203007EC033 /* AppDelegate.m */; };
 		DD71920D1C4AE203007EC033 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD71920C1C4AE203007EC033 /* Assets.xcassets */; };
@@ -32,6 +34,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD363B941C4AE54400D79CBD /* TopPlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesTableViewController.h; sourceTree = "<group>"; };
+		DD363B951C4AE54400D79CBD /* TopPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPlacesTableViewController.m; sourceTree = "<group>"; };
+		DD363B981C4AE5CB00D79CBD /* RecentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentsTableViewController.h; sourceTree = "<group>"; };
+		DD363B991C4AE5CB00D79CBD /* RecentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentsTableViewController.m; sourceTree = "<group>"; };
 		DD7191FD1C4AE203007EC033 /* FlickrPhotoSpots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrPhotoSpots.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7192011C4AE203007EC033 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DD7192031C4AE203007EC033 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,6 +77,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD363B931C4AE53300D79CBD /* TopPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				DD363B941C4AE54400D79CBD /* TopPlacesTableViewController.h */,
+				DD363B951C4AE54400D79CBD /* TopPlacesTableViewController.m */,
+			);
+			name = TopPlaces;
+			sourceTree = "<group>";
+		};
+		DD363B971C4AE5BB00D79CBD /* Recents */ = {
+			isa = PBXGroup;
+			children = (
+				DD363B981C4AE5CB00D79CBD /* RecentsTableViewController.h */,
+				DD363B991C4AE5CB00D79CBD /* RecentsTableViewController.m */,
+			);
+			name = Recents;
+			sourceTree = "<group>";
+		};
 		DD7191F41C4AE203007EC033 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +118,8 @@
 		DD7191FF1C4AE203007EC033 /* FlickrPhotoSpots */ = {
 			isa = PBXGroup;
 			children = (
+				DD363B971C4AE5BB00D79CBD /* Recents */,
+				DD363B931C4AE53300D79CBD /* TopPlaces */,
 				DD7192031C4AE203007EC033 /* AppDelegate.h */,
 				DD7192041C4AE203007EC033 /* AppDelegate.m */,
 				DD71920C1C4AE203007EC033 /* Assets.xcassets */,
@@ -261,6 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD7192051C4AE203007EC033 /* AppDelegate.m in Sources */,
+				DD363B961C4AE54400D79CBD /* TopPlacesTableViewController.m in Sources */,
+				DD363B9A1C4AE5CB00D79CBD /* RecentsTableViewController.m in Sources */,
 				DD7192021C4AE203007EC033 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +496,7 @@
 				DD71922C1C4AE203007EC033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD71922D1C4AE203007EC033 /* Build configuration list for PBXNativeTarget "FlickrPhotoSpotsTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +505,7 @@
 				DD71922F1C4AE203007EC033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD7192301C4AE203007EC033 /* Build configuration list for PBXNativeTarget "FlickrPhotoSpotsUITests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +514,7 @@
 				DD7192321C4AE203007EC033 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
