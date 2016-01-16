@@ -33,6 +33,18 @@
   
   // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+  [self loadTopPlaces];
+}
+
+- (void)loadTopPlaces {
+  NSURL *topPlacesURL = [FlickrFetcher URLforTopPlaces];
+  NSURLRequest *request = [NSURLRequest requestWithURL:topPlacesURL];
+  NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+  [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSString *flickrTopPlaces = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSLog(@"flickrTopPlaces: %@", flickrTopPlaces);
+  }] resume];
 }
 
 #pragma mark - Table view data source
